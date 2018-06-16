@@ -8,14 +8,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.jlkf.fsnail.MyApplication;
 import com.jlkf.fsnail.R;
-import com.jlkf.fsnail.bean.CustomerBean;
 import com.jlkf.fsnail.bean.EventCenter;
+import com.jlkf.fsnail.bean.ServiceMenuBean;
 import com.jlkf.fsnail.constants.Constants;
 
 import org.greenrobot.eventbus.EventBus;
@@ -36,12 +38,12 @@ public class SelectCustomerDialog implements View.OnClickListener{
     private TextView text_ok;
     private ImageView dialog_cancel;
 
-    private List<CustomerBean> datas = new ArrayList<CustomerBean>();
+    List<ServiceMenuBean.DataBean.CustomerBean> datas;
+    MyAdapter adapter;
 
     public SelectCustomerDialog(Context context) {
         this.context =context;
     }
-
 
     public void  showDiaglog(){
         dissmiss();
@@ -56,13 +58,18 @@ public class SelectCustomerDialog implements View.OnClickListener{
         window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         window.setGravity(Gravity.CENTER);
 
-        for(int i = 0;i<15;i++){
-            CustomerBean bean = new CustomerBean();
-            datas.add(bean);
-        }
+        datas = MyApplication.getInstance().getMenuBean().getData().getCustomer();
 
         list_choose = (ListView)mView.findViewById(R.id.list_choose);
-        list_choose.setAdapter(new MyAdapter());
+        adapter = new MyAdapter();
+        list_choose.setAdapter(adapter);
+        list_choose.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                adapter.selectItem(i);
+            }
+        });
+
         text_ok = (TextView) mView.findViewById(R.id.text_ok);
         text_ok.setOnClickListener(this);
         dialog_cancel = (ImageView)mView.findViewById(R.id.dialog_cancel);
@@ -92,6 +99,14 @@ public class SelectCustomerDialog implements View.OnClickListener{
 
     private class MyAdapter extends BaseAdapter{
 
+        int selectedIndex = 0;
+
+        public void selectItem(int position){
+            selectedIndex = position;
+            notifyDataSetChanged();
+        }
+
+
         @Override
         public int getCount() {
             return datas.size();
@@ -120,6 +135,15 @@ public class SelectCustomerDialog implements View.OnClickListener{
                 view.setTag(holder);
             }else{
                 holder = (ViewHolder) view.getTag();
+            }
+
+            holder.tv_customer.setText(datas.get(i).getName());
+            holder.tv_phone.setText(datas.get(i).getPhone());
+
+            if(selectedIndex == i){
+                holder.img_select.setVisibility(View.VISIBLE);
+            }else{
+                holder.img_select.setVisibility(View.INVISIBLE);
             }
 
             return view;

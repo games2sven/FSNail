@@ -83,10 +83,9 @@ public class CardFragment extends BaseFragment{
 
     public void loadData(){
         Map<String,String> params = new HashMap<String,String>();
-        params.put("DataBean","1");
+        params.put("pageNo","1");
         params.put("pageSize","10");
         OKHttpUtils.getIntance().oKHttpPost(UrlConstants.CARD_LIST, this, params, new MyHttpCallback<CardBean>() {
-
             @Override
             public void onSuccess(CardBean response) {
                 Log.i("Sven","response "+response.getCode());

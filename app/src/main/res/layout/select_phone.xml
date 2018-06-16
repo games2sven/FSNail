@@ -43,7 +43,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_employee"
+                        android:text="@string/text_customer"
                         android:textColor="@color/text_dark1"
                         android:textSize="@dimen/DIMEN_28PX" />
 
@@ -58,7 +58,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_time"
+                        android:text="@string/hint_customer_phone"
                         android:textColor="@color/text_dark1"
                         android:textSize="@dimen/DIMEN_28PX" />
 

@@ -110,28 +110,31 @@ public class CardDetailFragment extends BaseFragment implements View.OnClickList
         tv_return.setOnClickListener(this);
         tv_check.setOnClickListener(this);
 
-        tv_card_num.setText(mDatas.get(0).getId()+"");
-        tv_pro_name.setText(mDatas.get(0).getCardName());
-        tv_pro_type.setText(mDatas.get(0).getName());
-        tv_price.setText(mDatas.get(0).getPrice()+"");
-        tv_discount.setText(mDatas.get(0).getDiscount()+"");
-        tv_voucher.setText(mDatas.get(0).getUse_card_price()+"");
-        tv_last_price.setText(mDatas.get(0).getPrice()-mDatas.get(0).getUse_card_price()+"");
-        tv_buy_time.setText(mDatas.get(0).getPay_optime()+"");
-        tv_buy_name.setText(mDatas.get(0).getPayUser());
-        tv_buy_phone.setText(mDatas.get(0).getPayUserPhone());
-        et_bind_name.setText(mDatas.get(0).getIsBandUser());
-        et_bind_phone.setText(mDatas.get(0).getIsBandUserPhone());
-        tv_binding_time.setText(mDatas.get(0).getBand_optime()+"");
-        tv_card_type.setText(mDatas.get(0).getType()+"");
-        tv_use_price.setText(mDatas.get(0).getHava_use_price()+"");
-        tv_left_price.setText(mDatas.get(0).getRemain_price()+"");
+        if(mDatas != null && mDatas.size() != 0){
+            tv_card_num.setText(mDatas.get(0).getId()+"");
+            tv_pro_name.setText(mDatas.get(0).getCardName());
+            tv_pro_type.setText(mDatas.get(0).getName());
+            tv_price.setText(mDatas.get(0).getPrice()+"");
+            tv_discount.setText(mDatas.get(0).getDiscount()+"");
+            tv_voucher.setText(mDatas.get(0).getUse_card_price()+"");
+            tv_last_price.setText(mDatas.get(0).getPrice()-mDatas.get(0).getUse_card_price()+"");
+            tv_buy_time.setText(mDatas.get(0).getPay_optime()+"");
+            tv_buy_name.setText(mDatas.get(0).getPayUser());
+            tv_buy_phone.setText(mDatas.get(0).getPayUserPhone());
+            et_bind_name.setText(mDatas.get(0).getIsBandUser());
+            et_bind_phone.setText(mDatas.get(0).getIsBandUserPhone());
+            tv_binding_time.setText(mDatas.get(0).getBand_optime()+"");
+            tv_card_type.setText(mDatas.get(0).getType()+"");
+            tv_use_price.setText(mDatas.get(0).getHava_use_price()+"");
+            tv_left_price.setText(mDatas.get(0).getRemain_price()+"");
+        }
     }
 
     public void loadData(){
         Log.i("Sven","loadData");
         Map<String,String> params = new HashMap<String,String>();
         params.put("id",mCardBean.getId()+"");
+        Log.i("Sven","carddetail :"+OKHttpUtils.getMapParamStr(params));
 
         OKHttpUtils.getIntance().oKHttpPost(UrlConstants.CARD_DETAIL, this, params, new MyHttpCallback<CardDetailBean>() {
 

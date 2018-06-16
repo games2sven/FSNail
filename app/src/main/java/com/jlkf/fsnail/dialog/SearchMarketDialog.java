@@ -149,9 +149,15 @@ public class SearchMarketDialog implements View.OnClickListener{
         switch (view.getId()){
             case R.id.tv_search:
                 if(checkIsOk()){
-                    params.put("goodsName",et_pro_name.getText().toString().trim());
-                    params.put("gTypeId",typeID);
-                    params.put("brandId",brandID);
+                    if(!TextUtils.isEmpty(et_pro_name.getText().toString().trim())){
+                        params.put("goodsName",et_pro_name.getText().toString().trim());
+                    }
+                    if(!TextUtils.isEmpty(typeID)){
+                        params.put("gTypeId",typeID);
+                    }
+                    if(!TextUtils.isEmpty(brandID)){
+                        params.put("brandId",brandID);
+                    }
                     EventBus.getDefault().post(new EventCenter(Constants.CODE_SEARCH_GOODS,params));
                 };
                 break;

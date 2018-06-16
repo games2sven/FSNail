@@ -380,12 +380,20 @@ public class ServiceMenuBean extends  BaseHttpBean {
 
         public static class CustomerBean {
 
+            public boolean isSelected() {
+                return isSelected;
+            }
+
+            public void setSelected(boolean selected) {
+                isSelected = selected;
+            }
+
             /**
              * name : viva
              * id : 7
              */
 
-
+            private boolean isSelected;//是否选中
             private String name;
             private int id;
 

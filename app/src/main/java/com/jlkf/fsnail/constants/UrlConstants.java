@@ -37,5 +37,4 @@ public class UrlConstants {
     public static String CHECK_CUSTOMER= SERVER_API + "sys/infoVerify";//验证客户信息是否完善
     public static String GOODS_TYPE_LIST= SERVER_API + "goods/goodsTypeList";//商品类型下拉列表
 
-
 }

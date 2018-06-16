@@ -229,4 +229,3 @@ public class CustomerBean extends  BaseHttpBean {
                 '}'+super.toString();
     }
 }
-                                                  

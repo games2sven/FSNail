@@ -33,6 +33,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/DIMEN_34PX"
+        android:layout_gravity="center"
+        android:visibility="invisible"
         android:src="@mipmap/remain_icon_choose3"/>
 
 </LinearLayout>
