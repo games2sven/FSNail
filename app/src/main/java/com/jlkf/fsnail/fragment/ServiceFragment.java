@@ -223,43 +223,7 @@ public class ServiceFragment extends BaseFragment {
 
     private void initRecyclerView() {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),1));
-        mAdapter = new ServiceAdapter(getActivity(),mDatas,0);
-        recyclerView.setAdapter(mAdapter);
-        mAdapter.setOnLongClickListener(new ServiceAdapter.OnLongClickListener() {
-            @Override
-            public void onCustomNameLongClick(View view, String customName) {
-                CustomNamePop pop = new CustomNamePop(getActivity(), view);
-                pop.showPop(customName);
-            }
-
-            @Override
-            public void editClick(View view, ServiceBean.DataBean serviceBean) {
-            mainActivity.gotoServiceEdit( serviceBean);
-            }
-
-            @Override
-            public void statusClick(final ServiceBean.DataBean serviceBean) {
-                if (serviceBean.getStatus()==1||serviceBean.getStatus()==2){//未开始
-
-                    final CustomDialog dialog  = new CustomDialog(mainActivity);
-                    dialog.ShowDialog(getString(R.string.btn_ensure),getString(R.string.tv_cancel),serviceBean.getStatus()==1?getString(R.string.tv_start_service_msg):getString(R.string.tv_stop_service_msg));
-                    dialog.setOnButtonClickListener(new CustomDialog.OnButtonClickListener() {
-                        @Override
-                        public void onButton1Click(View v) {
-                           dialog.dismiss();
-                           changeServiceStatus(serviceBean.getId(),serviceBean.getStatus()==1?2:3);
-                        }
-
-                        @Override
-                        public void onButton2Click(View v) {
-                           dialog.dismiss();
-                        }
-                    });
-
-                }
-
-            }
-        });
+         initAdapter();
 
     }
 
@@ -381,13 +345,56 @@ public class ServiceFragment extends BaseFragment {
                     mDatas.clear();
                     mDatas.addAll(response.getData());
                     totalPage=response.getTotalPage();
-                    mAdapter.notifyDataSetChanged();
+
+                    initAdapter();
+
+
                 }
 
             }
 
             @Override
             public void onFailure(String errorMsg) {
+
+            }
+        });
+    }
+
+    private void initAdapter() {
+        mAdapter = new ServiceAdapter(getActivity(),mDatas,0);
+        recyclerView.setAdapter(mAdapter);
+        mAdapter.setOnLongClickListener(new ServiceAdapter.OnLongClickListener() {
+            @Override
+            public void onCustomNameLongClick(View view, String customName) {
+                CustomNamePop pop = new CustomNamePop(getActivity(), view);
+                pop.showPop(customName);
+            }
+
+            @Override
+            public void editClick(View view, ServiceBean.DataBean serviceBean) {
+                mainActivity.gotoServiceEdit( serviceBean);
+            }
+
+            @Override
+            public void statusClick(final ServiceBean.DataBean serviceBean) {
+                if (serviceBean.getStatus()==1||serviceBean.getStatus()==2){//未开始
+
+                    final CustomDialog dialog  = new CustomDialog(mainActivity);
+                    dialog.ShowDialog(getString(R.string.btn_ensure),getString(R.string.tv_cancel),serviceBean.getStatus()==1?getString(R.string.tv_start_service_msg):getString(R.string.tv_stop_service_msg));
+                    dialog.setOnButtonClickListener(new CustomDialog.OnButtonClickListener() {
+                        @Override
+                        public void onButton1Click(View v) {
+                            dialog.dismiss();
+                            changeServiceStatus(serviceBean.getId(),serviceBean.getStatus()==1?2:3);
+                        }
+
+                        @Override
+                        public void onButton2Click(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                }
 
             }
         });
@@ -450,5 +457,11 @@ public class ServiceFragment extends BaseFragment {
 
     }
 
+
+
+    private  void  addService2ShopCart(){
+
+
+    }
 
 }

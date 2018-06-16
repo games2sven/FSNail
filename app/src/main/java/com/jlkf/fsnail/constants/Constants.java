@@ -32,4 +32,5 @@ public class Constants {
     public static final int CODE_ADD_BOOK_SUCCESS =33 ;//添加预约成功&修改预约成功
     public static final int CODE_SEARCH_GOODS =34 ;//搜索商品
 
+    public static final int CODE_UPDATE_STAFF =35 ;
 }

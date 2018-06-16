@@ -249,6 +249,11 @@
     <string name="tv_stop_service_msg">是否结束服务?</string>
     <string name="tips_input_book_date">请输入预约日期</string>
     <string name="tips_choose_employee">请选择员工和时间</string>
+    <string name="please_input_shop_id">请输入店ID</string>
+    <string name="please_input_nikename">请输入昵称</string>
+    <string name="please_input_address">请输入地址</string>
+    <string name="please_input_ability_level">请输入能力水平</string>
+    <string name="please_input_password">请输入密码</string>
 
 
 </resources>

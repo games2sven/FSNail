@@ -14,6 +14,7 @@ import com.jlkf.fsnail.adapter.StaffAdapter;
 import com.jlkf.fsnail.base.BaseFragment;
 import com.jlkf.fsnail.bean.EventCenter;
 import com.jlkf.fsnail.bean.StaffBean;
+import com.jlkf.fsnail.constants.Constants;
 import com.jlkf.fsnail.dialog.SingleFunctionPop;
 import com.jlkf.fsnail.widget.SpaceItemDecoration;
 
@@ -44,12 +45,14 @@ public class StaffFragment  extends BaseFragment {
     @Override
     protected void onEventComing(EventCenter eventCenter) {
 
+
     }
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View rootview =LayoutInflater.from(getActivity()).inflate(R.layout.fragment_staff,null);
         ButterKnife.bind(this,rootview);
 

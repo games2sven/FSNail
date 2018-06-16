@@ -26,15 +26,13 @@ import me.lxw.dtl.ui.UIBaseFragment;
 
 public abstract class BaseFragment extends Fragment {
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         if (isBindEventBusHere()){
-            Log.i("Sven","register");
             EventBus.getDefault().register(this);
         }
-        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     protected abstract  boolean  isBindEventBusHere();

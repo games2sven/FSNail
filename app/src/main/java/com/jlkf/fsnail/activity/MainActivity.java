@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,6 +18,8 @@ import com.google.gson.Gson;
 import com.jlkf.fsnail.MyApplication;
 import com.jlkf.fsnail.R;
 import com.jlkf.fsnail.base.BaseActivity;
+import com.jlkf.fsnail.bean.ADBean;
+import com.jlkf.fsnail.bean.BaseHttpBean;
 import com.jlkf.fsnail.bean.BookBean;
 import com.jlkf.fsnail.bean.Card2Bean;
 import com.jlkf.fsnail.bean.CardBean;
@@ -28,6 +31,7 @@ import com.jlkf.fsnail.bean.StaffManagerBean;
 import com.jlkf.fsnail.bean.UserBean;
 import com.jlkf.fsnail.constants.Constants;
 import com.jlkf.fsnail.constants.SPConstants;
+import com.jlkf.fsnail.constants.UrlConstants;
 import com.jlkf.fsnail.fragment.AddEditCustomerFragment;
 import com.jlkf.fsnail.fragment.AddEditServiceFragment;
 import com.jlkf.fsnail.fragment.AddStaffFragment;
@@ -50,14 +54,20 @@ import com.jlkf.fsnail.fragment.ShoppingCartFragment;
 import com.jlkf.fsnail.fragment.StaffFragment;
 import com.jlkf.fsnail.fragment.StaffManagerFragment;
 import com.jlkf.fsnail.fragment.UserAgreementFragment;
+import com.jlkf.fsnail.net.MyHttpCallback;
+import com.jlkf.fsnail.net.OKHttpUtils;
 import com.jlkf.fsnail.utils.SPUtil;
 import com.jlkf.fsnail.widget.NetworkImageView;
+import com.zhy.http.okhttp.OkHttpUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Administrator on 2018/5/24 0024.
@@ -130,6 +140,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     TextView tv_store;
     @Bind(R.id.main_left)
     View main_left;
+    @Bind(R.id.ad_imageView)
+    NetworkImageView adBG;
+    @Bind(R.id.ad_contaner)
+    View ad_contaner;
     private boolean Unfolded = true;
     FragmentManager magager;
     private StaffManagerFragment staffManagerFragment;
@@ -181,7 +195,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 MyApplication.getInstance().setMenuBean(serviceMenuBean);
             }
         }
-
+        getLockedAd();
 
     }
 
@@ -803,6 +817,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (stackFragments.size()>0){
                 popBackFragment(-1);
@@ -893,6 +908,50 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         resetAllFragments();
     }
 
+    String  picture;
 
+   void  getLockedAd(){
+       OKHttpUtils.getIntance().oKHttpGet(UrlConstants.LOCKED_AD, this, new MyHttpCallback<ADBean>() {
+           @Override
+           public void onSuccess(ADBean response) {
+              if (response.getCode()==200){
+                  picture=response.getData().getPisture();
+                  if (!TextUtils.isEmpty(picture)) {
+                      adBG.setScaleType(ImageView.ScaleType.FIT_XY);
+                      adBG.displayImage(response.getData().getPisture());
+                  }
+
+              }
+           }
+           @Override
+           public void onFailure(String errorMsg) {
+
+           }
+       });
+
+
+   }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (lockTime!=0&&System.currentTimeMillis()-lockTime>=5000&&ad_contaner!=null&&!TextUtils.isEmpty(picture)){
+            ad_contaner.setVisibility(View.VISIBLE);
+            adBG.displayImage(picture);
+        }
+    }
+
+    long  lockTime;
+    @Override
+    protected void onPause() {
+        super.onPause();
+        lockTime=System.currentTimeMillis();
+    }
+
+    @OnClick(R.id.ad_contaner)
+    public  void  clickAd(){
+        ad_contaner.setVisibility(View.INVISIBLE);
+   }
 
 }

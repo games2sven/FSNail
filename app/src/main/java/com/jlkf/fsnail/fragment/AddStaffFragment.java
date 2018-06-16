@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -18,6 +20,7 @@ import com.jlkf.fsnail.R;
 import com.jlkf.fsnail.activity.MainActivity;
 import com.jlkf.fsnail.adapter.CheckBookAdapter;
 import com.jlkf.fsnail.base.BaseFragment;
+import com.jlkf.fsnail.bean.BaseHttpBean;
 import com.jlkf.fsnail.bean.Cell;
 import com.jlkf.fsnail.bean.ColTitle;
 import com.jlkf.fsnail.bean.CustomerBean;
@@ -26,15 +29,25 @@ import com.jlkf.fsnail.bean.RowTitle;
 import com.jlkf.fsnail.bean.StaffBean;
 import com.jlkf.fsnail.bean.StaffManagerBean;
 import com.jlkf.fsnail.bean.StaffTimeBean;
+import com.jlkf.fsnail.bean.StaffinfoBean;
 import com.jlkf.fsnail.constants.Constants;
+import com.jlkf.fsnail.constants.UrlConstants;
 import com.jlkf.fsnail.dialog.SelectStaffTimeDialog;
 import com.jlkf.fsnail.dialog.StaffSetRestDialog;
+import com.jlkf.fsnail.net.MyHttpCallback;
+import com.jlkf.fsnail.net.OKHttpUtils;
+import com.jlkf.fsnail.utils.UiUtil;
 import com.jlkf.fsnail.widget.excelpanel.ExcelPanel;
+import com.zhy.http.okhttp.OkHttpUtils;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import butterknife.Bind;
@@ -50,7 +63,7 @@ import static com.jlkf.fsnail.fragment.CheckBookFragment.ONE_DAY;
 public class AddStaffFragment extends BaseFragment {
     MainActivity mainActivity;
   int  type=0;
-    StaffManagerBean.DataBean customerBean;
+    StaffManagerBean.DataBean staffBean;
   @Bind(R.id.custom_page_name)
     TextView custom_page_name;
   @Bind(R.id.checkBox1)
@@ -87,6 +100,25 @@ public class AddStaffFragment extends BaseFragment {
   CheckBox checkBox16;
   @Bind(R.id.content_container)
   ExcelPanel excelPanel;
+  @Bind(R.id.staff_add_shop)
+    EditText staff_add_shop;
+  @Bind(R.id.staff_add_address)
+    EditText staff_add_address;
+  @Bind(R.id.staff_add_name)
+    EditText staff_add_name;
+  @Bind(R.id.staff_add_id)
+    EditText staff_add_id;
+  @Bind(R.id.staff_add_email)
+    EditText staff_add_email;
+  @Bind(R.id.staff_add_phone)
+    EditText staff_add_phone;
+  @Bind(R.id.staff_add_nikename)
+    EditText staff_add_nikename;
+  @Bind(R.id.staff_add_power)
+    EditText staff_add_power;
+  @Bind(R.id.staff_add_password)
+    EditText staff_add_password;
+
     public static final String[] CHANNEL = {"途牛", "携程", "艺龙", "去哪儿", "其他"};
     public static final String[] NAME = {"刘亦菲", "迪丽热巴", "柳岩", "范冰冰", "唐嫣", "杨幂", "刘诗诗"};
     public static final String [] TIME = {"09:00","09:30","10:00","10:30","11:00","11:30",
@@ -133,6 +165,7 @@ public class AddStaffFragment extends BaseFragment {
     private long historyStartTime;
     private SimpleDateFormat dateFormatPattern;
     private SimpleDateFormat weekFormatPattern;
+    private StaffinfoBean staffInfoBean;
 
     @Override
     protected boolean isBindEventBusHere() {
@@ -171,7 +204,7 @@ public class AddStaffFragment extends BaseFragment {
         Bundle bundle =  getArguments();
         if (bundle!=null){
            type =  bundle.getInt("type");
-            customerBean = (StaffManagerBean.DataBean) bundle.getSerializable("data");
+            staffBean = (StaffManagerBean.DataBean) bundle.getSerializable("data");
         }
 
         initView();
@@ -179,8 +212,145 @@ public class AddStaffFragment extends BaseFragment {
         initCheckBox();
 
         initData();
+
+        initNet();
         return rootview ;
     }
+
+
+    private void initNet() {
+        if (staffBean==null) return;
+        Map<String,String> params = new HashMap<>();
+        addParams(params,"id",staffBean.getId()+"");
+        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.STAFF_INFO, this, params, new MyHttpCallback<StaffinfoBean>() {
+            @Override
+            public void onSuccess(StaffinfoBean response) {
+            if (response.getCode()==200){
+                AddStaffFragment.this.staffInfoBean =response;
+                setStaffDetail();
+
+            }else{
+                UiUtil.showToast(response.getMsg());
+            }
+            }
+
+            @Override
+            public void onFailure(String errorMsg) {
+                UiUtil.showToast(errorMsg);
+            }
+        });
+
+    }
+
+    private void setStaffDetail() {
+    if (staffInfoBean==null) return;
+    StaffinfoBean.DataBean dataBean=staffInfoBean.getData();
+            staff_add_address.setText(dataBean.getAddress());
+         staff_add_email.setText(dataBean.getEmail());
+         staff_add_name.setText(dataBean.getUName());
+         staff_add_nikename.setText(dataBean.getNickName());
+         staff_add_id.setText(String.valueOf(dataBean.getId()));
+         staff_add_phone.setText(dataBean.getPhone());
+         staff_add_power.setText(dataBean.getAbilityLevel());
+         staff_add_shop.setText(String.valueOf(dataBean.getShopId()));
+
+
+    }
+
+    String  id;      //员工ID
+    String shopId;//商店ID
+    String nickName;// 姓名
+    String uName;//昵称
+    String  address;// 地址
+    String abilityLevel;//能力水平
+    String email;//邮箱
+    String  phone;//手机
+    String  typeId;//类型（1.管理员 2.员工）
+   String  password;//密码
+    private  void  addModifyStaff(){
+
+       if (type==1)
+       id= String.valueOf(staffBean.getId());
+       shopId =staff_add_shop.getText().toString().trim();
+        nickName =staff_add_nikename.getText().toString().trim();
+        uName =staff_add_name.getText().toString().trim();
+        address=staff_add_address.getText().toString().trim();
+        abilityLevel= staff_add_power.getText().toString().trim();
+        email =staff_add_email.getText().toString().trim();
+        phone=staff_add_phone.getText().toString().trim();
+        typeId="2";
+        password=staff_add_password.getText().toString().trim();
+
+        if (type==0&& !isAddStaff()) return;
+
+
+        Map<String,String> params = new HashMap<>();
+       addParams(params,"id",id);
+       addParams(params,"shopId",shopId);
+       addParams(params,"nickName",nickName);
+       addParams(params,"uName",uName);
+       addParams(params,"address",address);
+       addParams(params,"abilityLevel",abilityLevel);
+       addParams(params,"email",email);
+       addParams(params,"phone",phone);
+       addParams(params,"type",typeId);
+       addParams(params,"password",password);
+
+       OKHttpUtils.getIntance().oKHttpPost(type==1?UrlConstants.UPDATE_STAFF:UrlConstants.ADD_STAFF, this, params, new MyHttpCallback<BaseHttpBean>() {
+           @Override
+           public void onSuccess(BaseHttpBean response) {
+            if (response.getCode()==200){
+                EventBus.getDefault().post(new EventCenter(Constants.CODE_UPDATE_STAFF));
+                   mainActivity.popBackFragment(2);
+            }else{
+                UiUtil.showToast(response.getMsg());
+            }
+           }
+
+           @Override
+           public void onFailure(String errorMsg) {
+               UiUtil.showToast(errorMsg);
+           }
+       });
+    }
+
+    private boolean isAddStaff() {
+        if (TextUtils.isEmpty(shopId)){
+            UiUtil.showToast(R.string.please_input_shop_id);
+            return false;
+        }
+        if (TextUtils.isEmpty(uName)){
+            UiUtil.showToast(R.string.please_input_name);
+            return false;
+        }
+        if (TextUtils.isEmpty(nickName)){
+            UiUtil.showToast(R.string.please_input_nikename);
+            return false;
+        }
+        if (TextUtils.isEmpty(address)){
+            UiUtil.showToast(R.string.please_input_address);
+            return false;
+        }
+        if (TextUtils.isEmpty(abilityLevel)){
+            UiUtil.showToast(R.string.please_input_ability_level);
+            return false;
+        }
+        if (TextUtils.isEmpty(email)){
+            UiUtil.showToast(R.string.please_input_email);
+            return false;
+        }
+        if (TextUtils.isEmpty(phone)){
+            UiUtil.showToast(R.string.please_input_phome);
+            return false;
+        }
+        if (TextUtils.isEmpty(password)){
+            UiUtil.showToast(R.string.please_input_password);
+            return false;
+        }
+
+        return  true;
+    }
+
 
     private void initCheckBox() {
 
@@ -380,11 +550,17 @@ public class AddStaffFragment extends BaseFragment {
     public void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
+        OKHttpUtils.getIntance().cancelTag(this);
     }
 
     @OnClick({R.id.tv_add_customer_ensure,R.id.tv_add_customer_cancel})
-   public void  finishFragment(){
-        mainActivity.popBackFragment(2);
+   public void  finishFragment(View view ){
+        if (view.getId()==R.id.tv_add_customer_ensure) {
+            addModifyStaff();
+        }
+        else {
+            mainActivity.selectFragment(2);
+        }
 
    }
 

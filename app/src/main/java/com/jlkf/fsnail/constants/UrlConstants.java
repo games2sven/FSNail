@@ -23,6 +23,10 @@ public class UrlConstants {
     public static final String UPDATE_USER = SERVER_API + "service/updateUser";
     public static final String UPDATE_SERVICE_STATUS =SERVER_API + "service/updateServiceStatus";
     public static final String STAFF_LIST =SERVER_API+ "staff/staffList";
+    public static final String STAFF_INFO =SERVER_API+ "staff/staffInfo";
+    public static final String UPDATE_STAFF =SERVER_API+ "staff/updateStaff";
+    public static final String LOCKED_AD =SERVER_API+"sys/lockedAd" ;
+    public static String ADD_STAFF=SERVER_API+ "staff/newStaff";
     public static String USER_LIST=SERVER_API + "service/userList";
 
     public static String GOODS_LIST = SERVER_API + "goods/goodsList";//商品列表
@@ -36,5 +40,7 @@ public class UrlConstants {
     public static String CANCEL_BOOK = SERVER_API + "service/updateServiceStatus";//取消预约
     public static String CHECK_CUSTOMER= SERVER_API + "sys/infoVerify";//验证客户信息是否完善
     public static String GOODS_TYPE_LIST= SERVER_API + "goods/goodsTypeList";//商品类型下拉列表
+
+
 
 }

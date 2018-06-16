@@ -15,6 +15,7 @@ import com.jlkf.fsnail.adapter.StaffManagerAdapter;
 import com.jlkf.fsnail.base.BaseFragment;
 import com.jlkf.fsnail.bean.EventCenter;
 import com.jlkf.fsnail.bean.StaffManagerBean;
+import com.jlkf.fsnail.constants.Constants;
 import com.jlkf.fsnail.constants.UrlConstants;
 import com.jlkf.fsnail.dialog.SearchStaffManagerDialog;
 import com.jlkf.fsnail.dialog.TwoFunctionPop;
@@ -48,12 +49,19 @@ public class StaffManagerFragment  extends BaseFragment{
 
     @Override
     protected boolean isBindEventBusHere() {
-        return false;
+        return true;
     }
 
     @Override
     protected void onEventComing(EventCenter eventCenter) {
 
+
+        switch (eventCenter.getEventCode()){
+            case Constants.CODE_UPDATE_STAFF:
+                 getStaffManagerList();
+                break;
+
+        }
     }
 
     @Nullable
@@ -142,7 +150,7 @@ public class StaffManagerFragment  extends BaseFragment{
     String   nickName;//姓名
     String   phone;//手机
     int      pageNo=1;//页码
-    int     pageSize=5;// 每页大小
+    int     pageSize=6;// 每页大小
 
     private void  getStaffManagerList(){
         Map<String,String> params = new HashMap<>();
