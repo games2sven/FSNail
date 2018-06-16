@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/corner_white"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_97PX"
+        android:layout_marginLeft="@dimen/DIMEN_69PX"
+        android:gravity="center_vertical"
+        android:text="@string/text_edit_book"
+        android:textColor="@color/text_dark1"
+        android:textSize="@dimen/DIMEN_30PX" />
+
+    <View style="@style/H_line" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ll_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/Linear_appoint"
+                android:layout_marginTop="@dimen/DIMEN_40PX">
+
+                <TextView
+                    style="@style/Tv_appoint_tip_left"
+                    android:text="@string/tv_employee_name" />
+
+                <!--android:entries="@array/sports"-->
+                <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
+                    android:id="@+id/customer_spinner"
+                    style="@style/myspinner"
+                    android:gravity="center_vertical"
+                    app:ms_dropdown_height="wrap_content"
+                    app:ms_text_color="@color/text_dark1"
+                    app:ms_hint="Manicure"
+                    app:ms_hint_color="@color/text_dark1"
+                    android:textSize="@dimen/DIMEN_24PX"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_incorrect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/delete"
+                android:drawablePadding="@dimen/DIMEN_19PX"
+                android:gravity="center_vertical"
+                android:text="@string/tips_customer_information"
+                android:textColor="#DC5562"
+                android:textSize="@dimen/DIMEN_28PX"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/tv_correct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/content_icon_correct"
+                    android:drawablePadding="@dimen/DIMEN_19PX"
+                    android:gravity="center_vertical"
+                    android:text="@string/tv_customer_authentication"
+                    android:textColor="@color/green_94c42e"
+                    android:visibility="gone"
+                    android:textSize="@dimen/DIMEN_28PX" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Linear_appoint"
+                android:layout_marginTop="@dimen/DIMEN_24PX">
+
+                <TextView
+                    style="@style/Tv_appoint_tip_left"
+                    android:text="@string/tv_customer_phone" />
+
+                <EditText
+                    android:id="@+id/et_appoint_phone"
+                    style="@style/myspinner"
+                    android:background="@drawable/edittext_bg"
+                    android:inputType="phone"
+                    android:text="18814445822"
+                    android:textColor="@color/text_dark1"
+                    android:paddingLeft="@dimen/DIMEN_17PX"
+                    android:textSize="@dimen/DIMEN_28PX" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            </LinearLayout>
+            <!--<include android:id="@+id/ll_type"-->
+                <!--layout="@layout/item_add_type"/>-->
+
+            <LinearLayout
+                style="@style/Linear_appoint"
+                android:layout_marginTop="@dimen/DIMEN_24PX">
+
+                <TextView
+                    style="@style/Tv_appoint_tip_left"
+                    android:visibility="invisible"/>
+
+                <TextView
+                    android:id="@+id/tv_add_type"
+                    android:layout_width="@dimen/DIMEN_228PX"
+                    android:layout_height="@dimen/DIMEN_64PX"
+                    android:layout_marginLeft="@dimen/DIMEN_40PX"
+                    android:background="@drawable/appoint_opera_background"
+                    android:gravity="center"
+                    android:text="@string/tv_new_type"
+                    android:textColor="@color/green_94c42e"
+                    android:textSize="@dimen/DIMEN_28PX" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/DIMEN_60PX"
+                android:layout_marginBottom="@dimen/DIMEN_60PX"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_appoint_confirm"
+                    android:layout_width="@dimen/DIMEN_180PX"
+                    android:layout_height="@dimen/DIMEN_70PX"
+                    android:layout_marginRight="@dimen/DIMEN_57PX"
+                    android:background="@drawable/appoint_opera_green_selecter"
+                    android:gravity="center"
+                    android:text="@string/tv_sure"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/DIMEN_30PX"/>
+
+                <TextView
+                    android:id="@+id/tv_appoint_back"
+                    android:layout_width="@dimen/DIMEN_180PX"
+                    android:layout_height="@dimen/DIMEN_70PX"
+                    android:layout_marginRight="@dimen/DIMEN_57PX"
+                    android:background="@drawable/appoint_opera_red_selecter"
+                    android:gravity="center"
+                    android:text="@string/btn_return"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/DIMEN_30PX"/>
+
+                <TextView
+                    android:id="@+id/tv_appoint_cancel"
+                    android:layout_width="@dimen/DIMEN_180PX"
+                    android:layout_height="@dimen/DIMEN_70PX"
+                    android:layout_marginRight="@dimen/DIMEN_57PX"
+                    android:background="@drawable/appoint_opera_green_selecter"
+                    android:gravity="center"
+                    android:text="@string/text_cancel_book"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/DIMEN_30PX"/>
+
+                <TextView
+                    android:id="@+id/tv_appoint_send"
+                    android:layout_width="@dimen/DIMEN_180PX"
+                    android:layout_height="@dimen/DIMEN_70PX"
+                    android:background="@drawable/appoint_opera_green_selecter"
+                    android:gravity="center"
+                    android:text="@string/tv_send_msg"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/DIMEN_30PX"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

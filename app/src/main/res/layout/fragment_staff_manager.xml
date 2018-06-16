@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:background="@drawable/login_input_white_bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_100PX"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+        <TextView
+            android:textColor="#333333"
+            android:textSize="@dimen/DIMEN_30PX"
+            android:layout_marginLeft="@dimen/DIMEN_66PX"
+            android:text="员工"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="@dimen/DIMEN_20PX"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_98PX"
+        android:background="@drawable/service_title_bg"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            style="@style/service_title_sty"
+            android:text="员工编号"
+            />
+        <TextView
+            style="@style/service_title_sty"
+            android:text="员工昵称"
+            />
+        <TextView
+            style="@style/service_title_sty"
+            android:text="员工姓名"
+            />
+        <TextView
+            style="@style/service_title_sty"
+            android:text="电话号码"
+            />
+        <TextView
+            style="@style/service_title_sty"
+            android:text="状态"
+            />
+        <TextView
+            style="@style/service_title_sty"
+            android:text="选项"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/service_recycleview_bg"
+        >
+        <android.support.v7.widget.RecyclerView
+
+            android:id="@+id/recylerview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+        <include layout="@layout/layout_buttom_index"/>
+    </LinearLayout>
+</LinearLayout>

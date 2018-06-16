@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/corner_white"
+    android:orientation="horizontal"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+
+    <LinearLayout
+                style="@style/Linear_appoint"
+                android:layout_marginTop="@dimen/DIMEN_24PX">
+
+                <TextView
+                    style="@style/Tv_appoint_tip_left"
+                    android:text="@string/tv_service" />
+
+                <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
+                    android:id="@+id/sp_service"
+                    style="@style/myspinner"
+                    android:gravity="center_vertical"
+                    app:ms_dropdown_height="wrap_content"
+                    app:ms_text_color="@color/text_dark1"
+                    app:ms_hint="Manicure"
+                    app:ms_hint_color="@color/text_dark1"
+                    android:textSize="@dimen/DIMEN_24PX"
+                    />
+
+                <TextView
+                    android:layout_width="@dimen/DIMEN_84PX"
+                    android:layout_height="@dimen/DIMEN_40PX"
+                    android:textColor="#333333"
+                    android:textSize="@dimen/DIMEN_28PX"
+                    android:text="@string/tv_price" />
+
+                <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
+                    android:id="@+id/sp_price"
+                    android:layout_width="@dimen/DIMEN_360PX"
+                    android:layout_height="@dimen/DIMEN_64PX"
+                    android:layout_marginLeft="@dimen/DIMEN_40PX"
+                    android:layout_marginRight="@dimen/DIMEN_40PX"
+                    android:gravity="center_vertical"
+                    app:ms_dropdown_height="wrap_content"
+                    app:ms_text_color="@color/text_dark1"
+                    app:ms_hint="Manicure"
+                    app:ms_hint_color="@color/text_dark1"
+                    android:textSize="@dimen/DIMEN_24PX"
+                    />
+            </LinearLayout>
+
+
+
+</LinearLayout>

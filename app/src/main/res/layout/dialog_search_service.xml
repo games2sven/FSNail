@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_marginLeft="@dimen/DIMEN_20PX"
+        android:layout_marginBottom="@dimen/DIMEN_20PX"
+        android:layout_marginRight="@dimen/DIMEN_20PX"
+        android:background="@drawable/login_input_white_bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_440PX"
+        android:orientation="vertical"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+       <LinearLayout
+           android:layout_marginLeft="@dimen/DIMEN_60PX"
+           android:layout_marginTop="@dimen/DIMEN_60PX"
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+
+           >
+
+           <LinearLayout
+               android:id="@+id/ll_start_date"
+               android:gravity="center_vertical"
+               android:background="@drawable/bg_search_item"
+               android:layout_width="match_parent"
+               android:layout_height="@dimen/DIMEN_64PX"
+               android:orientation="horizontal"
+               >
+
+               <TextView
+                   android:id="@+id/tv_start_date"
+                   android:paddingLeft="@dimen/DIMEN_17PX"
+                   android:gravity="center_vertical"
+                   android:layout_width="0dp"
+                   android:layout_height="match_parent"
+                   android:layout_weight="1"
+                   android:textSize="@dimen/DIMEN_28PX"
+                   android:textColor="#333333"
+                   android:hint="@string/start_date"
+                   />
+
+               <ImageView
+
+                   android:layout_marginRight="@dimen/DIMEN_20PX"
+                   android:layout_width="@dimen/DIMEN_34PX"
+                   android:layout_height="@dimen/DIMEN_34PX"
+                   android:src="@mipmap/remain_icon_date"
+                   />
+           </LinearLayout>
+
+
+           <EditText
+               android:inputType="phone"
+               android:id="@+id/tv_customer_phone"
+               android:layout_marginTop="@dimen/DIMEN_30PX"
+               android:background="@drawable/bg_search_item"
+               android:layout_width="match_parent"
+               android:hint="@string/hint_customer_phone"
+               android:textColor="#b0b0b0"
+               android:textColorHint="#b0b0b0"
+               android:textSize="@dimen/DIMEN_28PX"
+               android:paddingLeft="@dimen/DIMEN_17PX"
+               android:layout_height="@dimen/DIMEN_64PX" />
+           <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
+               android:layout_width="match_parent"
+               android:gravity="center_vertical"
+               android:id="@+id/spinner_service"
+               android:layout_marginTop="@dimen/DIMEN_30PX"
+               android:layout_height="@dimen/DIMEN_64PX"
+               android:textSize="@dimen/DIMEN_28PX"
+
+               app:ms_dropdown_height="wrap_content"
+               app:ms_dropdown_max_height="@dimen/DIMEN_200PX"
+               app:ms_hint="@string/text_service"
+               app:ms_hint_color="#b0b0b0"
+               app:ms_text_color="@color/text_dark1"
+               />
+       </LinearLayout>
+        <TextView
+            android:layout_marginRight="@dimen/DIMEN_20PX"
+            android:layout_marginLeft="@dimen/DIMEN_20PX"
+            android:layout_marginTop="@dimen/DIMEN_90PX"
+            android:layout_width="@dimen/DIMEN_30PX"
+            android:layout_height="@dimen/DIMEN_2PX"
+            android:background="#b0b0b0"
+            />
+
+       <LinearLayout
+           android:layout_marginTop="@dimen/DIMEN_60PX"
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+
+           >
+
+           <LinearLayout
+               android:id="@+id/ll_end_date"
+               android:gravity="center_vertical"
+               android:background="@drawable/bg_search_item"
+               android:layout_width="match_parent"
+               android:layout_height="@dimen/DIMEN_64PX"
+               android:orientation="horizontal"
+               >
+
+               <TextView
+                   android:id="@+id/tv_end_date"
+                   android:paddingLeft="@dimen/DIMEN_17PX"
+                   android:gravity="center_vertical"
+                   android:layout_width="0dp"
+                   android:layout_height="match_parent"
+                   android:layout_weight="1"
+                   android:textSize="@dimen/DIMEN_28PX"
+                   android:textColor="#333333"
+                   android:hint="@string/end_date"
+                   />
+
+               <ImageView
+                   android:layout_marginRight="@dimen/DIMEN_20PX"
+                   android:layout_width="@dimen/DIMEN_34PX"
+                   android:layout_height="@dimen/DIMEN_34PX"
+                   android:src="@mipmap/remain_icon_date"
+                   />
+           </LinearLayout>
+
+           <EditText
+               android:id="@+id/tv_staff_name"
+               android:layout_marginTop="@dimen/DIMEN_30PX"
+               android:background="@drawable/bg_search_item"
+               android:layout_width="match_parent"
+               android:hint="@string/employee_nickname"
+               android:inputType="text"
+               android:textColor="#b0b0b0"
+               android:textColorHint="#b0b0b0"
+               android:textSize="@dimen/DIMEN_28PX"
+               android:paddingLeft="@dimen/DIMEN_17PX"
+               android:layout_height="@dimen/DIMEN_64PX" />
+           <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
+               android:layout_width="match_parent"
+               android:gravity="center_vertical"
+               android:id="@+id/spinner_brand"
+               android:layout_marginTop="@dimen/DIMEN_30PX"
+               android:layout_height="@dimen/DIMEN_64PX"
+               android:textSize="@dimen/DIMEN_28PX"
+
+               app:ms_dropdown_height="wrap_content"
+               app:ms_dropdown_max_height="@dimen/DIMEN_200PX"
+               app:ms_hint="@string/text_brand"
+               app:ms_hint_color="#b0b0b0"
+               app:ms_text_color="@color/text_dark1"
+               />
+
+       </LinearLayout>
+       <LinearLayout
+           android:layout_marginLeft="@dimen/DIMEN_70PX"
+           android:layout_marginTop="@dimen/DIMEN_60PX"
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:layout_marginRight="@dimen/DIMEN_60PX"
+           >
+
+           <EditText
+               android:inputType="text"
+               android:id="@+id/tv_customer_name"
+               android:background="@drawable/bg_search_item"
+               android:layout_width="match_parent"
+               android:hint="@string/customer_name"
+               android:textColor="#b0b0b0"
+               android:textColorHint="#b0b0b0"
+               android:textSize="@dimen/DIMEN_28PX"
+               android:paddingLeft="@dimen/DIMEN_17PX"
+               android:layout_height="@dimen/DIMEN_64PX" />
+           <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
+               android:layout_width="match_parent"
+               android:gravity="center_vertical"
+               app:ms_dropdown_height="wrap_content"
+               app:ms_dropdown_max_height="@dimen/DIMEN_200PX"
+               app:ms_hint="@string/text_type"
+               app:ms_hint_color="#b0b0b0"
+               app:ms_text_color="@color/text_dark1"
+               android:id="@+id/spinner_type"
+               android:layout_marginTop="@dimen/DIMEN_30PX"
+               android:layout_height="@dimen/DIMEN_64PX"
+               android:textSize="@dimen/DIMEN_28PX"
+               />
+           <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
+               android:id="@+id/spinner_status"
+               android:layout_width="match_parent"
+               android:gravity="center_vertical"
+
+               app:ms_dropdown_height="wrap_content"
+               app:ms_dropdown_max_height="@dimen/DIMEN_200PX"
+               app:ms_hint="@string/text_status"
+               app:ms_hint_color="#b0b0b0"
+               app:ms_text_color="@color/text_dark1"
+               android:layout_marginTop="@dimen/DIMEN_30PX"
+               android:layout_height="@dimen/DIMEN_64PX"
+               android:textSize="@dimen/DIMEN_28PX"
+               />
+       </LinearLayout>
+
+
+    </LinearLayout>
+        <TextView
+            android:id="@+id/btn_search"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/DIMEN_27PX"
+            android:gravity="center"
+            android:background="@drawable/dialog_search_button_bg"
+            android:textColor="@color/white"
+            android:text="@string/tv_serch"
+            android:layout_width="@dimen/DIMEN_360PX"
+            android:layout_height="@dimen/DIMEN_70PX" />
+    </LinearLayout>
+
+</LinearLayout>

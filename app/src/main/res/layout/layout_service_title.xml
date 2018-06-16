@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="@dimen/DIMEN_20PX"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_98PX"
+        android:background="@drawable/service_title_bg"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:text="@string/tv_start_time"
+            style="@style/service_title_sty"
+            />
+        <TextView
+            style="@style/service_title_sty"
+            android:text="@string/book_date"
+            />
+        <TextView
+            android:id="@+id/tv_service_workers_nickname"
+            style="@style/service_title_sty"
+            android:text="@string/employee_nickname"
+            />
+        <TextView
+            android:id="@+id/tv_service_customer_name"
+            style="@style/service_title_sty"
+            android:text="@string/customer_name"
+            />
+        <TextView
+            android:layout_weight="1.5"
+            style="@style/service_title_sty"
+            android:text="@string/hint_customer_phone"
+            />
+        <TextView
+            style="@style/service_title_sty"
+            android:text="@string/text_type"
+            android:layout_weight="0.8"
+            />
+        <TextView
+            style="@style/service_title_sty"
+            android:text="@string/text_service"
+            android:layout_weight="1.5"
+            />
+        <TextView
+            style="@style/service_title_sty"
+            android:text="@string/text_brand"
+            />
+        <TextView
+            style="@style/service_title_sty"
+            android:text="@string/text_status"
+            />
+        <TextView
+            style="@style/service_title_sty"
+            android:text="@string/text_operation"
+            />
+
+    </LinearLayout>
+    
+
+
+</LinearLayout>

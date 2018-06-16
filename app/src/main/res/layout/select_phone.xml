@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <RelativeLayout
+        android:id="@+id/ll_dialog_name"
+        android:layout_width="@dimen/DIMEN_626PX"
+        android:layout_height="@dimen/DIMEN_556PX"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:layout_width="@dimen/DIMEN_600PX"
+            android:layout_height="@dimen/DIMEN_500PX"
+            android:layout_marginTop="@dimen/DIMEN_36PX"
+            android:background="@drawable/corner_white"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/dialog_names_title"
+                android:layout_width="@dimen/DIMEN_600PX"
+                android:layout_height="@dimen/DIMEN_80PX"
+                android:background="@drawable/bg_select"
+                android:gravity="center"
+                android:text="@string/tips_choose_customer_account"
+                android:textColor="@color/white"
+                android:textSize="@dimen/DIMEN_30PX" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/DIMEN_100PX"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_employee"
+                        android:textColor="@color/text_dark1"
+                        android:textSize="@dimen/DIMEN_28PX" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_time"
+                        android:textColor="@color/text_dark1"
+                        android:textSize="@dimen/DIMEN_28PX" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/DIMEN_34PX"
+                    android:visibility="invisible"
+                    android:src="@mipmap/remain_icon_choose3"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/DIMEN_1PX"
+                android:layout_marginLeft="@dimen/DIMEN_20PX"
+                android:layout_marginRight="@dimen/DIMEN_20PX"
+                android:background="@color/bg_solid" />
+
+            <ListView
+                android:id="@+id/list_choose"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/DIMEN_164PX"
+                android:scrollbars="none">
+
+            </ListView>
+            
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="@dimen/DIMEN_137PX"-->
+                <!--android:layout_marginTop="@dimen/DIMEN_27PX"-->
+                <!--android:gravity="center_horizontal"-->
+                <!--android:orientation="horizontal">-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="@dimen/DIMEN_300PX"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:gravity="center">-->
+
+                    <!--<com.jlkf.fsnail.widget.Wheel.WheelPicker-->
+                        <!--android:id="@+id/np_date"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--app:wheel_atmospheric="true"-->
+                        <!--app:wheel_curved="true"-->
+                        <!--app:wheel_cyclic="true"-->
+                        <!--app:wheel_selected_item_position="3"-->
+                        <!--app:wheel_item_text_color="#30333333"-->
+                        <!--app:wheel_visible_item_count="3"-->
+                        <!--app:wheel_selected_item_text_color="#333333" />-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="@dimen/DIMEN_300PX"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal">-->
+
+                    <!--<com.jlkf.fsnail.widget.Wheel.WheelPicker-->
+                        <!--android:id="@+id/hour_timePicker"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--app:wheel_atmospheric="true"-->
+                        <!--app:wheel_curved="true"-->
+                        <!--app:wheel_cyclic="true"-->
+                        <!--app:wheel_selected_item_position="3"-->
+                        <!--app:wheel_item_text_color="#30333333"-->
+                        <!--app:wheel_visible_item_count="3"-->
+                        <!--app:wheel_selected_item_text_color="#333333" />-->
+
+                    <!--<com.jlkf.fsnail.widget.Wheel.WheelPicker-->
+                        <!--android:id="@+id/minute_timePicker"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--app:wheel_atmospheric="true"-->
+                        <!--app:wheel_curved="true"-->
+                        <!--app:wheel_cyclic="true"-->
+                        <!--app:wheel_selected_item_position="3"-->
+                        <!--app:wheel_item_text_color="#30333333"-->
+                        <!--app:wheel_visible_item_count="3"-->
+                        <!--app:wheel_selected_item_text_color="#333333" />-->
+
+                <!--</LinearLayout>-->
+            <!--</LinearLayout>-->
+
+            <TextView
+                android:id="@+id/text_ok"
+                android:layout_width="@dimen/DIMEN_330PX"
+                android:layout_height="@dimen/DIMEN_66PX"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/DIMEN_47PX"
+                android:background="@drawable/dialog_search_button_bg"
+                android:gravity="center"
+                android:text="OK"
+                android:textColor="@color/white"
+                android:textSize="@dimen/DIMEN_30PX" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/dialog_cancel"
+            android:layout_width="@dimen/DIMEN_64PX"
+            android:layout_height="@dimen/DIMEN_64PX"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/remain_close" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

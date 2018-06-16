@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/DIMEN_26PX"
+    android:paddingBottom="@dimen/DIMEN_26PX"
+    android:layout_gravity="center"
+    >
+
+    <TextView
+        android:id="@+id/tv_customer"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/DIMEN_43PX"
+        android:text="张三"
+        android:textSize="@dimen/DIMEN_30PX"
+        android:textColor="@color/black_7d7d7d"
+        android:gravity="center"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/DIMEN_43PX"
+        android:text="张三"
+        android:textSize="@dimen/DIMEN_30PX"
+        android:textColor="@color/black_7d7d7d"
+        android:gravity="center"
+        android:layout_weight="1"/>
+
+    <ImageView
+        android:id="@+id/img_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/DIMEN_34PX"
+        android:src="@mipmap/remain_icon_choose3"/>
+
+</LinearLayout>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    
+    <LinearLayout
+        android:background="@drawable/login_input_white_bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_100PX"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+
+        <TextView
+            android:id="@+id/service_name_title"
+            android:textColor="#333333"
+            android:textSize="@dimen/DIMEN_30PX"
+            android:layout_marginLeft="@dimen/DIMEN_66PX"
+            android:text="@string/tv_query"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_add_booked_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <ImageView
+            android:layout_width="@dimen/DIMEN_28PX"
+            android:layout_height="@dimen/DIMEN_31PX"
+            android:src="@mipmap/content_icon_add11"/>
+
+        <TextView
+            android:textColor="#94c42e"
+            android:textSize="@dimen/DIMEN_26PX"
+            android:layout_marginLeft="@dimen/DIMEN_13PX"
+            android:text="@string/tv_add_book_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/add_new_service"
+            android:layout_marginLeft="@dimen/DIMEN_57PX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+        <ImageView
+
+            android:layout_width="@dimen/DIMEN_28PX"
+            android:layout_height="@dimen/DIMEN_31PX"
+            android:src="@mipmap/content_icon_add11"/>
+
+        <TextView
+            android:textColor="#94c42e"
+            android:textSize="@dimen/DIMEN_26PX"
+            android:layout_marginLeft="@dimen/DIMEN_13PX"
+            android:text="@string/tv_add_new_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/shop_cart"
+            android:layout_marginLeft="@dimen/DIMEN_57PX"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/DIMEN_65PX"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+        <TextView
+            android:textColor="#94c42e"
+            android:textSize="@dimen/DIMEN_26PX"
+            android:text="@string/tv_shop_car"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+
+            android:layout_marginLeft="@dimen/DIMEN_13PX"
+            android:layout_width="@dimen/DIMEN_51PX"
+            android:layout_height="@dimen/DIMEN_40PX"
+            android:src="@mipmap/content_icon_cart22"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <include
+        layout="@layout/layout_service_search_result_title"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/service_recycleview_bg"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+
+            android:id="@+id/recylerview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/DIMEN_48PX"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/DIMEN_50PX"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="@dimen/DIMEN_48PX"
+                android:layout_height="@dimen/DIMEN_48PX"
+                android:src="@mipmap/page_left" />
+
+            <TextView
+                android:layout_width="@dimen/DIMEN_48PX"
+                android:layout_height="@dimen/DIMEN_48PX"
+                android:layout_marginLeft="@dimen/DIMEN_20PX"
+                android:background="@drawable/index_number_select_bg"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#fff" />
+
+            <TextView
+                android:layout_width="@dimen/DIMEN_48PX"
+                android:layout_height="@dimen/DIMEN_48PX"
+                android:layout_marginLeft="@dimen/DIMEN_20PX"
+                android:background="@drawable/index_number_unselect_bg"
+                android:gravity="center"
+                android:text="2"
+                android:textColor="#333333" />
+
+            <TextView
+                android:layout_width="@dimen/DIMEN_48PX"
+                android:layout_height="@dimen/DIMEN_48PX"
+                android:layout_marginLeft="@dimen/DIMEN_20PX"
+                android:background="@drawable/index_number_unselect_bg"
+                android:gravity="center"
+                android:text="3"
+                android:textColor="#333333" />
+
+            <TextView
+                android:layout_width="@dimen/DIMEN_48PX"
+                android:layout_height="@dimen/DIMEN_48PX"
+                android:layout_marginLeft="@dimen/DIMEN_20PX"
+                android:background="@drawable/index_number_unselect_bg"
+                android:gravity="center"
+                android:text="4"
+                android:textColor="#333333" />
+
+
+            <ImageView
+                android:layout_width="@dimen/DIMEN_48PX"
+                android:layout_height="@dimen/DIMEN_48PX"
+                android:layout_marginLeft="@dimen/DIMEN_20PX"
+                android:src="@mipmap/page_right" />
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/DIMEN_176PX">
+
+
+            <ImageView
+                android:id="@+id/iv_service_more"
+                android:layout_width="@dimen/DIMEN_96PX"
+                android:layout_height="@dimen/DIMEN_96PX"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/DIMEN_80PX"
+                android:src="@mipmap/btn_more_red1" />
+
+            <TextView
+                android:id="@+id/tv_service_result_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/DIMEN_60PX"
+                android:layout_marginTop="@dimen/DIMEN_30PX"
+                android:text="@string/tv_total_number"
+                android:textColor="@color/black_333333"
+                android:textSize="@dimen/DIMEN_28PX" />
+
+            <TextView
+                android:id="@+id/tv_origin_price_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_service_result_total"
+                android:layout_below="@id/tv_service_result_total"
+                android:layout_marginTop="@dimen/DIMEN_30PX"
+                android:text="初始总价格:€1500"
+                android:textSize="@dimen/DIMEN_30PX" />
+
+            <TextView
+                android:id="@+id/tv_final_price_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_service_result_total"
+                android:layout_marginLeft="@dimen/DIMEN_450PX"
+                android:layout_marginTop="@dimen/DIMEN_30PX"
+                android:text="最终总价格:€1000"
+                android:textSize="@dimen/DIMEN_30PX" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

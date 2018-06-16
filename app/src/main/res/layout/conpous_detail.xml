@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/excel_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/corner_white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_99PX"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/DIMEN_68PX"
+            android:text="@string/detail_title"
+            android:textColor="@color/text_dark1"
+            android:textSize="@dimen/DIMEN_30PX" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/DIMEN_30PX">
+
+            <TextView
+                android:id="@+id/tv_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/DIMEN_12PX"
+                android:paddingLeft="@dimen/DIMEN_62PX"
+                android:paddingRight="@dimen/DIMEN_62PX"
+                android:paddingTop="@dimen/DIMEN_12PX"
+                android:background="@mipmap/btn_save"
+                android:text="@string/btn_save"
+                android:textColor="@color/white"
+                android:textSize="@dimen/DIMEN_28PX" />
+
+            <View
+                android:layout_width="@dimen/DIMEN_20PX"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tv_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/DIMEN_12PX"
+                android:paddingLeft="@dimen/DIMEN_62PX"
+                android:paddingRight="@dimen/DIMEN_62PX"
+                android:paddingTop="@dimen/DIMEN_12PX"
+                android:text="@string/btn_return"
+                android:textColor="@color/green_94c42e"
+                android:background="@mipmap/btn_return"
+                android:textSize="@dimen/DIMEN_28PX" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_1PX"
+        android:background="@color/divider_color" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/DIMEN_141PX"
+        android:layout_marginTop="@dimen/DIMEN_52PX"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/conpous_textview"
+                android:gravity="right"
+                android:text="@string/text_crad_num" />
+
+            <View
+                android:layout_width="@dimen/DIMEN_40PX"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tv_card_num"
+                style="@style/conpous_textview"
+                android:text="00001" />
+
+            <TextView
+                style="@style/conpous_textview"
+                android:gravity="right"
+                android:text="@string/text_binding_name" />
+
+            <EditText
+                android:id="@+id/et_bind_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/DIMEN_40PX"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_bg" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/DIMEN_30PX"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/conpous_textview"
+                android:gravity="right"
+                android:text="@string/text_product_name" />
+
+            <View
+                android:layout_width="@dimen/DIMEN_40PX"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tv_pro_name"
+                style="@style/conpous_textview"
+                android:text="@string/tv_coupon" />
+
+            <TextView
+                style="@style/conpous_textview"
+                android:gravity="right"
+                android:text="@string/text_binding_phone" />
+
+            <EditText
+                android:id="@+id/et_bind_phone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/DIMEN_40PX"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_bg" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/DIMEN_30PX"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/conpous_textview"
+                android:gravity="right"
+                android:text="@string/text_produce_type" />
+
+            <View
+                android:layout_width="@dimen/DIMEN_40PX"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tv_pro_type"
+                style="@style/conpous_textview"
+                android:text="00001" />
+
+            <TextView
+                style="@style/conpous_textview"
+                android:gravity="right"
+                android:text="@string/text_binding_time" />
+
+            <TextView
+                android:id="@+id/tv_binding_time"
+                style="@style/conpous_textview"
+                android:layout_marginLeft="@dimen/DIMEN_58PX"
+                android:text="2017/06/01" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/DIMEN_30PX"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/conpous_textview"
+                android:gravity="right"
+                android:text="@string/text_price" />
+
+            <View
+                android:layout_width="@dimen/DIMEN_40PX"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tv_price"
+                style="@style/conpous_textview"
+                android:text="$20" />
+
+            <TextView
+                style="@style/conpous_textview"
+                android:gravity="right"
+                android:text="@string/text_card_type" />
+
+            <TextView
+                android:id="@+id/tv_card_type"
+                style="@style/conpous_textview"
+                android:layout_marginLeft="@dimen/DIMEN_58PX"
+                android:text="@string/tv_buy" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/DIMEN_30PX"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/conpous_textview"
+                android:gravity="right"
+                android:text="@string/text_discount" />
+
+            <View
+                android:layout_width="@dimen/DIMEN_40PX"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tv_discount"
+                style="@style/conpous_textview"
+                android:text="30%" />
+
+            <TextView
+                style="@style/conpous_textview"
+                android:gravity="right"
+                android:text="@string/text_get_time" />
+
+            <TextView
+                android:id="@+id/tv_get_time"
+                style="@style/conpous_textview"
+                android:layout_marginLeft="@dimen/DIMEN_58PX"
+                android:text="2017/1/06" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/DIMEN_30PX"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/conpous_textview"
+                android:gravity="right"
+                android:text="@string/text_use_voucher" />
+
+            <View
+                android:layout_width="@dimen/DIMEN_40PX"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tv_voucher"
+                style="@style/conpous_textview"
+                android:text="$20" />
+
+            <TextView
+                style="@style/conpous_textview"
+                android:gravity="right"
+                android:text="@string/text_use_price" />
+
+            <TextView
+                android:id="@+id/tv_use_price"
+                style="@style/conpous_textview"
+                android:layout_marginLeft="@dimen/DIMEN_58PX"
+                android:text="$20" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/DIMEN_30PX"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/conpous_textview"
+                android:gravity="right"
+                android:text="@string/text_last_price" />
+
+            <View
+                android:layout_width="@dimen/DIMEN_40PX"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tv_last_price"
+                style="@style/conpous_textview"
+                android:text="$0" />
+
+            <TextView
+                style="@style/conpous_textview"
+                android:gravity="right"
+                android:text="@string/text_left_price" />
+
+            <TextView
+                android:id="@+id/tv_left_price"
+                style="@style/conpous_textview"
+                android:layout_marginLeft="@dimen/DIMEN_58PX"
+                android:text="$0" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/DIMEN_30PX"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/conpous_textview"
+                android:gravity="right"
+                android:text="@string/text_buy_time" />
+
+            <View
+                android:layout_width="@dimen/DIMEN_40PX"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tv_buy_time"
+                style="@style/conpous_textview"
+                android:text="2018/01/02" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="@string/text_get_time"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/DIMEN_58PX"
+                android:layout_weight="1"
+                android:text="2017/1/06"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/DIMEN_30PX"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/conpous_textview"
+                android:gravity="right"
+                android:text="@string/text_buy_name" />
+
+            <View
+                android:layout_width="@dimen/DIMEN_40PX"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tv_buy_name"
+                style="@style/conpous_textview"
+                android:text="张三" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="@string/text_get_time"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/DIMEN_58PX"
+                android:layout_weight="1"
+                android:text="2017/1/06"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/DIMEN_30PX"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/conpous_textview"
+                android:gravity="right"
+                android:text="@string/text_buy_phone" />
+
+            <View
+                android:layout_width="@dimen/DIMEN_40PX"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tv_buy_phone"
+                style="@style/conpous_textview"
+                android:text="123132132132" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="@string/text_get_time"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/DIMEN_58PX"
+                android:layout_weight="1"
+                android:text="2017/1/06"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/DIMEN_70PX"
+            android:paddingTop="@dimen/DIMEN_14PX"
+            android:paddingBottom="@dimen/DIMEN_12PX"
+            android:paddingLeft="@dimen/DIMEN_60PX"
+            android:paddingRight="@dimen/DIMEN_60PX"
+            android:textSize="@dimen/DIMEN_30PX"
+            android:textColor="@color/white"
+            android:text="@string/text_check_consumption"
+            android:background="@mipmap/bottom_btn_bg"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

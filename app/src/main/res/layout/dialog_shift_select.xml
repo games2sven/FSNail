@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/ll_dialog_name"
+        android:layout_width="@dimen/DIMEN_636PX"
+        android:layout_height="@dimen/DIMEN_546PX"
+        android:layout_centerInParent="true"
+        >
+
+
+
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/DIMEN_36PX"
+            android:layout_width="@dimen/DIMEN_600PX"
+            android:layout_height="@dimen/DIMEN_510PX"
+            android:orientation="vertical"
+            >
+        <TextView
+            android:id="@+id/dialog_shift_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/DIMEN_90PX"
+            android:background="@drawable/dialog_name_select_title_bg"
+            android:gravity="center"
+            android:text="@string/tv_first_choose"
+            android:textColor="@color/white"
+            android:textSize="@dimen/DIMEN_30PX" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/dialog_name_select_content_bg"
+                >
+        <ListView
+            android:id="@+id/shift_list_view"
+            android:layout_width="match_parent"
+            android:divider="@null"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
+                <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/DIMEN_1PX"
+                android:background="#cccccc"/>
+            <TextView
+                android:id="@+id/dialog_ensure"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/DIMEN_90PX"
+                android:text="@string/tv_sure"
+                android:gravity="center"
+                android:textSize="@dimen/DIMEN_32PX"
+                android:textColor="#94c42e"
+                />
+            </LinearLayout>
+        </LinearLayout>
+        
+
+
+        <ImageView
+            android:id="@+id/dialog_cancel"
+            android:layout_alignParentRight="true"
+            android:layout_width="@dimen/DIMEN_72PX"
+            android:layout_height="@dimen/DIMEN_72PX"
+            android:src="@mipmap/remain_close" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

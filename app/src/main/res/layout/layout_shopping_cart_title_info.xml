@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_98PX"
+        android:gravity="center"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        >
+
+        <RelativeLayout
+            android:layout_width="@dimen/DIMEN_84PX"
+            android:layout_height="match_parent">
+            <CheckBox
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:button="@null"
+                android:id="@+id/item_cart_checkbox1"
+                android:checked="true"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/item_cart_service_time"
+            android:text="11:50"
+            style="@style/item_service_sty"
+
+            />
+        <TextView
+            android:id="@+id/item_cart_staff_nike_name"
+            android:text="KIKI"
+            style="@style/item_service_sty"
+
+            />
+        <TextView
+            android:id="@+id/item_cart_customer_name"
+            android:text="Veronical"
+            style="@style/item_service_sty"
+
+            />
+        <TextView
+            android:id="@+id/item_cart_cutomer_phone"
+            android:text="903929321xxx"
+            android:layout_weight="1.5"
+            style="@style/item_service_sty"
+
+            />
+        <TextView
+            android:id="@+id/item_cart_service_name"
+            android:text="Pedicure spa"
+            style="@style/item_service_sty"
+
+            />
+        <TextView
+            android:id="@+id/item_cart_service_status"
+            android:text="@string/status_no_tart"
+            style="@style/item_service_sty"
+
+            />
+        <TextView
+            android:id="@+id/item_cart_price"
+            android:text="€120"
+            style="@style/item_service_sty"
+
+            />
+        <TextView
+            android:id="@+id/item_cart_jicunma"
+            android:text="€120"
+            style="@style/item_service_sty"
+            />
+
+        <LinearLayout
+            android:id="@+id/shop_cart_service_del"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+            <ImageView
+                android:layout_width="@dimen/DIMEN_27PX"
+                android:layout_height="@dimen/DIMEN_33PX"
+                android:src="@mipmap/content_icon_delete1"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

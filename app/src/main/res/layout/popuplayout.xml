@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@mipmap/bg_popup"
+    android:paddingLeft="@dimen/DIMEN_18PX"
+    android:paddingRight="@dimen/DIMEN_20PX"
+    android:paddingTop="@dimen/DIMEN_16PX"
+    android:paddingBottom="@dimen/DIMEN_16PX"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/DIMEN_34PX"
+        android:text="Prenotazione"
+        android:textColor="@color/text_dark1"
+        android:textSize="@dimen/DIMEN_32PX" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_8PX"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/DIMEN_34PX"
+        android:text="Prenotazione"
+        android:textColor="@color/text_dark1"
+        android:textSize="@dimen/DIMEN_32PX" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_8PX"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/DIMEN_34PX"
+        android:text="Prenotazione"
+        android:textColor="@color/text_dark1"
+        android:textSize="@dimen/DIMEN_32PX" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_8PX"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/DIMEN_34PX"
+        android:text="Prenotazione"
+        android:textColor="@color/text_dark1"
+        android:textSize="@dimen/DIMEN_32PX" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_8PX"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/DIMEN_34PX"
+        android:text="Prenotazione"
+        android:textColor="@color/text_dark1"
+        android:textSize="@dimen/DIMEN_32PX" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_8PX"/>
+</LinearLayout>

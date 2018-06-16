@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.jlkf.fsnail.widget.myspinner.MaterialSpinner
+        android:id="@+id/spinner"
+        android:layout_width="@dimen/DIMEN_520PX"
+        android:layout_height="@dimen/DIMEN_65PX"
+        android:layout_marginLeft="@dimen/DIMEN_83PX"
+        android:layout_marginTop="@dimen/DIMEN_49PX"
+        android:textSize="@dimen/DIMEN_24PX"
+        app:ms_dropdown_height="wrap_content"
+        app:ms_hint="Manicure"
+        app:ms_hint_color="@color/text_dark1"
+        app:ms_text_color="@color/text_dark1" />
+
+</LinearLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="@dimen/room_status_cell_length"
+    android:layout_height="@dimen/top_cell_width">
+
+    <LinearLayout
+        android:id="@+id/left_item_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/left_ceil"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/room_number_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="#FF333333"
+            android:textSize="12sp"
+            tools:text="101" />
+
+        <TextView
+            android:id="@+id/room_type_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="#FF999999"
+            android:textSize="10sp"
+            android:visibility="gone"
+            tools:text="大床房" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="@dimen/DIMEN_1PX"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@color/white" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_1PX"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white" />
+</RelativeLayout>

@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/corner_white"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/DIMEN_97PX"
+            android:layout_marginLeft="@dimen/DIMEN_69PX"
+            android:gravity="center_vertical"
+            android:text="@string/tv_change_service"
+            android:textColor="@color/text_dark1"
+            android:textSize="@dimen/DIMEN_30PX" />
+        <TextView
+            android:id="@+id/service_edit_star"
+            android:layout_width="@dimen/DIMEN_180PX"
+            android:layout_height="@dimen/DIMEN_70PX"
+            android:layout_marginRight="@dimen/DIMEN_57PX"
+            android:background="@drawable/appoint_opera_green_selecter"
+            android:gravity="center"
+            android:text="@string/tv_start_service"
+            android:textColor="@color/white"
+            android:textSize="@dimen/DIMEN_30PX"/>
+
+        <TextView
+            android:id="@+id/service_edit_stop"
+            android:layout_width="@dimen/DIMEN_180PX"
+            android:layout_height="@dimen/DIMEN_70PX"
+            android:layout_marginRight="@dimen/DIMEN_57PX"
+            android:background="@drawable/appoint_opera_red_selecter"
+            android:gravity="center"
+            android:text="@string/tv_stop_service"
+            android:textColor="@color/white"
+            android:textSize="@dimen/DIMEN_30PX"/>
+
+
+    </LinearLayout>
+
+
+    <View style="@style/H_line" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/Linear_appoint"
+                android:layout_marginTop="@dimen/DIMEN_40PX">
+
+                <TextView
+                    style="@style/Tv_appoint_tip_left"
+                    android:text="@string/tv_employee_name" />
+
+                <!--android:entries="@array/sports"-->
+                <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
+                    android:id="@+id/spinner"
+                    style="@style/myspinner"
+                    android:gravity="center_vertical"
+                    app:ms_dropdown_height="wrap_content"
+                    app:ms_text_color="@color/text_dark1"
+                    app:ms_hint="Manicure"
+                    app:ms_hint_color="@color/text_dark1"
+                    android:textSize="@dimen/DIMEN_24PX"
+                    />
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/delete"
+                    android:drawablePadding="@dimen/DIMEN_19PX"
+                    android:gravity="center_vertical"
+                    android:text="@string/tips_customer_information"
+                    android:textColor="#DC5562"
+                    android:textSize="@dimen/DIMEN_28PX" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Linear_appoint"
+                android:layout_height="@dimen/DIMEN_80PX"
+                android:layout_marginTop="@dimen/DIMEN_16PX">
+
+                <TextView
+                    style="@style/Tv_appoint_tip_left"
+                    android:text="@string/tv_customer_phone" />
+
+                <EditText
+                    android:id="@+id/et_appoint_phone"
+                    style="@style/myspinner"
+                    android:layout_height="@dimen/DIMEN_64PX"
+                    android:background="@drawable/edittext_bg"
+                    android:inputType="phone"
+                    android:text="18814445822"
+                    android:textColor="@color/text_dark1"
+                    android:paddingLeft="@dimen/DIMEN_17PX"
+                    android:textSize="@dimen/DIMEN_28PX" />
+                
+                <ImageView
+                    android:src="@mipmap/content_icon_correct"
+                    android:layout_width="@dimen/DIMEN_30PX"
+                    android:layout_height="@dimen/DIMEN_30PX" />
+                
+                <TextView
+                    android:layout_marginLeft="@dimen/DIMEN_10PX"
+                    android:layout_width="@dimen/DIMEN_250PX"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_customer_authentication"
+                    android:textSize="@dimen/DIMEN_28PX"
+                    android:textColor="@color/green_94c42e"
+                    />
+
+                <ImageView
+                    android:src="@mipmap/btn_scan"
+                    android:layout_width="@dimen/DIMEN_80PX"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <LinearLayout
+                style="@style/Linear_appoint"
+                android:layout_height="@dimen/DIMEN_80PX"
+                android:layout_marginTop="@dimen/DIMEN_16PX">
+
+                <TextView
+                    style="@style/Tv_appoint_tip_left"
+                    android:text="@string/tv_date" />
+
+
+                <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
+                    android:id="@+id/sp_date"
+                    style="@style/myspinner"
+                    android:gravity="center_vertical"
+                    app:ms_dropdown_height="wrap_content"
+                    app:ms_text_color="@color/text_dark1"
+                    app:ms_hint="2018/01/26"
+                    app:ms_hint_color="@color/text_dark1"
+                    android:textSize="@dimen/DIMEN_24PX"
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Linear_appoint"
+                android:layout_marginTop="@dimen/DIMEN_16PX">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    style="@style/Tv_appoint_tip_left"
+                    android:text="@string/text_type1" />
+
+                <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
+                    android:id="@+id/sp_category"
+                    style="@style/myspinner"
+                    android:gravity="center_vertical"
+                    app:ms_dropdown_height="wrap_content"
+                    app:ms_text_color="@color/text_dark1"
+                    app:ms_hint="Manicure"
+                    app:ms_hint_color="@color/text_dark1"
+                    android:textSize="@dimen/DIMEN_24PX"
+                    />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/DIMEN_84PX"
+                        android:layout_height="@dimen/DIMEN_40PX"
+                        android:textColor="#333333"
+                        android:textSize="@dimen/DIMEN_28PX"
+                        android:text="@string/text_brand1" />
+
+                    <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
+                        android:id="@+id/sp_brand"
+                        android:layout_width="@dimen/DIMEN_360PX"
+                        android:layout_height="@dimen/DIMEN_64PX"
+                        android:layout_marginLeft="@dimen/DIMEN_40PX"
+                        android:layout_marginRight="@dimen/DIMEN_40PX"
+                        android:gravity="center_vertical"
+                        app:ms_dropdown_height="wrap_content"
+                        app:ms_text_color="@color/text_dark1"
+                        app:ms_hint="Manicure"
+                        app:ms_hint_color="@color/text_dark1"
+                        android:textSize="@dimen/DIMEN_24PX"
+                        />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Linear_appoint"
+                android:layout_marginTop="@dimen/DIMEN_24PX">
+
+                <TextView
+                    style="@style/Tv_appoint_tip_left"
+                    android:text="@string/tv_service" />
+
+                <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
+                    android:id="@+id/sp_service"
+                    style="@style/myspinner"
+                    android:gravity="center_vertical"
+                    app:ms_dropdown_height="wrap_content"
+                    app:ms_text_color="@color/text_dark1"
+                    app:ms_hint="Manicure"
+                    app:ms_hint_color="@color/text_dark1"
+                    android:textSize="@dimen/DIMEN_24PX"
+                    />
+
+                <TextView
+                    android:layout_width="@dimen/DIMEN_84PX"
+                    android:layout_height="@dimen/DIMEN_40PX"
+                    android:textColor="#333333"
+                    android:textSize="@dimen/DIMEN_28PX"
+                    android:text="@string/text_price" />
+
+                <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
+                    android:id="@+id/sp_price"
+                    android:layout_width="@dimen/DIMEN_360PX"
+                    android:layout_height="@dimen/DIMEN_64PX"
+                    android:layout_marginLeft="@dimen/DIMEN_40PX"
+                    android:layout_marginRight="@dimen/DIMEN_40PX"
+                    android:gravity="center_vertical"
+                    app:ms_dropdown_height="wrap_content"
+                    app:ms_text_color="@color/text_dark1"
+                    app:ms_hint="Manicure"
+                    app:ms_hint_color="@color/text_dark1"
+                    android:textSize="@dimen/DIMEN_24PX"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Linear_appoint"
+                android:layout_marginTop="@dimen/DIMEN_24PX">
+
+                <TextView
+                    style="@style/Tv_appoint_tip_left"
+                    android:visibility="invisible"
+                    android:text="@string/tv_customer_phone" />
+
+                <TextView
+                    android:layout_width="@dimen/DIMEN_228PX"
+                    android:layout_height="@dimen/DIMEN_64PX"
+                    android:layout_marginLeft="@dimen/DIMEN_40PX"
+                    android:background="@drawable/appoint_opera_background"
+                    android:gravity="center"
+                    android:text="@string/tips_add_new_service"
+                    android:textColor="@color/green_94c42e"
+                    android:textSize="@dimen/DIMEN_28PX" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Linear_appoint"
+                android:layout_marginTop="@dimen/DIMEN_24PX">
+
+                <TextView
+                    style="@style/Tv_appoint_tip_left"
+                    android:text="@string/tv_employee_nickname" />
+
+                <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
+                    android:id="@+id/sp_book_time"
+                    style="@style/myspinner"
+                    android:gravity="center_vertical"
+                    app:ms_dropdown_height="wrap_content"
+                    app:ms_text_color="@color/text_dark1"
+                    app:ms_hint="Manicure"
+                    app:ms_hint_color="@color/text_dark1"
+                    android:textSize="@dimen/DIMEN_24PX"
+                    />
+            </LinearLayout>
+
+
+            <View
+                style="@style/H_line"
+                android:layout_marginTop="@dimen/DIMEN_25PX" />
+
+            <LinearLayout
+                style="@style/Linear_appoint"
+                android:layout_marginBottom="@dimen/DIMEN_60PX"
+                android:layout_marginTop="@dimen/DIMEN_24PX">
+
+                <TextView
+                    style="@style/Tv_appoint_tip_left"
+                    android:visibility="invisible"/>
+
+                <TextView
+                    android:layout_width="@dimen/DIMEN_228PX"
+                    android:layout_height="@dimen/DIMEN_64PX"
+                    android:layout_marginLeft="@dimen/DIMEN_40PX"
+                    android:background="@drawable/appoint_opera_background"
+                    android:gravity="center"
+                    android:text="@string/tv_new_type"
+
+                    android:textColor="@color/green_94c42e"
+                    android:textSize="@dimen/DIMEN_28PX" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/gry_f2f3f5"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/DIMEN_210PX">
+
+                
+                <LinearLayout
+                    android:layout_marginTop="@dimen/DIMEN_37PX"
+                    android:layout_height="@dimen/DIMEN_40PX"
+                    style="@style/Linear_appoint">
+                    <TextView
+                        android:text="@string/tv_total_money"
+                        style="@style/Tv_appoint_tip_left"/>
+
+                    <TextView
+                        style="@style/Tv_appoint_tip_left"
+                        android:text="55€"
+                        android:layout_width="@dimen/DIMEN_110PX"
+                        android:textColor="@color/red_dc5562"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/Linear_appoint"
+                    android:layout_marginTop="@dimen/DIMEN_40PX">
+
+                    <TextView
+                        style="@style/Tv_appoint_tip_left"
+                        android:text="@string/tv_deposit_number" />
+
+                    <!--android:entries="@array/sports"-->
+                    <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
+                        style="@style/myspinner"
+                        android:gravity="center_vertical"
+                        app:ms_dropdown_height="wrap_content"
+                        app:ms_text_color="@color/text_dark1"
+                        app:ms_hint="Manicure"
+                        app:ms_hint_color="@color/text_dark1"
+                        android:textSize="@dimen/DIMEN_24PX"
+                        />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/DIMEN_60PX"
+                android:layout_marginBottom="@dimen/DIMEN_60PX"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/service_edit_ensure"
+                    android:layout_width="@dimen/DIMEN_360PX"
+                    android:layout_height="@dimen/DIMEN_70PX"
+                    android:layout_marginRight="@dimen/DIMEN_57PX"
+                    android:background="@drawable/appoint_opera_green_selecter"
+                    android:gravity="center"
+                    android:text="@string/tv_sure"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/DIMEN_30PX"/>
+
+                <TextView
+                    android:id="@+id/service_edit_back"
+                    android:layout_width="@dimen/DIMEN_360PX"
+                    android:layout_height="@dimen/DIMEN_70PX"
+                    android:layout_marginRight="@dimen/DIMEN_57PX"
+                    android:background="@drawable/appoint_opera_red_selecter"
+                    android:gravity="center"
+                    android:text="@string/btn_return"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/DIMEN_30PX"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+</LinearLayout>

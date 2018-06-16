@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:background="@drawable/corner_white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_625PX"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        >
+        <ImageView
+            android:scaleType="centerCrop"
+            android:src="@mipmap/staff1"
+            android:layout_marginTop="@dimen/DIMEN_20PX"
+            android:layout_width="@dimen/DIMEN_375PX"
+            android:layout_height="@dimen/DIMEN_375PX"
+            />
+        <TextView
+            android:layout_marginTop="@dimen/DIMEN_5PX"
+            android:layout_width="wrap_content"
+            android:text="Annamaria Teresa"
+            android:textSize="@dimen/DIMEN_28PX"
+            android:textColor="@color/black_7d7d7d"
+            android:layout_height="@dimen/DIMEN_45PX" />
+        
+        <ImageView
+            android:src="@mipmap/pic1"
+            android:layout_marginTop="@dimen/DIMEN_20PX"
+            android:layout_width="@dimen/DIMEN_70PX"
+            android:layout_height="@dimen/DIMEN_70PX" />
+    </LinearLayout>
+
+    
+</LinearLayout>

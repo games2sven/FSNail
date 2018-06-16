@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_98PX"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+
+    <TextView
+        android:id="@+id/tv_businessMan"
+        android:text="@string/tv_manicure"
+        style="@style/item_service_sty"
+
+        />
+    <TextView
+        android:id="@+id/tv_type"
+        android:text="类别一"
+        style="@style/item_service_sty"
+
+        />
+    <TextView
+        android:id="@+id/tv_service_name"
+        android:text="XXXXX"
+        style="@style/item_service_sty"
+
+        />
+    <TextView
+        android:id="@+id/tv_product_name"
+        android:text="XXXXXX"
+        style="@style/item_service_sty"
+        />
+    <TextView
+        android:id="@+id/tv_product_price"
+        android:text="$20"
+        style="@style/item_service_sty"
+        />
+
+    <TextView
+        android:id="@+id/tv_use_money"
+        android:text="$20"
+        style="@style/item_service_sty"
+        />
+    <TextView
+        android:id="@+id/tv_consume_time"
+        android:text="2018/2/02"
+        style="@style/item_service_sty"
+        />
+    </LinearLayout>
+
+    <View android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_1PX"
+        android:background="#cacbcc"
+        />
+</LinearLayout>

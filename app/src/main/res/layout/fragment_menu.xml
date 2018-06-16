@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_100PX"
+        android:background="@drawable/login_input_white_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/DIMEN_66PX"
+            android:layout_weight="1"
+            android:text="@string/text_price_menu"
+            android:textColor="#333333"
+            android:textSize="@dimen/DIMEN_30PX" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/corner_white"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/DIMEN_20PX">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/DIMEN_83PX"
+            android:background="@color/bg_gray">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/DIMEN_32PX"
+                android:layout_marginBottom="@dimen/DIMEN_28PX"
+                android:text="@string/text_menu_tips"
+                android:textSize="@dimen/DIMEN_28PX"/>
+
+        </LinearLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/menu_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <!--<com.jlkf.fsnail.widget.myspinner.MaterialSpinner-->
+            <!--android:id="@+id/spinner"-->
+            <!--app:ms_dropdown_height="wrap_content"-->
+            <!--app:ms_text_color="@color/text_dark1"-->
+            <!--app:ms_hint="Manicure"-->
+            <!--app:ms_hint_color="@color/text_dark1"-->
+            <!--android:textSize="@dimen/DIMEN_24PX"-->
+            <!--android:layout_width="@dimen/DIMEN_520PX"-->
+            <!--android:layout_height="@dimen/DIMEN_65PX"-->
+            <!--android:layout_marginTop="@dimen/DIMEN_49PX"-->
+            <!--android:layout_marginLeft="@dimen/DIMEN_83PX"/>-->
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

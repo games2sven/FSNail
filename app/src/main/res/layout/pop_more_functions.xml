@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="@dimen/DIMEN_170PX"
+    android:layout_height="@dimen/DIMEN_350PX"
+    android:orientation="vertical"
+    android:background="@mipmap/bg_more"
+    android:gravity="center"
+    >
+    <ImageView
+        android:id="@+id/iv_search_current"
+        android:layout_width="@dimen/DIMEN_80PX"
+        android:layout_height="@dimen/DIMEN_80PX"
+        android:src="@mipmap/btn_search33"
+        />
+
+    <ImageView
+        android:id="@+id/iv_lunban"
+        android:layout_marginTop="@dimen/DIMEN_23PX"
+        android:layout_width="@dimen/DIMEN_80PX"
+        android:layout_height="@dimen/DIMEN_80PX"
+        android:src="@mipmap/add_change"
+        />
+
+    <ImageView
+        android:id="@+id/iv_search_all"
+        android:layout_marginTop="@dimen/DIMEN_23PX"
+        android:layout_width="@dimen/DIMEN_80PX"
+        android:layout_height="@dimen/DIMEN_80PX"
+        android:src="@mipmap/btn_search"
+        />
+
+</LinearLayout>
+
+</LinearLayout>

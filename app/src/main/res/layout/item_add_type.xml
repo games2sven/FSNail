@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
+        style="@style/Linear_appoint"
+        android:layout_marginTop="@dimen/DIMEN_24PX">
+
+        <TextView
+            android:id="@+id/textView3"
+            style="@style/Tv_appoint_tip_left"
+            android:text="@string/text_type1" />
+
+        <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
+            android:id="@+id/sp_category"
+            style="@style/myspinner"
+            android:gravity="center_vertical"
+            app:ms_dropdown_height="wrap_content"
+            app:ms_text_color="@color/text_dark1"
+            app:ms_hint="Manicure"
+            app:ms_hint_color="@color/text_dark1"
+            android:textSize="@dimen/DIMEN_24PX"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/DIMEN_84PX"
+                android:layout_height="@dimen/DIMEN_40PX"
+                android:textColor="#333333"
+                android:textSize="@dimen/DIMEN_28PX"
+                android:text="@string/text_brand1" />
+
+            <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
+                android:id="@+id/sp_brand"
+                android:layout_width="@dimen/DIMEN_360PX"
+                android:layout_height="@dimen/DIMEN_64PX"
+                android:layout_marginLeft="@dimen/DIMEN_40PX"
+                android:layout_marginRight="@dimen/DIMEN_40PX"
+                android:gravity="center_vertical"
+                app:ms_dropdown_height="wrap_content"
+                app:ms_text_color="@color/text_dark1"
+                app:ms_hint="Manicure"
+                app:ms_hint_color="@color/text_dark1"
+                android:textSize="@dimen/DIMEN_24PX"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/Linear_appoint"
+            android:layout_marginTop="@dimen/DIMEN_24PX">
+
+            <TextView
+                style="@style/Tv_appoint_tip_left"
+                android:text="@string/tv_service" />
+
+            <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
+                android:id="@+id/sp_service"
+                style="@style/myspinner"
+                android:gravity="center_vertical"
+                app:ms_dropdown_height="wrap_content"
+                app:ms_text_color="@color/text_dark1"
+                app:ms_hint="Manicure"
+                app:ms_hint_color="@color/text_dark1"
+                android:textSize="@dimen/DIMEN_24PX"
+                />
+
+            <TextView
+                android:layout_width="@dimen/DIMEN_84PX"
+                android:layout_height="@dimen/DIMEN_40PX"
+                android:textColor="#333333"
+                android:textSize="@dimen/DIMEN_28PX"
+                android:text="@string/text_price" />
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="@dimen/DIMEN_360PX"
+                android:layout_height="@dimen/DIMEN_64PX"
+                android:layout_marginLeft="@dimen/DIMEN_40PX"
+                android:layout_marginRight="@dimen/DIMEN_40PX"
+                android:paddingLeft="@dimen/DIMEN_17PX"
+                android:background="@drawable/edittext_bg"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/DIMEN_24PX"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/Linear_appoint"
+        android:layout_marginTop="@dimen/DIMEN_24PX">
+
+        <TextView
+            style="@style/Tv_appoint_tip_left"
+            android:visibility="invisible"
+            android:text="@string/tv_customer_phone" />
+
+        <TextView
+            android:id="@+id/add_service"
+            android:layout_width="@dimen/DIMEN_228PX"
+            android:layout_height="@dimen/DIMEN_64PX"
+            android:layout_marginLeft="@dimen/DIMEN_40PX"
+            android:background="@drawable/appoint_opera_background"
+            android:gravity="center"
+            android:text="@string/tips_add_new_service"
+            android:textColor="@color/green_94c42e"
+            android:textSize="@dimen/DIMEN_28PX" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/Linear_appoint"
+        android:layout_marginTop="@dimen/DIMEN_24PX">
+
+        <TextView
+            style="@style/Tv_appoint_tip_left"
+            android:text="@string/tv_book_date" />
+
+        <EditText
+            android:id="@+id/et_book_time"
+            style="@style/myspinner"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/DIMEN_17PX"
+            android:background="@drawable/edittext_bg"
+            android:textSize="@dimen/DIMEN_24PX"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/Linear_appoint"
+        android:layout_marginTop="@dimen/DIMEN_24PX">
+
+        <TextView
+            style="@style/Tv_appoint_tip_left"
+            android:text="@string/tv_employee_time" />
+
+        <TextView
+            android:id="@+id/text_select"
+            android:layout_width="@dimen/DIMEN_228PX"
+            android:layout_height="@dimen/DIMEN_64PX"
+            android:layout_marginLeft="@dimen/DIMEN_40PX"
+            android:background="@drawable/appoint_opera_background"
+            android:gravity="center"
+            android:text="@string/tv_please_select"
+            android:textColor="@color/green_94c42e"
+            android:visibility="visible"
+            android:textSize="@dimen/DIMEN_28PX" />
+
+        <TextView
+            android:id="@+id/tv_employee_time"
+            style="@style/myspinner"
+            android:background="@drawable/edittext_bg"
+            android:inputType="phone"
+            android:gravity="center_vertical"
+            android:text="18814445822"
+            android:visibility="gone"
+            android:textColor="@color/text_dark1"
+            android:paddingLeft="@dimen/DIMEN_17PX"
+            android:textSize="@dimen/DIMEN_28PX" />
+    </LinearLayout>
+
+    <View
+        style="@style/H_line"
+        android:layout_marginTop="@dimen/DIMEN_25PX" />
+</LinearLayout>

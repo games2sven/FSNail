@@ -1,0 +1,142 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="MyFullScreenTheme" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowActionBar">false</item>
+    </style>
+
+    <style name="actionbtn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/DIMEN_90PX</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/DIMEN_61PX</item>
+        <item name="android:paddingRight">@dimen/DIMEN_61PX</item>
+
+    </style>
+
+    <style name="actioniv">
+        <item name="android:layout_width">@dimen/DIMEN_38PX</item>
+        <item name="android:layout_height">@dimen/DIMEN_39PX</item>
+    </style>
+
+    <style name="actiontv">
+        <item name="android:layout_width">@dimen/DIMEN_140PX</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@drawable/tv_color_selector</item>
+        <item name="android:textSize">@dimen/DIMEN_28PX</item>
+        <item name="android:layout_marginLeft">@dimen/DIMEN_28PX</item>
+    </style>
+
+    <style name="service_title_sty">
+        <item name="android:lines">1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">@dimen/DIMEN_28PX</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="item_service_sty">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#7d7d7d</item>
+        <item name="android:textSize">@dimen/DIMEN_24PX</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="conpous_textview">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/text_dark1</item>
+        <item name="android:textSize">@dimen/DIMEN_28PX</item>
+    </style>
+
+    <style name="Tv_appoint_tip_left">
+        <item name="android:layout_width">@dimen/DIMEN_168PX</item>
+        <item name="android:layout_height">@dimen/DIMEN_40PX</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">@dimen/DIMEN_28PX</item>
+    </style>
+
+    <style name="Tv_appoint_tip_right">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="Linear_appoint">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/DIMEN_64PX</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingLeft">@dimen/DIMEN_116PX</item>
+    </style>
+
+    <style name="H_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/DIMEN_1PX</item>
+        <item name="android:background">@color/divider_color</item>
+    </style>
+
+    <style name="myspinner">
+        <item name="android:layout_width">@dimen/DIMEN_520PX</item>
+        <item name="android:layout_height">@dimen/DIMEN_64PX</item>
+        <item name="android:layout_marginLeft">@dimen/DIMEN_40PX</item>
+        <item name="android:layout_marginRight">@dimen/DIMEN_40PX</item>
+    </style>
+
+
+    <style name="tv_left_style">
+        <item name="android:layout_width">@dimen/DIMEN_150PX</item>
+        <item name="android:layout_height">@dimen/DIMEN_64PX</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/DIMEN_28PX</item>
+        <item name="android:textColor">#6a6b6c</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="tv_right_edit_style">
+<item name="android:background">@drawable/bg_search_item</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/black_333333</item>
+        <item name="android:textSize">@dimen/DIMEN_28PX</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/DIMEN_20PX</item>
+         <item name="android:layout_marginLeft">@dimen/DIMEN_10PX</item>
+    </style>
+
+    <style name="CustomCheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checked_box_selector</item>
+    </style>
+
+    <style name="dialogWindowAnim" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/dialog_exit_anim</item>
+    </style>
+
+    <style name="order_title_sty">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">@dimen/DIMEN_28PX</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+</resources>

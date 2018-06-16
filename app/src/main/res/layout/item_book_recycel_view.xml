@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_98PX"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingRight="@dimen/DIMEN_20PX"
+        >
+
+    <TextView
+        android:id="@+id/tv_book_time"
+        android:text="11:20"
+        style="@style/item_service_sty"
+
+        />
+    <TextView
+        android:id="@+id/tv_book_date"
+        android:text="2018/01/26"
+        style="@style/item_service_sty"
+
+        />
+    <TextView
+        android:id="@+id/tv_employee_nickname"
+        android:text="Kiki"
+        style="@style/item_service_sty"
+
+        />
+    <TextView
+        android:id="@+id/tv_customer_name"
+        android:text="Veronical"
+        style="@style/item_service_sty"
+        />
+    <TextView
+        android:id="@+id/tv_customer_phone"
+        android:text="FS0133"
+        style="@style/item_service_sty"
+        />
+
+    <TextView
+        android:id="@+id/tv_type"
+        android:text="FS123"
+        style="@style/item_service_sty"
+        />
+    <TextView
+        android:id="@+id/tv_service"
+        android:text="3124569817"
+        style="@style/item_service_sty"
+        />
+    <TextView
+        android:id="@+id/tv_brand"
+        android:text="FS1"
+        style="@style/item_service_sty"
+        />
+
+    <TextView
+        android:id="@+id/tv_staus"
+        android:text="Prenotato"
+        style="@style/item_service_sty"
+        />
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:gravity="center_vertical"
+            >
+            <ImageView
+                android:id="@+id/img_add"
+                android:layout_width="@dimen/DIMEN_31PX"
+                android:layout_height="@dimen/DIMEN_31PX"
+                android:src="@mipmap/content_icon_add11"
+                android:layout_alignParentLeft="true"
+                />
+            <ImageView
+                android:id="@+id/img_edit"
+                android:layout_width="@dimen/DIMEN_30PX"
+                android:layout_height="@dimen/DIMEN_31PX"
+                android:src="@mipmap/content_icon_edit1"
+                android:layout_alignParentRight="true"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_cancel_book"
+            android:layout_width="@dimen/DIMEN_140PX"
+            android:layout_height="@dimen/DIMEN_50PX"
+            android:background="@drawable/btn_detail_bg"
+            android:layout_marginLeft="@dimen/DIMEN_10PX"
+            android:gravity="center"
+            android:text="@string/text_cancel_book"
+            android:textColor="@color/green_94c42e"
+            android:textSize="@dimen/DIMEN_24PX" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_1PX"
+        android:background="#cacbcc"
+        />
+</LinearLayout>

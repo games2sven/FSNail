@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_99PX"
+        android:background="@drawable/corner_white"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/card_manager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/DIMEN_68PX"
+            android:text="@string/text_card_manager"
+            android:textColor="@color/text_dark1"
+            android:textSize="@dimen/DIMEN_30PX" />
+
+        <TextView
+            android:id="@+id/use_total_money"
+            android:layout_toRightOf="@+id/card_manager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_use_total_money"
+            android:textColor="@color/text_dark1"
+            android:paddingLeft="@dimen/DIMEN_120PX"
+            android:textSize="@dimen/DIMEN_30PX" />
+
+        <TextView
+            android:id="@+id/text_total_money"
+            android:layout_toRightOf="@+id/use_total_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/DIMEN_18PX"
+            android:text="$1500"
+            android:textColor="@color/text_dark1"
+            android:textSize="@dimen/DIMEN_30PX" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/DIMEN_30PX">
+
+            <TextView
+                android:id="@+id/tv_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/DIMEN_12PX"
+                android:paddingLeft="@dimen/DIMEN_62PX"
+                android:paddingRight="@dimen/DIMEN_62PX"
+                android:paddingTop="@dimen/DIMEN_12PX"
+                android:text="@string/btn_return"
+                android:textColor="@color/green_94c42e"
+                android:background="@mipmap/btn_return"
+                android:textSize="@dimen/DIMEN_28PX" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <include
+        layout="@layout/layout_consume_title"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/service_recycleview_bg"
+        >
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recylerview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
+        <include layout="@layout/layout_buttom_index"/>
+
+    </LinearLayout>
+
+</LinearLayout>

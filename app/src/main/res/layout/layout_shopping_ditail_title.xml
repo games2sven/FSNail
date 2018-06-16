@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:paddingLeft="@dimen/DIMEN_84PX"
+        android:gravity="center"
+        android:background="#F7F8F9"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_98PX"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:text="@string/title_identifier"
+            style="@style/service_title_sty"
+            />
+        <TextView
+            style="@style/service_title_sty"
+            android:text="@string/title_pro_name"
+            />
+        <TextView
+            style="@style/service_title_sty"
+            android:text="@string/text_type"
+            />
+        <TextView
+            style="@style/service_title_sty"
+            android:text="@string/text_brand"
+            />
+        <TextView
+            style="@style/service_title_sty"
+            android:text="@string/text_store"
+            />
+        <TextView
+            style="@style/service_title_sty"
+            android:text="@string/title_descripe"
+            />
+        <TextView
+            style="@style/service_title_sty"
+            android:text="@string/title_money"
+            />
+        <TextView
+            style="@style/service_title_sty"
+            />
+
+    </LinearLayout>
+</LinearLayout>

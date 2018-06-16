@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_98PX"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:id="@+id/item_staff_id"
+            android:text="0123001"
+            style="@style/item_service_sty"
+        />
+    <TextView
+        android:id="@+id/item_staff_nike_name"
+        android:text="KIKI"
+        style="@style/item_service_sty"
+
+        />
+    <TextView
+        android:id="@+id/item_staff_name"
+        android:text="Annamaria Teresa"
+        style="@style/item_service_sty"
+
+        />
+    <TextView
+        android:id="@+id/item_staff_phone"
+        android:text="3124569817"
+        style="@style/item_service_sty"
+
+        />
+    <TextView
+        android:id="@+id/item_staff_status"
+        android:text="休息"
+        style="@style/item_service_sty"
+
+        />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+        <TextView
+            android:id="@+id/tv_operation"
+            android:layout_width="@dimen/DIMEN_140PX"
+            android:layout_height="@dimen/DIMEN_51PX"
+            android:gravity="center"
+            android:text="详情"
+            android:textColor="@color/green_94c42e"
+            android:background="@drawable/btn_detail_bg"
+            android:paddingBottom="@dimen/DIMEN_9PX"
+            android:paddingTop="@dimen/DIMEN_9PX"
+            android:textSize="@dimen/DIMEN_24PX"
+            />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_1PX"
+        android:background="#cacbcc"
+        />
+</LinearLayout>

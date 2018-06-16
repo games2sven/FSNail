@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_98PX"
+        android:paddingRight="@dimen/DIMEN_40PX"
+        android:paddingLeft="@dimen/DIMEN_40PX"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+
+    <TextView
+        android:id="@+id/tv_card_num"
+        android:text="OP0001"
+        style="@style/item_service_sty"
+
+        />
+    <TextView
+        android:id="@+id/tv_pro_name"
+        android:text="优惠券"
+        style="@style/item_service_sty"
+
+        />
+    <TextView
+        android:id="@+id/tv_pro_type"
+        android:text="类别一"
+        style="@style/item_service_sty"
+
+        />
+    <TextView
+        android:id="@+id/tv_price"
+        android:text="$20"
+        style="@style/item_service_sty"
+
+        />
+    <TextView
+        android:id="@+id/tv_buy_customer"
+        android:text="张三"
+        style="@style/item_service_sty"
+        />
+
+    <TextView
+        android:id="@+id/tv_bind_customer"
+        android:text="张三"
+        style="@style/item_service_sty"
+        />
+
+    <TextView
+        android:id="@+id/tv_bind_phone"
+        android:text="13213415613"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#7d7d7d"
+        android:textSize="@dimen/DIMEN_24PX"
+        android:gravity="center"
+        android:layout_weight="1.5"
+        />
+    <TextView
+        android:id="@+id/tv_card_type"
+        android:text="获赠"
+        style="@style/item_service_sty"
+        />
+    <TextView
+        android:id="@+id/tv_time"
+        android:text="2018/2/02"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#7d7d7d"
+        android:textSize="@dimen/DIMEN_24PX"
+        android:gravity="center"
+        android:layout_weight="1.5"
+        />
+
+    <TextView
+        android:id="@+id/tv_detail"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/DIMEN_50PX"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/detail_title"
+        android:textColor="@color/green_94c42e"
+        android:background="@drawable/btn_detail_bg"
+        android:textSize="@dimen/DIMEN_24PX"
+        />
+    </LinearLayout>
+
+    <View android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_1PX"
+        android:background="#cacbcc"
+        />
+</LinearLayout>
