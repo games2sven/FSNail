@@ -11,14 +11,12 @@ import java.util.List;
 
 public class BookBean extends BaseHttpBean{
 
+
     /**
-     * data : [{"optime":"2018-06-14","goodsId":1,"type":"类型1","customerName":"van","customerPhone":"13815425632","uName":"fufu","createTime":"2018-06-14 15:57:00","service":"spa1服务","brandId":1,"typeId":1,"id":28,"serviceId":1,"brand":"品牌1","goodsName":"商品1","staffId":1,"status":4},{"optime":"2018-06-14","type":"类型1","customerName":"hah","customerPhone":"18813678570","uName":"fufu","createTime":"2018-06-14 11:28:18","service":"spa1服务","brandId":1,"startTime":"11:28:17","typeId":1,"id":22,"serviceId":1,"brand":"品牌1","staffId":1,"status":1},{"optime":"2018-06-14","type":"类型1","customerName":"wangsheng","customerPhone":"18813678570","uName":"fufu","createTime":"2018-06-14 11:27:23","service":"spa2服务","brandId":1,"startTime":"11:27:22","typeId":1,"id":21,"serviceId":2,"brand":"品牌1","staffId":1,"status":1},{"optime":"2018-06-15","type":"类型1","customerName":"wangsheng","customerPhone":"18813678570","uName":"fufu","createTime":"2018-06-14 11:13:39","service":"spa1服务","brandId":1,"startTime":"11:13:38","typeId":1,"id":20,"serviceId":1,"brand":"品牌1","staffId":1,"status":1},{"optime":"2018-06-15","goodsId":1,"type":"类型1","customerName":"vanq","customerPhone":"13815425632","uName":"fufu","createTime":"2018-06-13 17:32:06","service":"spa1服务","brandId":1,"typeId":1,"id":10,"serviceId":1,"brand":"品牌1","goodsName":"商品1","staffId":1,"status":4},{"optime":"2018-06-13","goodsId":1,"type":"类型1","customerName":"van","customerPhone":"13815425632","uName":"liliw","createTime":"2018-06-13 17:26:31","service":"spa1服务","brandId":1,"typeId":1,"id":9,"serviceId":1,"brand":"品牌1","goodsName":"商品1","staffId":2,"status":1},{"optime":"2018-06-01","goodsId":3,"type":"类型1","customerName":"ghjk","customerPhone":"13700000000","uName":"liliw","createTime":"2018-05-31 17:29:07","service":"spa2服务","brandId":4,"startTime":"17:25:28","typeId":1,"id":5,"serviceId":2,"brand":"品牌4","goodsName":"商品3","staffId":2,"status":1},{"optime":"2018-05-31","goodsId":1,"type":"类型1","customerName":"user1","customerPhone":"13125632145","uName":"liliw","createTime":"2018-05-31 09:52:07","service":"spa1服务","brandId":3,"startTime":"23:51:38","typeId":1,"id":1,"serviceId":1,"brand":"品牌3","goodsName":"商品1","staffId":2,"status":1}]
+     * data : [{"appointTime":"11:15:00","optime":"2018-06-16","goodsId":1,"type":"类型2","customerName":"van","customerPhone":"13815425632","uName":"liliw","createTime":"2018-06-15 17:31:31","service":"spa3服务","brandId":2,"customerId":10,"typeId":2,"id":36,"serviceId":3,"brand":"品牌2","goodsName":"商品1","staffId":2,"status":4},{"appointTime":"18:47:02","optime":"2018-06-14","type":"类型1","customerName":"wangsheng","customerPhone":"18813678570","uName":"fufu","createTime":"2018-06-14 11:27:23","service":"spa2服务","brandId":1,"customerId":8,"typeId":1,"id":21,"serviceId":2,"brand":"品牌1","staffId":1,"status":1},{"appointTime":"16:46:50","optime":"2018-06-15","type":"类型1","customerName":"wangsheng","customerPhone":"18813678570","uName":"fufu","createTime":"2018-06-14 11:13:39","service":"spa1服务","brandId":1,"customerId":8,"typeId":1,"id":20,"serviceId":1,"brand":"品牌1","staffId":1,"status":1},{"appointTime":"17:15:41","optime":"2018-06-15","goodsId":1,"type":"类型1","customerName":"van","customerPhone":"13815425632","uName":"fufu","createTime":"2018-06-13 17:32:06","service":"spa1服务","brandId":1,"customerId":10,"typeId":1,"id":10,"serviceId":1,"brand":"品牌1","goodsName":"商品1","staffId":1,"status":4},{"appointTime":"17:15:41","optime":"2018-06-13","goodsId":1,"type":"类型1","customerName":"van","customerPhone":"13815425632","uName":"liliw","createTime":"2018-06-13 17:26:31","service":"spa1服务","brandId":1,"customerId":10,"typeId":1,"id":9,"serviceId":1,"brand":"品牌1","goodsName":"商品1","staffId":2,"status":1},{"appointTime":"17:29:16","optime":"2018-06-01","goodsId":3,"objectCheck":2432,"type":"类型1","customerName":"user5","customerPhone":"13562326545","uName":"liliw","createTime":"2018-05-31 17:29:07","service":"spa2服务","brandId":4,"customerId":5,"typeId":1,"id":5,"serviceId":2,"brand":"品牌4","goodsName":"商品3","staffId":2,"status":1},{"appointTime":"09:51:57","optime":"2018-05-31","goodsId":1,"objectCheck":2563,"type":"类型1","customerName":"user1","customerPhone":"13125632145","uName":"liliw","createTime":"2018-05-31 09:52:07","service":"spa1服务","brandId":3,"customerId":1,"typeId":1,"id":1,"serviceId":1,"brand":"品牌3","goodsName":"商品1","staffId":2,"status":1}]
      * pageNo : null
      */
-
-
     private List<DataBean> data;
-
     public List<DataBean> getData() {
         return data;
     }
@@ -29,25 +27,28 @@ public class BookBean extends BaseHttpBean{
 
     public static class DataBean implements Serializable{
         /**
-         * optime : 2018-06-14
+         * appointTime : 11:15:00
+         * optime : 2018-06-16
          * goodsId : 1
-         * type : 类型1
+         * type : 类型2
          * customerName : van
          * customerPhone : 13815425632
-         * uName : fufu
-         * createTime : 2018-06-14 15:57:00
-         * service : spa1服务
-         * brandId : 1
-         * typeId : 1
-         * id : 28
-         * serviceId : 1
-         * brand : 品牌1
+         * uName : liliw
+         * createTime : 2018-06-15 17:31:31
+         * service : spa3服务
+         * brandId : 2
+         * customerId : 10
+         * typeId : 2
+         * id : 36
+         * serviceId : 3
+         * brand : 品牌2
          * goodsName : 商品1
-         * staffId : 1
+         * staffId : 2
          * status : 4
-         * startTime : 11:28:17
+         * objectCheck : 2432
          */
 
+        private String appointTime;
         private String optime;
         private int goodsId;
         private String type;
@@ -57,6 +58,7 @@ public class BookBean extends BaseHttpBean{
         private String createTime;
         private String service;
         private int brandId;
+        private int customerId;
         private int typeId;
         private int id;
         private int serviceId;
@@ -64,23 +66,14 @@ public class BookBean extends BaseHttpBean{
         private String goodsName;
         private int staffId;
         private int status;
-        private String startTime;
-        private int customerId;
+        private int objectCheck;
 
-        public String getuName() {
-            return uName;
+        public String getAppointTime() {
+            return appointTime;
         }
 
-        public void setuName(String uName) {
-            this.uName = uName;
-        }
-
-        public int getCustomerId() {
-            return customerId;
-        }
-
-        public void setCustomerId(int customerId) {
-            this.customerId = customerId;
+        public void setAppointTime(String appointTime) {
+            this.appointTime = appointTime;
         }
 
         public String getOptime() {
@@ -155,6 +148,14 @@ public class BookBean extends BaseHttpBean{
             this.brandId = brandId;
         }
 
+        public int getCustomerId() {
+            return customerId;
+        }
+
+        public void setCustomerId(int customerId) {
+            this.customerId = customerId;
+        }
+
         public int getTypeId() {
             return typeId;
         }
@@ -211,12 +212,12 @@ public class BookBean extends BaseHttpBean{
             this.status = status;
         }
 
-        public String getStartTime() {
-            return startTime;
+        public int getObjectCheck() {
+            return objectCheck;
         }
 
-        public void setStartTime(String startTime) {
-            this.startTime = startTime;
+        public void setObjectCheck(int objectCheck) {
+            this.objectCheck = objectCheck;
         }
     }
 }

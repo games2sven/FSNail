@@ -63,20 +63,20 @@ public class MenuBean extends BaseHttpBean{
 
         public static class PriceListBean {
             /**
-             * price : 50
+             * price : 50.0
              * name : spa1服务
              * id : 1
              */
 
-            private int price;
+            private double price;
             private String name;
             private int id;
 
-            public int getPrice() {
+            public double getPrice() {
                 return price;
             }
 
-            public void setPrice(int price) {
+            public void setPrice(double price) {
                 this.price = price;
             }
 

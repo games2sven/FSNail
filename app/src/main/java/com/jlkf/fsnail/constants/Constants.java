@@ -1,10 +1,31 @@
 package com.jlkf.fsnail.constants;
 
+import com.jlkf.fsnail.MyApplication;
+import com.jlkf.fsnail.R;
+
 /**
  * Created by Administrator on 2018/5/26 0026.
  */
 
 public class Constants {
+
+    ////服务状态码代表意思
+    public static String getStaus( int code){
+        switch (code){
+            case 1://未开始
+                return MyApplication.getInstance().getContext().getString(R.string.status_no_tart);
+            case 2://进行中
+                return MyApplication.getInstance().getContext().getString(R.string.status_progress);
+            case 3://以结束
+                return MyApplication.getInstance().getContext().getString(R.string.status_finish);
+            case 4://已预约
+                return MyApplication.getInstance().getContext().getString(R.string.status_booked);
+            case 5://取消
+                return MyApplication.getInstance().getContext().getString(R.string.status_cancel);
+        }
+        return MyApplication.getInstance().getContext().getString(R.string.status_no_tart);
+    }
+
 
 
     /*************************************************************************************
@@ -33,4 +54,10 @@ public class Constants {
     public static final int CODE_SEARCH_GOODS =34 ;//搜索商品
 
     public static final int CODE_UPDATE_STAFF =35 ;
+    public static final int CODE_SEARCH_BOOK =36 ;//查找预约
+
+
+
+
+
 }

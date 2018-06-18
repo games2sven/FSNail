@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.jlkf.fsnail.R;
 import com.jlkf.fsnail.activity.MainActivity;
@@ -45,6 +46,8 @@ public class BookFragment extends BaseFragment{
     RecyclerView recylerview;
     @Bind(R.id.iv_service_more)
     ImageView iv_service_more;
+    @Bind(R.id.tv_check)
+    TextView tv_check;
 
     private BookAdapter adapter;
 
@@ -69,13 +72,17 @@ public class BookFragment extends BaseFragment{
 
     @Override
     protected void onEventComing(EventCenter eventCenter) {
-
+        Object object = eventCenter.getData();
         switch (eventCenter.getEventCode()){
             case Constants.CODE_CANCEL_BOOK:
                 loadData();
                 break;
             case Constants.CODE_ADD_BOOK_SUCCESS:
                 loadData();
+                break;
+            case Constants.CODE_SEARCH_BOOK:
+                Map<String,String> params = (Map<String,String>)object;
+                loadDataWithParams(params);
                 break;
         }
     }
@@ -100,10 +107,34 @@ public class BookFragment extends BaseFragment{
         });
     }
 
+    public void loadDataWithParams(Map<String,String> params){
+        Log.i("Sven",OKHttpUtils.getMapParamStr(params));
+        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.BOOK_LIST, this, params, new MyHttpCallback<BookBean>() {
+
+            @Override
+            public void onSuccess(BookBean response) {
+                if(response.getCode() == 200){
+                    mDatas = response.getData();
+                    adapter.setDatas(mDatas);
+                }
+            }
+
+            @Override
+            public void onFailure(String errorMsg) {
+
+            }
+        });
+    }
+
     public void initRecyclerview(){
         recylerview.setLayoutManager(new GridLayoutManager(getActivity(),1));
         adapter = new BookAdapter(mDatas);
         recylerview.setAdapter(adapter);
+    }
+
+    @OnClick(R.id.tv_check)
+    public void checkBook(){
+        EventBus.getDefault().post(new EventCenter(Constants.CODE_CHECK_BOOK));
     }
 
     boolean isShowMore;

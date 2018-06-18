@@ -40,6 +40,8 @@ public class UrlConstants {
     public static String CANCEL_BOOK = SERVER_API + "service/updateServiceStatus";//取消预约
     public static String CHECK_CUSTOMER= SERVER_API + "sys/infoVerify";//验证客户信息是否完善
     public static String GOODS_TYPE_LIST= SERVER_API + "goods/goodsTypeList";//商品类型下拉列表
+    public static String CHECK_BOOK = SERVER_API + "staff/appointment";//预约查看
+
 
 
 

@@ -254,6 +254,8 @@
     <string name="please_input_address">请输入地址</string>
     <string name="please_input_ability_level">请输入能力水平</string>
     <string name="please_input_password">请输入密码</string>
+    <string name="txt_check_book">查看预约</string>
+
 
 
 </resources>

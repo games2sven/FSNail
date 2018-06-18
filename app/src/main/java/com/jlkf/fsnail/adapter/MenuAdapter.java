@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -14,6 +15,8 @@ import com.jlkf.fsnail.bean.OrderBean;
 import com.jlkf.fsnail.bean.TypeBean;
 import com.jlkf.fsnail.constants.Constants;
 import com.jlkf.fsnail.holder.MarketViewHolder;
+import com.jlkf.fsnail.widget.myspinner.MaterialSpinner;
+import com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -37,7 +40,7 @@ public class MenuAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
-
+        ((MenuViewHolder)holder).spinner.setItems(datas.get(position).getPriceList());
     }
 
     @Override
@@ -48,10 +51,12 @@ public class MenuAdapter extends RecyclerView.Adapter {
 
     class MenuViewHolder extends RecyclerView.ViewHolder{
 
+        public MaterialSpinner spinner;
+
         public MenuViewHolder(View itemView) {
             super(itemView);
 
-
+            spinner = (MaterialSpinner)itemView.findViewById(R.id.spinner);
 
         }
     }

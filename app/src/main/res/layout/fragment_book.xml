@@ -21,6 +21,22 @@
             android:layout_weight="1"
             android:layout_height="wrap_content" />
 
+
+        <TextView
+            android:id="@+id/tv_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/DIMEN_30PX"
+            android:paddingBottom="@dimen/DIMEN_12PX"
+            android:paddingLeft="@dimen/DIMEN_62PX"
+            android:paddingRight="@dimen/DIMEN_62PX"
+            android:paddingTop="@dimen/DIMEN_12PX"
+            android:background="@drawable/appoint_opera_background"
+            android:text="@string/txt_check_book"
+            android:textColor="@color/green_94c42e"
+            android:textSize="@dimen/DIMEN_28PX" />
+
+
     </LinearLayout>
 
     <include

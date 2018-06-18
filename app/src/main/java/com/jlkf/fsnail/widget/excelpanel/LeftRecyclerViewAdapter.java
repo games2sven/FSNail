@@ -18,7 +18,6 @@ public class LeftRecyclerViewAdapter<L> extends RecyclerViewAdapter<L> {
         super(context, list);
         this.excelPanelListener = excelPanelListener;
     }
-
     @Override
     public int getItemViewType(int position) {
         int viewType = super.getItemViewType(position);

@@ -71,8 +71,6 @@ public class OrderFragment extends BaseFragment{
                 requestOrderList(params);
                 break;
         }
-
-
     }
 
     public void loadData(){
@@ -87,7 +85,6 @@ public class OrderFragment extends BaseFragment{
                     mDatas = response.getData();
                     initRecyclerview();
                 }
-
             }
 
             @Override
@@ -150,7 +147,4 @@ public class OrderFragment extends BaseFragment{
             }
         });
     }
-
-
-
 }
