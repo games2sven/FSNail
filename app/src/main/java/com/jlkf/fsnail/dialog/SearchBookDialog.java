@@ -76,7 +76,6 @@ public class SearchBookDialog implements View.OnClickListener{
         window.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT);
         window.setGravity(Gravity.BOTTOM|Gravity.RIGHT);
         window.clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
-
         spinner_type = (TextViewSpinner)mView.findViewById(R.id.spinner_type);
         spinner_status = (TextViewSpinner)mView.findViewById(R.id.spinner_status);
         tv_serch = (TextView)mView.findViewById(R.id.tv_serch);

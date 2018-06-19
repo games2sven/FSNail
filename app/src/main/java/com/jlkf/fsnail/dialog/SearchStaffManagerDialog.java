@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.jlkf.fsnail.R;
@@ -42,6 +43,7 @@ public class SearchStaffManagerDialog {
         window.setBackgroundDrawable(new BitmapDrawable());
         window.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT);
         window.setGravity(Gravity.BOTTOM|Gravity.RIGHT);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
     }
 EditText et_staff_id,et_staff_nikename,et_staff_name,et_staff_phone;
 

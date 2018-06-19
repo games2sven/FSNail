@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.jlkf.fsnail.bean.ServiceMenuBean;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import me.lxw.dtl.utils.DTLUtils;
 
@@ -30,6 +31,8 @@ public class MyApplication  extends Application{
         instance = this;
         context = getApplicationContext();
         DTLUtils.init(getApplicationContext());
+        //bugly
+        CrashReport.initCrashReport(getApplicationContext());
     }
 
     public static MyApplication getInstance() {

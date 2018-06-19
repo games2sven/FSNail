@@ -121,6 +121,8 @@
                      />
 
                 <EditText
+                    android:maxLength="18"
+                    android:inputType="text"
                     android:id="@+id/et_add_customer_name"
                     style="@style/tv_right_edit_style"/>
                 <TextView
@@ -130,11 +132,14 @@
                      />
 
                 <EditText
+                    android:inputType="date"
+                    android:maxLength="10"
                     android:id="@+id/et_add_customer_birthday"
                     style="@style/tv_right_edit_style" />
             </LinearLayout>
 
             <LinearLayout
+                android:maxLength="18"
                 android:layout_marginTop="@dimen/DIMEN_29PX"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/DIMEN_64PX"
@@ -150,6 +155,8 @@
                      />
 
                 <EditText
+                    android:inputType="phone"
+                    android:maxLength="11"
                     android:id="@+id/et_add_customer_phone"
                     style="@style/tv_right_edit_style"/>
                 <TextView
@@ -159,37 +166,41 @@
                      />
 
                 <EditText
+                    android:inputType="text"
+                    android:maxLength="25"
                     android:id="@+id/et_add_customer_address"
                     style="@style/tv_right_edit_style" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="@dimen/DIMEN_29PX"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/DIMEN_64PX"
+                android:layout_marginTop="@dimen/DIMEN_29PX"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/DIMEN_60PX"
-                android:paddingRight="@dimen/DIMEN_60PX"
-                >
+                android:paddingRight="@dimen/DIMEN_60PX">
 
                 <TextView
 
                     style="@style/tv_left_style"
-                    android:text="@string/prompt_email1"
-                     />
+                    android:text="@string/prompt_email1" />
 
                 <EditText
                     android:id="@+id/et_add_customer_email"
-                    style="@style/tv_right_edit_style"/>
+                    style="@style/tv_right_edit_style"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="18" />
+
                 <TextView
-                    android:layout_marginLeft="@dimen/DIMEN_150PX"
                     style="@style/tv_left_style"
-                    android:text="@string/tv_register_date"
-                     />
+                    android:layout_marginLeft="@dimen/DIMEN_150PX"
+                    android:text="@string/tv_register_date" />
 
                 <EditText
+                    android:inputType="date"
+                    android:maxLength="10"
                     android:id="@+id/et_add_customer_registration"
-                    style="@style/tv_right_edit_style"/>
+                    style="@style/tv_right_edit_style" />
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -273,6 +284,8 @@
                     />
 
                 <EditText
+                    android:maxLength="50"
+                    android:inputType="text"
                     android:id="@+id/et_add_customer_disease"
                     android:background="@drawable/bg_search_item"
                     android:layout_width="match_parent"
@@ -335,6 +348,8 @@
                     />
 
                 <EditText
+                    android:maxLength="50"
+                    android:inputType="text"
                     android:id="@+id/et_add_customer_drug"
                     android:background="@drawable/bg_search_item"
                     android:layout_width="match_parent"
@@ -397,6 +412,8 @@
                     />
 
                 <EditText
+                    android:maxLength="50"
+                    android:inputType="text"
                     android:id="@+id/et_add_customer_allergy"
                     android:background="@drawable/bg_search_item"
                     android:layout_width="match_parent"
@@ -469,6 +486,8 @@
                     />
 
                 <EditText
+                    android:maxLength="50"
+                    android:inputType="text"
                     android:id="@+id/et_add_customer_join_service"
                     android:background="@drawable/bg_search_item"
                     android:layout_width="match_parent"
@@ -705,6 +724,8 @@
                     />
 
                 <EditText
+                    android:maxLength="50"
+                    android:inputType="text"
                     android:id="@+id/et_remark"
                     android:layout_marginLeft="@dimen/DIMEN_34PX"
                     android:background="@drawable/bg_search_item"

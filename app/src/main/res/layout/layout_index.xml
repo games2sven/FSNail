@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+
+        android:layout_marginBottom="@dimen/DIMEN_50PX"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_48PX"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+
+
+        <ImageView
+            android:id="@+id/page_last"
+            android:src="@mipmap/page_left"
+            android:layout_width="@dimen/DIMEN_48PX"
+            android:layout_height="@dimen/DIMEN_48PX" />
+
+        <TextView
+            android:id="@+id/page_1"
+            android:layout_marginLeft="@dimen/DIMEN_20PX"
+            android:layout_width="@dimen/DIMEN_48PX"
+            android:layout_height="@dimen/DIMEN_48PX"
+            android:background="@drawable/index_number_select_bg"
+            android:text="1"
+            android:gravity="center"
+            android:textColor="#fff"
+            />
+        <TextView
+            android:id="@+id/page_2"
+            android:layout_marginLeft="@dimen/DIMEN_20PX"
+            android:layout_width="@dimen/DIMEN_48PX"
+            android:layout_height="@dimen/DIMEN_48PX"
+            android:background="@drawable/index_number_unselect_bg"
+            android:text="2"
+            android:gravity="center"
+            android:textColor="#333333"
+            />
+        <TextView
+            android:id="@+id/page_3"
+            android:layout_marginLeft="@dimen/DIMEN_20PX"
+            android:layout_width="@dimen/DIMEN_48PX"
+            android:layout_height="@dimen/DIMEN_48PX"
+            android:background="@drawable/index_number_unselect_bg"
+            android:text="3"
+            android:gravity="center"
+            android:textColor="#333333"
+            />
+        <TextView
+            android:id="@+id/page_4"
+            android:layout_marginLeft="@dimen/DIMEN_20PX"
+            android:layout_width="@dimen/DIMEN_48PX"
+            android:layout_height="@dimen/DIMEN_48PX"
+            android:background="@drawable/index_number_unselect_bg"
+            android:text="4"
+            android:gravity="center"
+            android:textColor="#333333"
+            />
+
+
+        <ImageView
+            android:id="@+id/page_next"
+            android:layout_marginLeft="@dimen/DIMEN_20PX"
+            android:src="@mipmap/page_right"
+            android:layout_width="@dimen/DIMEN_48PX"
+            android:layout_height="@dimen/DIMEN_48PX" />
+
+
+    </LinearLayout>
+</LinearLayout>
