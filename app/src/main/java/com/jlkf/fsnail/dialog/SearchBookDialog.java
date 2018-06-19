@@ -4,17 +4,21 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.design.widget.Snackbar;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jlkf.fsnail.MyApplication;
 import com.jlkf.fsnail.R;
 import com.jlkf.fsnail.activity.MainActivity;
 import com.jlkf.fsnail.bean.EventCenter;
+import com.jlkf.fsnail.bean.ServiceMenuBean;
 import com.jlkf.fsnail.constants.Constants;
 import com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner;
 
@@ -22,7 +26,9 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2018/5/26 0026.
@@ -30,8 +36,10 @@ import java.util.List;
 
 public class SearchBookDialog implements View.OnClickListener{
 
-    String [] tests;
-    List<String> lists = new ArrayList<String>();
+    String [] temps;
+    List<String> listTypes = new ArrayList<String>();
+    List<String> listStatus = new ArrayList<String>();
+    List<ServiceMenuBean.DataBean.TypeBean> typeBeans;
 
     private final Context context;
     private final int width;
@@ -39,14 +47,18 @@ public class SearchBookDialog implements View.OnClickListener{
     private View mView;
     private TextViewSpinner spinner_type,spinner_status;
     private TextView tv_serch;
-    private TextView tv_date;
-    private ImageView img_date;
-    private TextView tv_time;
-    private ImageView img_time;
+
+    private EditText et_customer,et_employee;
+    private TextView tv_date_start,tv_date_end,tv_time_start,tv_time_end;
+    private ImageView img_date_start,img_date_end,img_time_start,img_time_end;
+
+    private String type;
+    private int status = -1;
+
 
     public SearchBookDialog(Context context, int  width ) {
-    this.context =context;
-    this.width=width;
+        this.context =context;
+        this.width=width;
     }
 
 
@@ -66,47 +78,59 @@ public class SearchBookDialog implements View.OnClickListener{
         spinner_type = (TextViewSpinner)mView.findViewById(R.id.spinner_type);
         spinner_status = (TextViewSpinner)mView.findViewById(R.id.spinner_status);
         tv_serch = (TextView)mView.findViewById(R.id.tv_serch);
-        tv_date = (TextView)mView.findViewById(R.id.tv_date);
-        img_date = (ImageView)mView.findViewById(R.id.img_date);
-        tv_time = (TextView)mView.findViewById(R.id.tv_time);
-        img_time = (ImageView)mView.findViewById(R.id.img_time);
+        tv_date_start = (TextView)mView.findViewById(R.id.tv_date_start);
+        img_date_start = (ImageView)mView.findViewById(R.id.img_date_start);
+        tv_date_end = (TextView)mView.findViewById(R.id.tv_date_end);
+        img_date_end = (ImageView)mView.findViewById(R.id.img_date_end);
+        tv_time_start = (TextView)mView.findViewById(R.id.tv_time_start);
+        img_time_start = (ImageView)mView.findViewById(R.id.img_time_start);
+        tv_time_end = (TextView)mView.findViewById(R.id.tv_time_end);
+        img_time_end = (ImageView)mView.findViewById(R.id.img_time_end);
+        et_customer = (EditText)mView.findViewById(R.id.et_customer);
+        et_employee = (EditText)mView.findViewById(R.id.et_employee);
 
-        tests = context.getResources().getStringArray(R.array.sports);
-        lists = Arrays.asList(tests);
+        typeBeans = MyApplication.getInstance().getMenuBean().getData().getType();
+        for(ServiceMenuBean.DataBean.TypeBean typeBean:typeBeans){
+            listTypes.add(typeBean.getName());
+        }
+
+        temps = context.getResources().getStringArray(R.array.status);
+        listStatus = Arrays.asList(temps);
+
         initView();
     }
 
     private void initView(){
 
         tv_serch.setOnClickListener(this);
-        img_date.setOnClickListener(this);
-        img_time.setOnClickListener(this);
+        img_date_start.setOnClickListener(this);
+        img_date_end.setOnClickListener(this);
+        img_time_start.setOnClickListener(this);
+        img_time_end.setOnClickListener(this);
 
-        spinner_type.setItems(lists);
+        spinner_type.setItems(listTypes);
         spinner_type.setOnItemSelectedListener(new TextViewSpinner.OnItemSelectedListener<String>() {
 
             @Override public void onItemSelected(TextViewSpinner view, int position, long id, String item) {
-                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
+                type = typeBeans.get(position).getId()+"";
             }
         });
         spinner_type.setOnNothingSelectedListener(new TextViewSpinner.OnNothingSelectedListener() {
 
             @Override public void onNothingSelected(TextViewSpinner spinner) {
-                Snackbar.make(spinner, "Nothing selected", Snackbar.LENGTH_LONG).show();
             }
         });
 
-        spinner_status.setItems(lists);
+        spinner_status.setItems(listStatus);
         spinner_status.setOnItemSelectedListener(new TextViewSpinner.OnItemSelectedListener<String>() {
 
             @Override public void onItemSelected(TextViewSpinner view, int position, long id, String item) {
-                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
+                status = position+1;
             }
         });
         spinner_status.setOnNothingSelectedListener(new TextViewSpinner.OnNothingSelectedListener() {
 
             @Override public void onNothingSelected(TextViewSpinner spinner) {
-                Snackbar.make(spinner, "Nothing selected", Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -119,26 +143,75 @@ public class SearchBookDialog implements View.OnClickListener{
         }
     }
 
+    private Map<String,String> getParams(){
+        Map<String,String> params = new HashMap<>();
+
+        if(!TextUtils.isEmpty(tv_date_start.getText().toString().trim())){
+            params.put("startDate",tv_date_start.getText().toString().trim().replace("/","-"));
+        }
+        if(!TextUtils.isEmpty(tv_date_end.getText().toString().trim())){
+            params.put("endDate",tv_date_end.getText().toString().trim().replace("/","-"));
+        }
+        if(!TextUtils.isEmpty(tv_time_start.getText().toString().trim())){
+            params.put("startTime",tv_time_start.getText().toString().trim().replace("/","-"));
+        }
+        if(!TextUtils.isEmpty(tv_time_end.getText().toString().trim())){
+            params.put("endTime",tv_time_end.getText().toString().trim().replace("/","-"));
+        }
+
+        if(!TextUtils.isEmpty(et_customer.getText().toString().trim())){
+            params.put("customerName",et_customer.getText().toString().trim());
+        }
+        if(!TextUtils.isEmpty(et_employee.getText().toString().trim())){
+            params.put("uName",et_employee.getText().toString().trim());
+        }
+
+        if(!TextUtils.isEmpty(type)){
+            params.put("type",type);
+        }
+        if(status != -1){
+            params.put("status",status+"");
+        }
+        return params;
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tv_serch:
                 dissmiss();
-                EventBus.getDefault().post(new EventCenter(Constants.CODE_CHECK_BOOK));
+                Map<String,String> params =  getParams();
+                EventBus.getDefault().post(new EventCenter(Constants.CODE_SEARCH_BOOK,params));
                 break;
-            case R.id.img_date:
+            case R.id.img_date_start:
                 DialogChooseDate dialogChooseDate = new DialogChooseDate(context,width, new DialogChooseDate.Dialogcallback() {
                     @Override
                     public void pickWeightResult(String date) {
-                        tv_date.setText(date);
+                        tv_date_start.setText(date);
                     }
                 });
                 break;
-            case R.id.img_time:
+            case R.id.img_date_end:
+                DialogChooseDate dialogChooseDate2 = new DialogChooseDate(context,width, new DialogChooseDate.Dialogcallback() {
+                    @Override
+                    public void pickWeightResult(String date) {
+                        tv_date_end.setText(date);
+                    }
+                });
+                break;
+            case R.id.img_time_start:
                 DialogChooseTime dialogChooseTime = new DialogChooseTime(context, width, new DialogChooseTime.Dialogcallback() {
                     @Override
                     public void pickWeightResult(String time) {
-                        tv_time.setText(time);
+                        tv_time_start.setText(time);
+                    }
+                });
+                break;
+            case R.id.img_time_end:
+                DialogChooseTime dialogChooseTime2 = new DialogChooseTime(context, width, new DialogChooseTime.Dialogcallback() {
+                    @Override
+                    public void pickWeightResult(String time) {
+                        tv_time_end.setText(time);
                     }
                 });
                 break;

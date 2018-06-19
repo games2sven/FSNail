@@ -6,32 +6,42 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jlkf.fsnail.R;
+import com.jlkf.fsnail.activity.MainActivity;
 import com.jlkf.fsnail.adapter.CheckBookAdapter;
 import com.jlkf.fsnail.adapter.ServiceAdapter;
 import com.jlkf.fsnail.base.BaseFragment;
 import com.jlkf.fsnail.bean.Cell;
+import com.jlkf.fsnail.bean.CheckBookBean;
 import com.jlkf.fsnail.bean.ColTitle;
 import com.jlkf.fsnail.bean.EventCenter;
 import com.jlkf.fsnail.bean.RowTitle;
 import com.jlkf.fsnail.bean.ServiceBean;
+import com.jlkf.fsnail.constants.UrlConstants;
+import com.jlkf.fsnail.dialog.DialogChooseDate;
+import com.jlkf.fsnail.net.MyHttpCallback;
+import com.jlkf.fsnail.net.OKHttpUtils;
 import com.jlkf.fsnail.widget.excelpanel.ExcelPanel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 
-public class CheckBookFragment extends BaseFragment implements ExcelPanel.OnLoadMoreListener{
+public class CheckBookFragment extends BaseFragment implements ExcelPanel.OnLoadMoreListener,View.OnClickListener{
 
     public static final String DATE_FORMAT_PATTERN = "yyyy-MM-dd";
     public static final String WEEK_FORMAT_PATTERN = "EEEE";
@@ -58,20 +68,25 @@ public class CheckBookFragment extends BaseFragment implements ExcelPanel.OnLoad
     private boolean isLoading;
     private long historyStartTime;
     private long moreStartTime;
+    private TextView tv_date;
 
-    List<ServiceBean> mDatas =new ArrayList<>();
+    List<CheckBookBean.DataBean> mDatas =new ArrayList<>();
     RecyclerView recyclerView;
+    MainActivity activity;
     //标题:
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        activity = (MainActivity) getActivity();
         View view  =LayoutInflater.from(container.getContext()).inflate(R.layout.fragment_check_book,null);
 
         progress = (ProgressBar) view.findViewById(R.id.progress);
         excelPanel = (ExcelPanel) view.findViewById(R.id.content_container);
+        tv_date = (TextView)view.findViewById(R.id.tv_date);
         adapter = new CheckBookAdapter(getActivity(), blockListener);
         excelPanel.setAdapter(adapter);
         excelPanel.setOnLoadMoreListener(this);
+        tv_date.setOnClickListener(this);
         initData();
         return view;
     }
@@ -110,12 +125,34 @@ public class CheckBookFragment extends BaseFragment implements ExcelPanel.OnLoad
     }
 
     private void loadData(long startTime, final boolean history) {
-        //模拟网络加载
-        isLoading = true;
-        Message message = new Message();
-        message.arg1 = history ? 1 : 2;
-        message.obj = new Long(startTime);
-        loadDataHandler.sendMessageDelayed(message, 1000);
+
+        Map<String,String> params = new HashMap<>();
+//        params.put("optime",);
+
+        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.CHECK_BOOK, this, params, new MyHttpCallback<CheckBookBean>() {
+
+            @Override
+            public void onSuccess(CheckBookBean response) {
+                Log.i("Sven","response "+response.getCode());
+                if(response.getCode() == 200){
+                    mDatas = response.getData();
+//                    progress.setVisibility(View.GONE);
+                    //模拟网络加载
+                    isLoading = true;
+                     Message message = new Message();
+                    message.arg1 = history ? 1 : 2;
+                    loadDataHandler.sendMessageDelayed(message, 1000);
+
+                }
+            }
+
+            @Override
+            public void onFailure(String errorMsg) {
+                progress.setVisibility(View.GONE);
+            }
+        });
+
+
     }
 
     @Override
@@ -128,42 +165,52 @@ public class CheckBookFragment extends BaseFragment implements ExcelPanel.OnLoad
 
     }
 
-//    private void initRecyclerView() {
-//        recyclerView.setAdapter(new ServiceAdapter(mDatas));
-//    }
 
     private Handler loadDataHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             isLoading = false;
-            long startTime = (Long) msg.obj;
-            List<RowTitle> rowTitles1 = genRowData(startTime);
-            List<List<Cell>> cells1 = genCellData();
-            if (msg.arg1 == 1) {//history
-                historyStartTime -= ONE_DAY * TIME.length;
-                rowTitles.addAll(0, rowTitles1);
-                for (int i = 0; i < cells1.size(); i++) {
-                    cells.get(i).addAll(0, cells1.get(i));
-                }
 
-                //加载了数据之后偏移到上一个位置去
-                if (excelPanel != null) {
-                    excelPanel.addHistorySize(TIME.length);
-                }
-            } else {
-                moreStartTime += ONE_DAY * TIME.length;
-                rowTitles.addAll(rowTitles1);
-                for (int i = 0; i < cells1.size(); i++) {
-                    cells.get(i).addAll(cells1.get(i));
-                }
+            for(int i = 0;i<5;i++){
+                CheckBookBean.DataBean dataBean = new  CheckBookBean.DataBean();
+                dataBean.setCustomer_name("Sven"+i);
+                mDatas.add(dataBean);
             }
+
             if (colTitles.size() == 0) {
                 colTitles.addAll(genColData());
             }
+
+
+
+            List<List<Cell>> cells1 = genCellData();
+
+            for (int i = 0; i < cells1.size(); i++) {
+                cells.get(i).addAll(cells1.get(i));
+            }
+
             progress.setVisibility(View.GONE);
-            adapter.setAllData(colTitles, rowTitles, cells);
-            adapter.enableFooter();
+            adapter.setAllData(colTitles, mDatas, cells);
+            adapter.disableFooter();
             adapter.disableHeader();
+//            if (msg.arg1 == 1) {//history
+//                historyStartTime -= ONE_DAY * TIME.length;
+//                rowTitles.addAll(0, rowTitles1);
+//                for (int i = 0; i < cells1.size(); i++) {
+//                    cells.get(i).addAll(0, cells1.get(i));
+//                }
+//                //加载了数据之后偏移到上一个位置去
+//                if (excelPanel != null) {
+//                    excelPanel.addHistorySize(TIME.length);
+//                }
+//            } else {
+//                moreStartTime += ONE_DAY * TIME.length;
+//                rowTitles.addAll(rowTitles1);
+//                for (int i = 0; i < cells1.size(); i++) {
+//                    cells.get(i).addAll(cells1.get(i));
+//                }
+//            }
+
         }
     };
 
@@ -210,7 +257,7 @@ public class CheckBookFragment extends BaseFragment implements ExcelPanel.OnLoad
         for (int i = 0; i < TIME.length; i++) {
             List<Cell> cellList = new ArrayList<>();
             cells.add(cellList);
-            for (int j = 0; j < TIME.length; j++) {
+            for (int j = 0; j < mDatas.size(); j++) {
                 Cell cell = new Cell();
                 Random random = new Random();
                 int number = random.nextInt(6);
@@ -248,4 +295,17 @@ public class CheckBookFragment extends BaseFragment implements ExcelPanel.OnLoad
         mPopWindow.showAsDropDown(view,view.getWidth(),-view.getHeight());
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.tv_date:
+                DialogChooseDate dialogChooseDate = new DialogChooseDate(getActivity(), activity.getRightWidth(), new DialogChooseDate.Dialogcallback() {
+                    @Override
+                    public void pickWeightResult(String date) {
+                        tv_date.setText(date);
+                    }
+                });
+                break;
+        }
+    }
 }

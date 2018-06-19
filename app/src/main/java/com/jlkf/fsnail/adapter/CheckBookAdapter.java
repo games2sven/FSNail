@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.jlkf.fsnail.R;
 import com.jlkf.fsnail.bean.Cell;
+import com.jlkf.fsnail.bean.CheckBookBean;
 import com.jlkf.fsnail.bean.ColTitle;
 import com.jlkf.fsnail.bean.RowTitle;
 import com.jlkf.fsnail.widget.excelpanel.BaseExcelPanelAdapter;
@@ -20,7 +21,7 @@ import com.jlkf.fsnail.widget.excelpanel.BaseExcelPanelAdapter;
  * Created by zhouchaoyuan on 2017/1/14.
  */
 
-public class CheckBookAdapter extends BaseExcelPanelAdapter<RowTitle, ColTitle, Cell> {
+public class CheckBookAdapter extends BaseExcelPanelAdapter<CheckBookBean.DataBean, ColTitle,Cell> {
 
     private Context context;
     private View.OnClickListener blockListener;
@@ -90,14 +91,14 @@ public class CheckBookAdapter extends BaseExcelPanelAdapter<RowTitle, ColTitle, 
 
     @Override
     public void onBindTopViewHolder(RecyclerView.ViewHolder holder, int position) {
-        RowTitle rowTitle = getTopItem(position);
+        CheckBookBean.DataBean rowTitle = getTopItem(position);
         if (null == holder || !(holder instanceof TopHolder) || rowTitle == null) {
             return;
         }
         TopHolder viewHolder = (TopHolder) holder;
-        viewHolder.roomWeek.setText(rowTitle.getWeekString());
-        viewHolder.roomDate.setText(rowTitle.getDateString());
-        viewHolder.availableRoomCount.setText("剩余" + rowTitle.getAvailableRoomCount() + "间");
+        viewHolder.roomWeek.setText(rowTitle.getCustomer_name());
+        viewHolder.roomDate.setText(rowTitle.getCustomer_name());
+//        viewHolder.availableRoomCount.setText("剩余" + rowTitle.getAvailableRoomCount() + "间");
     }
 
     static class TopHolder extends RecyclerView.ViewHolder {

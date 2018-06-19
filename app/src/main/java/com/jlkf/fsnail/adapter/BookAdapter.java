@@ -48,7 +48,7 @@ public class BookAdapter extends RecyclerView.Adapter {
             }
         });
 
-        ((BookViewHolder)holder).tv_book_time.setText(datas.get(position).getCreateTime()+"");
+        ((BookViewHolder)holder).tv_book_time.setText(datas.get(position).getAppointTime()+"");
         ((BookViewHolder)holder).tv_book_date.setText(datas.get(position).getOptime()+"");
         ((BookViewHolder)holder).tv_employee_nickName.setText(datas.get(position).getUName());
         ((BookViewHolder)holder).tv_customer_name.setText(datas.get(position).getCustomerName());
@@ -56,7 +56,7 @@ public class BookAdapter extends RecyclerView.Adapter {
         ((BookViewHolder)holder).tv_type.setText(datas.get(position).getType());
         ((BookViewHolder)holder).tv_service.setText(datas.get(position).getService());
         ((BookViewHolder)holder).tv_brand.setText(datas.get(position).getBrand());
-        ((BookViewHolder)holder).tv_staus.setText(datas.get(position).getStatus()+"");
+        ((BookViewHolder)holder).tv_staus.setText(Constants.getStaus(datas.get(position).getStatus()));
     }
 
     @Override

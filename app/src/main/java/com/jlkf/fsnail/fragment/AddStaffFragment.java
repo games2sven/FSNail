@@ -157,7 +157,7 @@ public class AddStaffFragment extends BaseFragment {
                 colTitles.addAll(genColData());
             }
 //            progress.setVisibility(View.GONE);
-            adapter.setAllData(colTitles, rowTitles, cells);
+//            adapter.setAllData(colTitles, rowTitles, cells);
             adapter.disableFooter();
             adapter.disableHeader();
         }

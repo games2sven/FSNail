@@ -76,8 +76,8 @@ public abstract class MaterialSpinnerBaseAdapter<T> extends BaseAdapter {
       holder = ((ViewHolder) convertView.getTag());
     }
 
-//    holder.serviceName.setText(((MenuBean)(getItem(position))).getServiceNmae());
-//    holder.price.setText(((MenuBean)(getItem(position))).getPrice());
+    holder.serviceName.setText(((MenuBean.DataBean.PriceListBean)(getItem(position))).getName());
+    holder.price.setText(((MenuBean.DataBean.PriceListBean)(getItem(position))).getPrice()+"");
     return convertView;
   }
 

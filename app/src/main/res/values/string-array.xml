@@ -22,6 +22,14 @@
         <item>壁球</item>
     </string-array>
 
+    <string-array name="status" >
+        <item>@string/status_no_tart</item>
+        <item>@string/status_progress</item>
+        <item>@string/status_finish</item>
+        <item>@string/status_booked</item>
+        <item>@string/status_cancel</item>
+    </string-array>
+
     <string-array name="category" >
         <item>ManicureSPA</item>
         <item>Manicure</item>

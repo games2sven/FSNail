@@ -49,7 +49,7 @@ public class TimeUtil {
         System.setProperty("user.timezone", "Asia/Shanghai");
         TimeZone tz = TimeZone.getTimeZone("Asia/Shanghai");
         TimeZone.setDefault(tz);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
         if (time == 0) {//new Date(time) 传0的话 会格式化成1970年
             return "0";
         }

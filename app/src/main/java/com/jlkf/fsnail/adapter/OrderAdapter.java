@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.jlkf.fsnail.R;
 import com.jlkf.fsnail.bean.OrderBean;
 import com.jlkf.fsnail.holder.OrderViewHolder;
+import com.jlkf.fsnail.utils.TimeUtil;
 
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class OrderAdapter extends RecyclerView.Adapter {
         ((OrderViewHolder)holder).tv_first_price.setText(datas.get(position).getStartPrice()+"");
         ((OrderViewHolder)holder).tv_voucher.setText(datas.get(position).getUseVoucher()+"");
         ((OrderViewHolder)holder).tv_final_price.setText(datas.get(position).getFinalPrice()+"");
-        ((OrderViewHolder)holder).tv_order_time.setText(datas.get(position).getOrderTime()+"");
+        ((OrderViewHolder)holder).tv_order_time.setText(TimeUtil.paserTimeToYM(datas.get(position).getOrderTime()));
         ((OrderViewHolder)holder).tv_pay_way.setText(datas.get(position).getPayment()+"");
         ((OrderViewHolder)holder).tv_customer.setText(datas.get(position).getName());
         ((OrderViewHolder)holder).tv_customer_phone.setText(datas.get(position).getPhone());

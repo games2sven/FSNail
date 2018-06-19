@@ -13,9 +13,13 @@ import com.jlkf.fsnail.bean.CardBean;
 import com.jlkf.fsnail.bean.EventCenter;
 import com.jlkf.fsnail.constants.Constants;
 import com.jlkf.fsnail.holder.CardViewHolder;
+import com.jlkf.fsnail.utils.TimeUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -53,13 +57,14 @@ public class CardAdapter extends RecyclerView.Adapter {
         ((CardViewHolder)holder).tv_bind_customer.setText(datas.get(position).getIsBandUser()+"");
         ((CardViewHolder)holder).tv_bind_phone.setText(datas.get(position).getIsBandUserPhone()+"");
         ((CardViewHolder)holder).tv_card_type.setText(datas.get(position).getType()+"");
-        ((CardViewHolder)holder).tv_time.setText(datas.get(position).getPay_optime()+"");
+        ((CardViewHolder)holder).tv_time.setText(TimeUtil.paserTimeToYM(datas.get(position).getPay_optime()));
     }
 
     @Override
     public int getItemCount() {
         return datas.size();
     }
+
 }
 
 
