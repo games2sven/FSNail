@@ -1,5 +1,6 @@
 package com.jlkf.fsnail.adapter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.jlkf.fsnail.R;
 import com.jlkf.fsnail.bean.OrderBean;
+import com.jlkf.fsnail.constants.Constants;
 import com.jlkf.fsnail.holder.OrderViewHolder;
 import com.jlkf.fsnail.utils.TimeUtil;
 
@@ -17,9 +19,11 @@ import java.util.List;
 public class OrderAdapter extends RecyclerView.Adapter {
 
     private List<OrderBean.DataBean> datas;
+    private Context mContext;
 
-    public OrderAdapter(List<OrderBean.DataBean> mDatas) {
+    public OrderAdapter(Context context, List<OrderBean.DataBean> mDatas) {
         this.datas = mDatas;
+        this.mContext = context;
     }
 
     @NonNull
@@ -43,10 +47,17 @@ public class OrderAdapter extends RecyclerView.Adapter {
         ((OrderViewHolder)holder).tv_voucher.setText(datas.get(position).getUseVoucher()+"");
         ((OrderViewHolder)holder).tv_final_price.setText(datas.get(position).getFinalPrice()+"");
         ((OrderViewHolder)holder).tv_order_time.setText(TimeUtil.paserTimeToYM(datas.get(position).getOrderTime()));
-        ((OrderViewHolder)holder).tv_pay_way.setText(datas.get(position).getPayment()+"");
+        ((OrderViewHolder)holder).tv_pay_way.setText(Constants.getPayWay(datas.get(position).getPayment()));
         ((OrderViewHolder)holder).tv_customer.setText(datas.get(position).getName());
         ((OrderViewHolder)holder).tv_customer_phone.setText(datas.get(position).getPhone());
-        ((OrderViewHolder)holder).tv_order_status.setText(datas.get(position).getStatus()+"");
+        ((OrderViewHolder)holder).tv_order_status.setText(Constants.getOrderStatus(datas.get(position).getStatus()));
+        if(datas.get(position).getStatus() == 1){
+            ((OrderViewHolder)holder).tv_order_status.setTextColor(mContext.getResources().getColor(R.color.green_94c42e));
+        }else if(datas.get(position).getStatus() == 2){
+            ((OrderViewHolder)holder).tv_order_status.setTextColor(mContext.getResources().getColor(R.color.blue_29d7f1));
+        }else if(datas.get(position).getStatus() == 3){
+            ((OrderViewHolder)holder).tv_order_status.setTextColor(mContext.getResources().getColor(R.color.green_94c42e));
+        }
     }
 
     @Override

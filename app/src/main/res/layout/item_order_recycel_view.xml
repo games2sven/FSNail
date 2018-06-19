@@ -97,19 +97,29 @@
             style="@style/item_service_sty"
             />
 
-    <TextView
-        android:id="@+id/tv_operation"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/DIMEN_51PX"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/text_operation"
-        android:textColor="@color/green_94c42e"
-        android:background="@drawable/btn_detail_bg"
-        android:paddingBottom="@dimen/DIMEN_9PX"
-        android:paddingTop="@dimen/DIMEN_9PX"
-        android:textSize="@dimen/DIMEN_24PX"
-        />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/DIMEN_51PX"
+            android:gravity="center"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_operation"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/DIMEN_51PX"
+                android:text="@string/text_operation"
+                android:textColor="@color/green_94c42e"
+                android:background="@drawable/btn_detail_bg"
+                android:paddingBottom="@dimen/DIMEN_9PX"
+                android:paddingTop="@dimen/DIMEN_9PX"
+                android:paddingRight="@dimen/DIMEN_9PX"
+                android:paddingLeft="@dimen/DIMEN_9PX"
+                android:textSize="@dimen/DIMEN_24PX"
+                />
+
+        </LinearLayout>
+
+
     </LinearLayout>
 
     <View android:layout_width="match_parent"

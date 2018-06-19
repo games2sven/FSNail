@@ -46,6 +46,8 @@ public class CardFragment extends BaseFragment{
     @Bind(R.id.iv_service_more)
     ImageView iv_service_more;
 
+    private CardAdapter adapter;
+
     //标题:
     @Nullable
     @Override
@@ -54,9 +56,7 @@ public class CardFragment extends BaseFragment{
         View view  =LayoutInflater.from(container.getContext()).inflate(R.layout.fragment_conpous,null);
         ButterKnife.bind(this,view);
 
-
         loadData();
-
         return view;
     }
 
@@ -67,6 +67,7 @@ public class CardFragment extends BaseFragment{
 
     @Override
     protected void onEventComing(EventCenter eventCenter) {
+        Object object = eventCenter.getData();
         if(eventCenter != null){
             switch (eventCenter.getEventCode()){
                 case Constants.CODE_CARD_SELECT_DATE://弹出选择日期
@@ -77,6 +78,10 @@ public class CardFragment extends BaseFragment{
                         }
                     });
                     break;
+                case Constants.CODE_SEARCH_CARD:
+                    loadDataWithParams((Map<String,String>)object);
+                    break;
+
             }
         }
     }
@@ -102,9 +107,28 @@ public class CardFragment extends BaseFragment{
         });
     }
 
+    public void loadDataWithParams(Map<String,String> params){
+        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.CARD_LIST, this, params, new MyHttpCallback<CardBean>() {
+            @Override
+            public void onSuccess(CardBean response) {
+                Log.i("Sven","response "+response.getCode());
+                if(response.getCode() == 200){
+                    mDatas = response.getData();
+                    adapter.setDatas(mDatas);
+                }
+            }
+
+            @Override
+            public void onFailure(String errorMsg) {
+
+            }
+        });
+    }
+
     public void initRecyclerview(){
         recylerview.setLayoutManager(new GridLayoutManager(getActivity(),1));
-        recylerview.setAdapter(new CardAdapter(mDatas));
+        adapter = new CardAdapter(mDatas);
+        recylerview.setAdapter(adapter);
     }
 
     boolean isShowMore;

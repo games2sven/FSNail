@@ -3,6 +3,7 @@ package com.jlkf.fsnail.dialog;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,6 +49,7 @@ public class SearchOrderDialog implements View.OnClickListener{
 
     String [] tests;
     List<String> datas = new ArrayList<String>();
+    private int status = -1;
 
     public SearchOrderDialog(Context context, int width) {
         this.context = context;
@@ -68,7 +70,7 @@ public class SearchOrderDialog implements View.OnClickListener{
         window.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT);
         window.setGravity(Gravity.BOTTOM | Gravity.RIGHT);
 
-        tests = context.getResources().getStringArray(R.array.sports);
+        tests = context.getResources().getStringArray(R.array.order_status);
         datas = Arrays.asList(tests);
 
         initView();
@@ -86,6 +88,12 @@ public class SearchOrderDialog implements View.OnClickListener{
         et_number = (EditText)mView.findViewById(R.id.et_number);
 
         spinner_status.setItems(datas);
+        spinner_status.setOnItemSelectedListener(new TextViewSpinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(TextViewSpinner view, int position, long id, Object item) {
+                status = position+1;
+            }
+        });
 
         img_date_start.setOnClickListener(this);
         img_date_end.setOnClickListener(this);
@@ -119,11 +127,26 @@ public class SearchOrderDialog implements View.OnClickListener{
                 break;
             case R.id.tv_search:
                 Map<String, String> params = new HashMap<>();
-                params.put("startTime", String.valueOf(TimeUtil.stringToLong(tv_date_start.getText().toString(),"yyyy/MM/dd")));
-                params.put("endTime",String.valueOf(TimeUtil.stringToLong(tv_date_end.getText().toString(),"yyyy/MM/dd")));
-                params.put("customerPhone",et_phone.getText().toString());
-                params.put("orderNumber",et_number.getText().toString());
-                params.put("status",spinner_status.getSelectedIndex()+"");
+
+                if(!TextUtils.isEmpty(tv_date_start.getText().toString())){
+                    params.put("startTime", String.valueOf(TimeUtil.stringToLong(tv_date_start.getText().toString(),"yyyy/MM/dd")));
+                }
+
+                if(!TextUtils.isEmpty(tv_date_end.getText().toString())){
+                    params.put("endTime",String.valueOf(TimeUtil.stringToLong(tv_date_end.getText().toString(),"yyyy/MM/dd")));
+                }
+
+                if(!TextUtils.isEmpty(et_phone.getText().toString().trim())){
+                    params.put("customerPhone",et_phone.getText().toString().trim());
+                }
+
+                if(!TextUtils.isEmpty(et_number.getText().toString().trim())){
+                    params.put("orderNumber",et_number.getText().toString());
+                }
+
+                if(status != -1){
+                    params.put("status",String.valueOf(status));
+                }
 
                 EventBus.getDefault().post(new EventCenter(Constants.CODE_SEARCH_ORDERLIST,params));
 

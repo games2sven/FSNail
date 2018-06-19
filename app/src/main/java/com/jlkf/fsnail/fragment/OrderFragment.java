@@ -96,7 +96,7 @@ public class OrderFragment extends BaseFragment{
 
     public void initRecyclerview(){
         recylerview.setLayoutManager(new GridLayoutManager(getActivity(),1));
-        mAdapter =  new OrderAdapter(mDatas);
+        mAdapter =  new OrderAdapter(getActivity(),mDatas);
         recylerview.setAdapter(mAdapter);
     }
 

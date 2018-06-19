@@ -69,18 +69,17 @@
                     app:ms_hint_color="#b0b0b0"
                     app:ms_text_color="@color/text_dark1" />
 
-                <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
-                    android:id="@+id/spinner_type"
+                <EditText
+                    android:id="@+id/et_price_start"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/DIMEN_64PX"
                     android:layout_marginTop="@dimen/DIMEN_30PX"
+                    android:background="@drawable/bg_search_item"
+                    android:hint="@string/price"
                     android:paddingLeft="@dimen/DIMEN_17PX"
-                    android:textSize="@dimen/DIMEN_28PX"
-                    app:ms_dropdown_height="wrap_content"
-                    app:ms_dropdown_max_height="@dimen/DIMEN_300PX"
-                    app:ms_hint="@string/price"
-                    app:ms_hint_color="#b0b0b0"
-                    app:ms_text_color="@color/text_dark1" />
+                    android:textColor="#b0b0b0"
+                    android:textColorHint="#b0b0b0"
+                    android:textSize="@dimen/DIMEN_28PX" />
 
             </LinearLayout>
 
@@ -151,6 +150,7 @@
                 </LinearLayout>
 
                 <EditText
+                    android:id="@+id/et_card_number"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/DIMEN_64PX"
                     android:layout_marginTop="@dimen/DIMEN_30PX"
@@ -161,19 +161,17 @@
                     android:textColorHint="#b0b0b0"
                     android:textSize="@dimen/DIMEN_28PX" />
 
-
-                <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
-                    android:id="@+id/spinner_status"
+                <EditText
+                    android:id="@+id/et_price_end"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/DIMEN_64PX"
                     android:layout_marginTop="@dimen/DIMEN_30PX"
+                    android:background="@drawable/bg_search_item"
+                    android:hint="@string/price"
                     android:paddingLeft="@dimen/DIMEN_17PX"
-                    android:textSize="@dimen/DIMEN_28PX"
-                    app:ms_dropdown_height="wrap_content"
-                    app:ms_dropdown_max_height="@dimen/DIMEN_300PX"
-                    app:ms_hint="@string/price"
-                    app:ms_hint_color="#b0b0b0"
-                    app:ms_text_color="@color/text_dark1" />
+                    android:textColor="#b0b0b0"
+                    android:textColorHint="#b0b0b0"
+                    android:textSize="@dimen/DIMEN_28PX" />
 
             </LinearLayout>
 
@@ -187,6 +185,7 @@
                 android:orientation="vertical">
 
                 <EditText
+                    android:id="@+id/et_bind_customer"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/DIMEN_64PX"
                     android:background="@drawable/bg_search_item"
@@ -210,6 +209,7 @@
                     app:ms_text_color="@color/text_dark1" />
 
                 <EditText
+                    android:id="@+id/buy_customer"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/DIMEN_64PX"
                     android:layout_marginTop="@dimen/DIMEN_30PX"
@@ -225,6 +225,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tv_search"
             android:layout_width="@dimen/DIMEN_360PX"
             android:layout_height="@dimen/DIMEN_70PX"
             android:layout_gravity="center_horizontal"

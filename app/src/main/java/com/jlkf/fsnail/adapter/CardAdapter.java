@@ -25,10 +25,15 @@ import java.util.List;
 
 public class CardAdapter extends RecyclerView.Adapter {
 
-    private final List<CardBean.DataBean> datas;
+    private List<CardBean.DataBean> datas;
 
     public CardAdapter(List<CardBean.DataBean> mDatas) {
         this.datas = mDatas;
+    }
+
+    public void setDatas(List<CardBean.DataBean> mDatas){
+        this.datas = mDatas;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -48,7 +53,6 @@ public class CardAdapter extends RecyclerView.Adapter {
             }
         });
 
-
         ((CardViewHolder)holder).tv_card_num.setText(datas.get(position).getId()+"");
         ((CardViewHolder)holder).tv_pro_name.setText(datas.get(position).getCardName());
         ((CardViewHolder)holder).tv_pro_type.setText(datas.get(position).getName());
@@ -56,7 +60,7 @@ public class CardAdapter extends RecyclerView.Adapter {
         ((CardViewHolder)holder).tv_buy_customer.setText(datas.get(position).getPayUser());
         ((CardViewHolder)holder).tv_bind_customer.setText(datas.get(position).getIsBandUser()+"");
         ((CardViewHolder)holder).tv_bind_phone.setText(datas.get(position).getIsBandUserPhone()+"");
-        ((CardViewHolder)holder).tv_card_type.setText(datas.get(position).getType()+"");
+        ((CardViewHolder)holder).tv_card_type.setText(Constants.getCardType(datas.get(position).getType()));
         ((CardViewHolder)holder).tv_time.setText(TimeUtil.paserTimeToYM(datas.get(position).getPay_optime()));
     }
 

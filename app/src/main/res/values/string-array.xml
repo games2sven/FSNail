@@ -30,6 +30,12 @@
         <item>@string/status_cancel</item>
     </string-array>
 
+    <string-array name="order_status" >
+        <item>@string/status_paied</item>
+        <item>@string/status_delivered</item>
+        <item>@string/status_complete</item>
+    </string-array>
+
     <string-array name="category" >
         <item>ManicureSPA</item>
         <item>Manicure</item>

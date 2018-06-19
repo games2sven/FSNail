@@ -26,6 +26,43 @@ public class Constants {
         return MyApplication.getInstance().getContext().getString(R.string.status_no_tart);
     }
 
+    ////订单状态码代表意思
+    public static String getOrderStatus(int code){
+        switch (code){
+            case 1:
+                return MyApplication.getInstance().getContext().getString(R.string.status_paied);
+            case 2:
+                return MyApplication.getInstance().getContext().getString(R.string.status_delivered);
+            case 3:
+                return MyApplication.getInstance().getContext().getString(R.string.status_complete);
+            default:
+                return  MyApplication.getInstance().getContext().getString(R.string.status_uncomplete);
+        }
+    }
+
+    ////支付方式
+    public static String getPayWay(int code){
+        switch (code){
+            case 1:
+                return MyApplication.getInstance().getContext().getString(R.string.payway1);
+            case 2:
+                return MyApplication.getInstance().getContext().getString(R.string.payway2);
+            default:
+                return  MyApplication.getInstance().getContext().getString(R.string.payway1);
+        }
+    }
+
+    ////卡券类型
+    public static String getCardType(int code){
+        switch (code){
+            case 1:
+                return MyApplication.getInstance().getContext().getString(R.string.card_type1);
+            case 2:
+                return MyApplication.getInstance().getContext().getString(R.string.card_type2);
+            default:
+                return  MyApplication.getInstance().getContext().getString(R.string.card_type1);
+        }
+    }
 
 
     /*************************************************************************************
@@ -55,7 +92,7 @@ public class Constants {
 
     public static final int CODE_UPDATE_STAFF =35 ;
     public static final int CODE_SEARCH_BOOK =36 ;//查找预约
-
+    public static final int CODE_SEARCH_CARD =37 ;//查找卡券
 
 
 

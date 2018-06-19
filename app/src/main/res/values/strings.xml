@@ -97,6 +97,17 @@
     <string name="status_booked">已预约</string>
     <string name="status_cancel">已取消</string>
 
+    <string name="status_paied">已支付</string>
+    <string name="status_delivered">已发货</string>
+    <string name="status_complete">已完成</string>
+    <string name="status_uncomplete">未完成</string>
+
+    <string name="payway1">信用卡</string>
+    <string name="payway2">卡券</string>
+
+    <string name="card_type1">获赠</string>
+    <string name="card_type2">购买</string>
+
     <string name="keyongjifen">可用积分</string>
     <string name="keyongjifen1">可用积分:</string>
 
