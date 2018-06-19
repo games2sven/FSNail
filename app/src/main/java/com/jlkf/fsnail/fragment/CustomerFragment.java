@@ -31,6 +31,7 @@ import com.jlkf.fsnail.dialog.TwoFunctionPop;
 import com.jlkf.fsnail.net.MyHttpCallback;
 import com.jlkf.fsnail.net.OKHttpUtils;
 import com.jlkf.fsnail.utils.UiUtil;
+import com.jlkf.fsnail.widget.PageIndexView;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import java.util.ArrayList;
@@ -53,6 +54,8 @@ public class CustomerFragment  extends BaseFragment {
     ImageView iv_service_more;
     @Bind(R.id.recylerview)
      RecyclerView recyclerView;
+    @Bind(R.id.page_index_view)
+    PageIndexView page_index_view;
     List<CustomerBean.DataBean> mDatas = new ArrayList<>();
     private CustomerAdapter mAdapter;
 
@@ -95,7 +98,7 @@ public class CustomerFragment  extends BaseFragment {
     String birStart;//生日区间始
     String birEnd;//生日区间终
     int    pageNo=1;//页面
-    int   pageSize=5;//
+    int   pageSize=6;//
 
 
     private void clearConditions(){
@@ -132,6 +135,9 @@ public class CustomerFragment  extends BaseFragment {
                 Log.e("response",response.toString());
                 if (response.getCode()==200){
                     mDatas.addAll(response.getData());
+
+                    page_index_view.setTotalPage(response.getTotalPage());
+                    page_index_view.setCurrentPage(pageNo);
                 }else{
                     UiUtil.showToast(response.getMsg());
                 }
@@ -157,6 +163,29 @@ public class CustomerFragment  extends BaseFragment {
             @Override
             public void onCustomeEditClick(int position) {
                 gotoCustomerEdit(mDatas.get(position));
+            }
+        });
+
+        page_index_view.setOnPageIndexListener(new PageIndexView.OnPageIndexListener() {
+            @Override
+            public void onLastClick() {
+                pageNo--;
+                if (pageNo>0){
+                    getCustomerList();
+                }
+            }
+
+            @Override
+            public void onNextClick() {
+                pageNo++;
+                getCustomerList();
+            }
+
+            @Override
+            public void onIndexClick(int page) {
+                pageNo=page;
+                page_index_view.setCurrentPage(page);
+                getCustomerList();
             }
         });
 

@@ -6,7 +6,6 @@
     >
     <LinearLayout
         android:gravity="center"
-        android:layout_marginTop="@dimen/DIMEN_20PX"
         android:layout_width="match_parent"
         android:layout_height="@dimen/DIMEN_98PX"
         android:background="@drawable/service_title_bg"
@@ -34,30 +33,39 @@
         <TextView
             style="@style/service_title_sty"
             android:text="@string/hint_customer_phone"
+            android:layout_weight="1.5"
             />
         <TextView
             style="@style/service_title_sty"
             android:text="@string/text_type"
+            android:layout_weight="0.8"
             />
         <TextView
             style="@style/service_title_sty"
             android:text="@string/text_service"
+            android:layout_weight="1.5"
             />
         <TextView
             style="@style/service_title_sty"
             android:text="@string/text_brand"
+            android:layout_weight="0.8"
             />
-        <TextView
-            style="@style/service_title_sty"
-            android:text="@string/text_status"
-            />
+
         <TextView
             style="@style/service_title_sty"
             android:text="@string/tips_price"
+            android:layout_weight="0.8"
             />
         <TextView
+            android:lines="2"
+            android:layout_weight="0.8"
             style="@style/service_title_sty"
             android:text="@string/tv_last_price"
+            />
+
+        <TextView
+            style="@style/service_title_sty"
+            android:text="@string/text_status"
             />
         <TextView
             style="@style/service_title_sty"

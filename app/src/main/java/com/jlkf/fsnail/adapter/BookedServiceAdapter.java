@@ -44,7 +44,7 @@ public class BookedServiceAdapter extends RecyclerView.Adapter<BookedServiceView
 
         holder.nameView.setText(serviceBean.getCustomerName());
         holder.nikeNameView.setText(serviceBean.getUName());
-        holder.timeView.setText(serviceBean.getStartTime());
+        holder.timeView.setText(serviceBean.getAppointTime());
         holder.brandView.setText(serviceBean.getBrand());
         holder.categoryView.setText(serviceBean.getType());
         holder.phoneView.setText(serviceBean.getCustomerPhone());
@@ -54,47 +54,30 @@ public class BookedServiceAdapter extends RecyclerView.Adapter<BookedServiceView
         switch (serviceBean.getStatus()){
             case 1:
                 stutatext=context.getString(R.string.status_no_tart);
-                holder.statusView.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
-                holder.statusView.setTextColor(Color.parseColor("#29d7f1"));
                 break;
             case 2:
-                holder.statusView.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
-                holder.statusView.setTextColor(Color.parseColor("#94c42e"));
                 stutatext=context.getString(R.string.status_progress);
                 break;
             case 3:
                 stutatext=context.getString(R.string.status_finish);
-                holder.statusView.setTextColor(Color.parseColor("#7d7d7d"));
                 break;
             case 4:
                 stutatext=context.getString(R.string.status_booked);
-                holder.statusView.setTextColor(Color.parseColor("#7d7d7d"));
+
                 break;
             case 5:
                 stutatext=context.getString(R.string.status_cancel);
-                holder.statusView.setTextColor(Color.parseColor("#7d7d7d"));
                 break;
-
-
         }
-
+        holder.statusView.setTextColor(Color.parseColor("#7d7d7d"));
         holder.statusView.setText(stutatext);
 
-        holder.statusView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (listener!=null){
-                    listener.statusClick(serviceBean);
-                }
-            }
-        });
 
         holder.nameView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 if (listener!=null){
-
-                    listener.onCustomNameLongClick(v,datas.get(position).getCustomerPhone());
+                    listener.onCustomNameLongClick(v,datas.get(position).getCustomerName());
                 }
                 return false;
             }
@@ -106,6 +89,16 @@ public class BookedServiceAdapter extends RecyclerView.Adapter<BookedServiceView
             public void onClick(View v) {
                 if (listener!=null){
                     listener.editClick(v,datas.get(position));
+
+                }
+            }
+        });
+
+        holder.addView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener!=null){
+                    listener.addServiceClick(datas.get(position));
 
                 }
             }
@@ -129,7 +122,7 @@ public class BookedServiceAdapter extends RecyclerView.Adapter<BookedServiceView
 
         void  editClick(View view, BookedServiceBean.DataBean serviceBean);
 
-        void statusClick(BookedServiceBean.DataBean serviceBean);
+        void addServiceClick(BookedServiceBean.DataBean serviceBean);
     }
 }
 

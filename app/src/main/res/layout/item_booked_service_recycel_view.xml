@@ -35,18 +35,21 @@
 
         />
     <TextView
+        android:layout_weight="1.5"
         android:id="@+id/item_service_phone"
         android:text="903929321xxx"
         style="@style/item_service_sty"
 
         />
     <TextView
+        android:layout_weight="0.8"
         android:id="@+id/item_service_category"
         android:text="fs1"
         style="@style/item_service_sty"
 
         />
     <TextView
+        android:layout_weight="1.5"
         android:id="@+id/item_service_service"
         android:text="Pedicure spa"
         style="@style/item_service_sty"
@@ -55,6 +58,7 @@
     <TextView
         android:id="@+id/item_service_band"
         android:text="fs1"
+        android:layout_weight="0.8"
         style="@style/item_service_sty"
 
         />

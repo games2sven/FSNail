@@ -47,4 +47,5 @@ public class UrlConstants {
 
     public static String ADD_SHOPCAR = SERVER_API + "shopCart/addShopCart";//添加购物车
 
+    public static String UPDATE_APPOINT=SERVER_API +"service/updateAppoint";
 }

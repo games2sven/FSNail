@@ -50,7 +50,7 @@
                    android:layout_weight="1"
                    android:textSize="@dimen/DIMEN_28PX"
                    android:textColor="#333333"
-                   android:hint="@string/start_date"
+                   android:hint="@string/book_date"
                    />
 
                <ImageView
@@ -126,7 +126,7 @@
                    android:layout_weight="1"
                    android:textSize="@dimen/DIMEN_28PX"
                    android:textColor="#333333"
-                   android:hint="@string/end_date"
+                   android:hint="@string/book_date"
                    />
 
                <ImageView

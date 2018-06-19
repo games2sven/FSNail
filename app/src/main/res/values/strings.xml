@@ -202,7 +202,7 @@
     <string name="tv_is_app_user">是否app\n用户</string>
     <string name="tv_customer_email">顾客邮箱</string>
     <string name="tv_start_time">开始时间</string>
-    <string name="tips_price">\n价格</string>
+    <string name="tips_price">价格</string>
     <string name="tv_last_price">最终\n价格</string>
     <string name="tv_get">获取</string>
     <string name="tv_total_price">总价格</string>
@@ -266,7 +266,7 @@
     <string name="please_input_ability_level">请输入能力水平</string>
     <string name="please_input_password">请输入密码</string>
     <string name="txt_check_book">查看预约</string>
-
+    <string name="tv_add_success">添加成功</string>
 
 
 </resources>

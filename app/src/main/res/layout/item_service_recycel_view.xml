@@ -56,10 +56,12 @@
     <TextView
         android:id="@+id/item_service_band"
         android:text="fs1"
+        android:layout_weight="0.8"
         style="@style/item_service_sty"
 
         />
     <TextView
+        android:layout_weight="0.8"
         android:id="@+id/item_service_origin_price"
         android:text="€20"
         android:visibility="gone"
@@ -67,6 +69,7 @@
 
         />
     <TextView
+        android:layout_weight="0.8"
         android:id="@+id/item_service_final_price"
         android:text="€20"
         android:visibility="gone"

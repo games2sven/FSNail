@@ -35,6 +35,7 @@ import com.jlkf.fsnail.dialog.SearchServiceDialog;
 import com.jlkf.fsnail.net.MyHttpCallback;
 import com.jlkf.fsnail.net.OKHttpUtils;
 import com.jlkf.fsnail.utils.UiUtil;
+import com.jlkf.fsnail.widget.PageIndexView;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import java.util.ArrayList;
@@ -64,6 +65,8 @@ public class ServiceFragment extends BaseFragment {
     ImageView iv_service_more;
     @Bind(R.id.shop_cart)
     View shop_cart;
+    @Bind(R.id.page_index_view)
+    PageIndexView page_index_view;
     MainActivity mainActivity;
     private String startTime,endTime,uName,customerName,customerPhone,type,service,brand,status;
     //标题:
@@ -122,6 +125,29 @@ public class ServiceFragment extends BaseFragment {
         tv_service_customer_name.setTextColor(Color.parseColor("#94c42e"));
         tv_service_workers_nickname.setTextColor(Color.parseColor("#94c42e"));
         shop_cart.setEnabled(false);
+
+        page_index_view.setOnPageIndexListener(new PageIndexView.OnPageIndexListener() {
+            @Override
+            public void onLastClick() {
+                pageNo--;
+                if (pageNo>0){
+                    getServiceList();
+                }
+            }
+
+            @Override
+            public void onNextClick() {
+                pageNo++;
+                getServiceList();
+            }
+
+            @Override
+            public void onIndexClick(int page) {
+                pageNo=page;
+                page_index_view.setCurrentPage(page);
+                getServiceList();
+            }
+        });
     }
 
     List<String> list = new ArrayList<>();
@@ -184,21 +210,6 @@ public class ServiceFragment extends BaseFragment {
 
     }
 
-    private void addList() {
-        list.clear();
-        list.add("Kiki");
-        list.add("Amy");
-        list.add("Susa");
-        list.add("Sara");
-        list.add("Kiki");
-        list.add("Amy");
-        list.add("Susa");
-        list.add("Sara");
-        list.add("Kiki");
-        list.add("Amy");
-        list.add("Susa");
-        list.add("Sara");
-    }
 
     @Override
     protected boolean isBindEventBusHere() {
@@ -348,7 +359,8 @@ public class ServiceFragment extends BaseFragment {
 
                     initAdapter();
 
-
+                    page_index_view.setTotalPage(totalPage);
+                    page_index_view.setCurrentPage(pageNo);
                 }
 
             }

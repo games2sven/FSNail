@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
     
     <LinearLayout
-        android:background="@drawable/login_input_white_bg"
+        android:background="@drawable/corner_white"
         android:layout_width="match_parent"
         android:layout_height="@dimen/DIMEN_100PX"
         android:orientation="horizontal"
@@ -86,15 +86,17 @@
         </LinearLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_marginTop="@dimen/DIMEN_20PX"
+        android:background="@drawable/corner_white"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
     <include
         layout="@layout/layout_service_search_result_title"/>
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/service_recycleview_bg"
-        android:orientation="vertical">
 
         <android.support.v7.widget.RecyclerView
 
@@ -103,68 +105,18 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <LinearLayout
 
+
+        <com.jlkf.fsnail.widget.PageIndexView
+            android:layout_marginTop="@dimen/DIMEN_40PX"
+            android:id="@+id/page_index_view"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/DIMEN_48PX"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/DIMEN_50PX"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-
-            <ImageView
-                android:layout_width="@dimen/DIMEN_48PX"
-                android:layout_height="@dimen/DIMEN_48PX"
-                android:src="@mipmap/page_left" />
-
-            <TextView
-                android:layout_width="@dimen/DIMEN_48PX"
-                android:layout_height="@dimen/DIMEN_48PX"
-                android:layout_marginLeft="@dimen/DIMEN_20PX"
-                android:background="@drawable/index_number_select_bg"
-                android:gravity="center"
-                android:text="1"
-                android:textColor="#fff" />
-
-            <TextView
-                android:layout_width="@dimen/DIMEN_48PX"
-                android:layout_height="@dimen/DIMEN_48PX"
-                android:layout_marginLeft="@dimen/DIMEN_20PX"
-                android:background="@drawable/index_number_unselect_bg"
-                android:gravity="center"
-                android:text="2"
-                android:textColor="#333333" />
-
-            <TextView
-                android:layout_width="@dimen/DIMEN_48PX"
-                android:layout_height="@dimen/DIMEN_48PX"
-                android:layout_marginLeft="@dimen/DIMEN_20PX"
-                android:background="@drawable/index_number_unselect_bg"
-                android:gravity="center"
-                android:text="3"
-                android:textColor="#333333" />
-
-            <TextView
-                android:layout_width="@dimen/DIMEN_48PX"
-                android:layout_height="@dimen/DIMEN_48PX"
-                android:layout_marginLeft="@dimen/DIMEN_20PX"
-                android:background="@drawable/index_number_unselect_bg"
-                android:gravity="center"
-                android:text="4"
-                android:textColor="#333333" />
-
-
-            <ImageView
-                android:layout_width="@dimen/DIMEN_48PX"
-                android:layout_height="@dimen/DIMEN_48PX"
-                android:layout_marginLeft="@dimen/DIMEN_20PX"
-                android:src="@mipmap/page_right" />
-
-
-        </LinearLayout>
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
         <RelativeLayout
+            android:background="@drawable/corner_white"
+            android:layout_marginTop="@dimen/DIMEN_20PX"
             android:layout_width="match_parent"
             android:layout_height="@dimen/DIMEN_176PX">
 
@@ -209,6 +161,5 @@
                 android:textSize="@dimen/DIMEN_30PX" />
 
         </RelativeLayout>
-    </LinearLayout>
 
 </LinearLayout>

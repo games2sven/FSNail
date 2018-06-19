@@ -32,6 +32,7 @@
                 >
 
                 <LinearLayout
+                    android:id="@+id/ll_start_date"
                     android:gravity="center_vertical"
                     android:background="@drawable/bg_search_item"
                     android:layout_width="match_parent"
@@ -40,6 +41,7 @@
                     >
 
                     <TextView
+                        android:id="@+id/tv_start_date"
                         android:paddingLeft="@dimen/DIMEN_17PX"
                         android:gravity="center_vertical"
                         android:layout_width="0dp"
@@ -47,7 +49,7 @@
                         android:layout_weight="1"
                         android:textSize="@dimen/DIMEN_28PX"
                         android:textColor="#333333"
-                        android:text="2018/07/22"
+                        android:hint="@string/book_date"
                         />
 
                     <ImageView
@@ -89,6 +91,7 @@
 
 
                 <EditText
+                    android:id="@+id/tv_staff_name"
                     android:layout_marginTop="@dimen/DIMEN_30PX"
                     android:background="@drawable/bg_search_item"
                     android:layout_width="match_parent"
@@ -101,13 +104,16 @@
                 <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
                     android:layout_width="match_parent"
                     android:gravity="center_vertical"
-                    app:ms_dropdown_height="wrap_content"
-                    app:ms_text_color="@color/text_dark1"
-                    android:hint="@string/text_brand"
                     android:layout_marginTop="@dimen/DIMEN_30PX"
                     android:layout_height="@dimen/DIMEN_64PX"
-                    app:ms_hint_color="@color/text_dark1"
                     android:textSize="@dimen/DIMEN_28PX"
+                    android:id="@+id/spinner_brand"
+
+                    app:ms_dropdown_height="wrap_content"
+                    app:ms_dropdown_max_height="@dimen/DIMEN_200PX"
+                    app:ms_hint="@string/text_brand"
+                    app:ms_hint_color="#b0b0b0"
+                    app:ms_text_color="@color/text_dark1"
                     />
             </LinearLayout>
             <TextView
@@ -129,6 +135,7 @@
                 >
 
                 <LinearLayout
+                    android:id="@+id/ll_end_date"
                     android:gravity="center_vertical"
                     android:background="@drawable/bg_search_item"
                     android:layout_width="match_parent"
@@ -137,6 +144,7 @@
                     >
 
                     <TextView
+                        android:id="@+id/tv_end_date"
                         android:paddingLeft="@dimen/DIMEN_17PX"
                         android:gravity="center_vertical"
                         android:layout_width="0dp"
@@ -144,7 +152,7 @@
                         android:layout_weight="1"
                         android:textSize="@dimen/DIMEN_28PX"
                         android:textColor="#333333"
-                        android:text="2018/07/22"
+                        android:hint="@string/book_date"
                         />
 
                     <ImageView
@@ -184,26 +192,31 @@
                 </LinearLayout>
 
                 <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
+                    android:id="@+id/spinner_type"
                     android:layout_width="match_parent"
                     android:gravity="center_vertical"
                     app:ms_dropdown_height="wrap_content"
-                    app:ms_text_color="@color/text_dark1"
-                    android:hint="@string/text_type"
                     android:layout_marginTop="@dimen/DIMEN_30PX"
                     android:layout_height="@dimen/DIMEN_64PX"
-                    app:ms_hint_color="@color/text_dark1"
+                    app:ms_hint="@string/text_type"
+                    app:ms_hint_color="#b0b0b0"
+                    app:ms_text_color="@color/text_dark1"
                     android:textSize="@dimen/DIMEN_28PX"
                     />
                 <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
+                    android:id="@+id/spinner_status"
                     android:layout_width="match_parent"
                     android:gravity="center_vertical"
-                    app:ms_dropdown_height="wrap_content"
-                    app:ms_text_color="@color/text_dark1"
                     android:hint="@string/text_status"
                     android:layout_marginTop="@dimen/DIMEN_30PX"
                     android:layout_height="@dimen/DIMEN_64PX"
-                    app:ms_hint_color="@color/text_dark1"
                     android:textSize="@dimen/DIMEN_28PX"
+
+                    app:ms_dropdown_height="wrap_content"
+                    app:ms_dropdown_max_height="@dimen/DIMEN_200PX"
+                    app:ms_hint="@string/text_status"
+                    app:ms_hint_color="#b0b0b0"
+                    app:ms_text_color="@color/text_dark1"
                     />
             </LinearLayout>
             <LinearLayout
@@ -217,6 +230,8 @@
                 >
 
                 <EditText
+                    android:inputType="text"
+                    android:id="@+id/tv_customer_name"
                     android:background="@drawable/bg_search_item"
                     android:layout_width="match_parent"
                     android:hint="@string/customer_name"
@@ -226,6 +241,8 @@
                     android:paddingLeft="@dimen/DIMEN_17PX"
                     android:layout_height="@dimen/DIMEN_64PX" />
                 <EditText
+                    android:inputType="phone"
+                    android:id="@+id/tv_customer_phone"
                     android:layout_marginTop="@dimen/DIMEN_30PX"
                     android:background="@drawable/bg_search_item"
                     android:layout_width="match_parent"
@@ -238,19 +255,22 @@
                 <com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner
                     android:layout_width="match_parent"
                     android:gravity="center_vertical"
-                    app:ms_dropdown_height="wrap_content"
-                    app:ms_text_color="@color/text_dark1"
-                    android:hint="@string/text_service"
                     android:layout_marginTop="@dimen/DIMEN_30PX"
                     android:layout_height="@dimen/DIMEN_64PX"
-                    app:ms_hint_color="@color/text_dark1"
                     android:textSize="@dimen/DIMEN_28PX"
+                    android:id="@+id/spinner_service"
+                    app:ms_dropdown_height="wrap_content"
+                    app:ms_dropdown_max_height="@dimen/DIMEN_200PX"
+                    app:ms_hint="@string/text_service"
+                    app:ms_hint_color="#b0b0b0"
+                    app:ms_text_color="@color/text_dark1"
                     />
             </LinearLayout>
 
 
         </LinearLayout>
         <TextView
+            android:id="@+id/btn_search"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/DIMEN_27PX"
             android:gravity="center"
@@ -303,7 +323,7 @@
     </LinearLayout>
 
     <include
-        layout="@layout/layout_service_title"/>
+        layout="@layout/layout_service_booked_title"/>
 
 
     <android.support.v7.widget.RecyclerView

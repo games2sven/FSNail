@@ -13,12 +13,14 @@
 
 
         <ImageView
+            android:visibility="gone"
             android:id="@+id/page_last"
             android:src="@mipmap/page_left"
             android:layout_width="@dimen/DIMEN_48PX"
             android:layout_height="@dimen/DIMEN_48PX" />
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/page_1"
             android:layout_marginLeft="@dimen/DIMEN_20PX"
             android:layout_width="@dimen/DIMEN_48PX"
@@ -29,6 +31,7 @@
             android:textColor="#fff"
             />
         <TextView
+            android:visibility="gone"
             android:id="@+id/page_2"
             android:layout_marginLeft="@dimen/DIMEN_20PX"
             android:layout_width="@dimen/DIMEN_48PX"
@@ -39,6 +42,7 @@
             android:textColor="#333333"
             />
         <TextView
+            android:visibility="gone"
             android:id="@+id/page_3"
             android:layout_marginLeft="@dimen/DIMEN_20PX"
             android:layout_width="@dimen/DIMEN_48PX"
@@ -49,6 +53,7 @@
             android:textColor="#333333"
             />
         <TextView
+            android:visibility="gone"
             android:id="@+id/page_4"
             android:layout_marginLeft="@dimen/DIMEN_20PX"
             android:layout_width="@dimen/DIMEN_48PX"
@@ -61,6 +66,7 @@
 
 
         <ImageView
+            android:visibility="gone"
             android:id="@+id/page_next"
             android:layout_marginLeft="@dimen/DIMEN_20PX"
             android:src="@mipmap/page_right"

@@ -22,6 +22,7 @@ import com.jlkf.fsnail.dialog.TwoFunctionPop;
 import com.jlkf.fsnail.net.MyHttpCallback;
 import com.jlkf.fsnail.net.OKHttpUtils;
 import com.jlkf.fsnail.utils.UiUtil;
+import com.jlkf.fsnail.widget.PageIndexView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,6 +43,9 @@ public class StaffManagerFragment  extends BaseFragment{
     RecyclerView recyclerView;
     @Bind(R.id.iv_service_more)
     ImageView iv_service_more;
+    @Bind(R.id.page_index_view)
+    PageIndexView page_index_view;
+
     private StaffManagerAdapter mAdapter;
     private List<StaffManagerBean.DataBean > mDatas=new ArrayList<>();
     private boolean isShowMore;
@@ -85,6 +89,29 @@ public class StaffManagerFragment  extends BaseFragment{
             @Override
             public void onClickDetail(StaffManagerBean.DataBean  dataBean) {
                    activity.gotoStaffDetail(dataBean);
+            }
+        });
+
+        page_index_view.setOnPageIndexListener(new PageIndexView.OnPageIndexListener() {
+            @Override
+            public void onLastClick() {
+                pageNo--;
+                if (pageNo>0){
+                    getStaffManagerList();
+                }
+            }
+
+            @Override
+            public void onNextClick() {
+                pageNo++;
+                getStaffManagerList();
+            }
+
+            @Override
+            public void onIndexClick(int page) {
+                pageNo=page;
+                page_index_view.setCurrentPage(page);
+                getStaffManagerList();
             }
         });
 
@@ -167,6 +194,8 @@ addParams(params,"pageSize",pageSize+"");
                 mDatas.clear();
                 if (response.getCode()==200){
                     mDatas.addAll(response.getData());
+                    page_index_view.setTotalPage(response.getTotalPage());
+                    page_index_view.setCurrentPage(pageNo);
                 }else{
                     UiUtil.showToast(response.getMsg());
                 }
