@@ -39,7 +39,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tv_date"
+                        android:id="@+id/tv_date_start"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -50,6 +50,7 @@
                         android:textSize="@dimen/DIMEN_28PX" />
 
                     <ImageView
+                        android:id="@+id/img_date_start"
                         android:layout_width="@dimen/DIMEN_34PX"
                         android:layout_height="@dimen/DIMEN_34PX"
                         android:layout_marginRight="@dimen/DIMEN_20PX"
@@ -133,6 +134,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tv_date_end"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -143,6 +145,7 @@
                         android:textSize="@dimen/DIMEN_28PX" />
 
                     <ImageView
+                        android:id="@+id/img_date_end"
                         android:layout_width="@dimen/DIMEN_34PX"
                         android:layout_height="@dimen/DIMEN_34PX"
                         android:layout_marginRight="@dimen/DIMEN_20PX"

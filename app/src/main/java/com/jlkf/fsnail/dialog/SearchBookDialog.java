@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -74,6 +75,7 @@ public class SearchBookDialog implements View.OnClickListener{
         window.setBackgroundDrawable(new BitmapDrawable());
         window.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT);
         window.setGravity(Gravity.BOTTOM|Gravity.RIGHT);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
 
         spinner_type = (TextViewSpinner)mView.findViewById(R.id.spinner_type);
         spinner_status = (TextViewSpinner)mView.findViewById(R.id.spinner_status);
@@ -147,16 +149,16 @@ public class SearchBookDialog implements View.OnClickListener{
         Map<String,String> params = new HashMap<>();
 
         if(!TextUtils.isEmpty(tv_date_start.getText().toString().trim())){
-            params.put("startDate",tv_date_start.getText().toString().trim().replace("/","-"));
+            params.put("startDate",tv_date_start.getText().toString().trim());
         }
         if(!TextUtils.isEmpty(tv_date_end.getText().toString().trim())){
-            params.put("endDate",tv_date_end.getText().toString().trim().replace("/","-"));
+            params.put("endDate",tv_date_end.getText().toString().trim());
         }
         if(!TextUtils.isEmpty(tv_time_start.getText().toString().trim())){
-            params.put("startTime",tv_time_start.getText().toString().trim().replace("/","-"));
+            params.put("startTime",tv_time_start.getText().toString().trim());
         }
         if(!TextUtils.isEmpty(tv_time_end.getText().toString().trim())){
-            params.put("endTime",tv_time_end.getText().toString().trim().replace("/","-"));
+            params.put("endTime",tv_time_end.getText().toString().trim());
         }
 
         if(!TextUtils.isEmpty(et_customer.getText().toString().trim())){

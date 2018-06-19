@@ -11,10 +11,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.jlkf.fsnail.R;
+import com.jlkf.fsnail.bean.AddShopCarBean;
 import com.jlkf.fsnail.bean.EventCenter;
 import com.jlkf.fsnail.constants.Constants;
 
 import org.greenrobot.eventbus.EventBus;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/12/12 0012.
@@ -29,8 +32,11 @@ public class ClearShopCarDialog implements View.OnClickListener{
     private Button btn_disagree;
     private Button btn_agree;
 
-    public ClearShopCarDialog(Context context){
+    List<AddShopCarBean.DataBean> mDatas;
+
+    public ClearShopCarDialog(Context context, List<AddShopCarBean.DataBean> datas){
         mContex = context;
+        mDatas = datas;
     }
 
     public void showDialog(){

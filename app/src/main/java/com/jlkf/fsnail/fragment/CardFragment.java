@@ -148,7 +148,6 @@ public class CardFragment extends BaseFragment{
             pop.setOnMoreClickListener(new SingleFunctionPop.OnMoreClickListener() {
                 @Override
                 public void searchAll() {//搜索所有
-                    Toast.makeText(getActivity(),"搜索所有",Toast.LENGTH_SHORT).show();
                     showSearchDialog();
                 }
             });

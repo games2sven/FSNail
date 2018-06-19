@@ -21,6 +21,7 @@ import com.jlkf.fsnail.constants.Constants;
 import com.jlkf.fsnail.constants.UrlConstants;
 import com.jlkf.fsnail.net.MyHttpCallback;
 import com.jlkf.fsnail.net.OKHttpUtils;
+import com.jlkf.fsnail.utils.TimeUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -118,12 +119,12 @@ public class CardDetailFragment extends BaseFragment implements View.OnClickList
             tv_discount.setText(mDatas.get(0).getDiscount()+"");
             tv_voucher.setText(mDatas.get(0).getUse_card_price()+"");
             tv_last_price.setText(mDatas.get(0).getPrice()-mDatas.get(0).getUse_card_price()+"");
-            tv_buy_time.setText(mDatas.get(0).getPay_optime()+"");
+            tv_buy_time.setText(TimeUtil.paserTimeToYM(mDatas.get(0).getPay_optime()));
             tv_buy_name.setText(mDatas.get(0).getPayUser());
             tv_buy_phone.setText(mDatas.get(0).getPayUserPhone());
             et_bind_name.setText(mDatas.get(0).getIsBandUser());
             et_bind_phone.setText(mDatas.get(0).getIsBandUserPhone());
-            tv_binding_time.setText(mDatas.get(0).getBand_optime()+"");
+            tv_binding_time.setText(TimeUtil.paserTimeToYM(mDatas.get(0).getBand_optime()));
             tv_card_type.setText(mDatas.get(0).getType()+"");
             tv_use_price.setText(mDatas.get(0).getHava_use_price()+"");
             tv_left_price.setText(mDatas.get(0).getRemain_price()+"");
@@ -131,7 +132,6 @@ public class CardDetailFragment extends BaseFragment implements View.OnClickList
     }
 
     public void loadData(){
-        Log.i("Sven","loadData");
         Map<String,String> params = new HashMap<String,String>();
         params.put("id",mCardBean.getId()+"");
         Log.i("Sven","carddetail :"+OKHttpUtils.getMapParamStr(params));
@@ -140,7 +140,6 @@ public class CardDetailFragment extends BaseFragment implements View.OnClickList
 
             @Override
             public void onSuccess(CardDetailBean response) {
-                Log.i("Sven","response ::; "+response.getCode());
                 if(response.getCode() == 200){
                     mDatas = response.getData();
                     initView();
@@ -163,7 +162,7 @@ public class CardDetailFragment extends BaseFragment implements View.OnClickList
                 ((MainActivity)getActivity()).popBackFragment(6);
                 break;
             case R.id.tv_check:
-                EventBus.getDefault().post(new EventCenter(Constants.CODE_CHECK_CARD_CONSUME));
+                EventBus.getDefault().post(new EventCenter(Constants.CODE_CHECK_CARD_CONSUME,mCardBean.getId()+""));
                 break;
         }
     }

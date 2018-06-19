@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +17,14 @@ import com.jlkf.fsnail.adapter.ConsumeAdapter;
 import com.jlkf.fsnail.base.BaseFragment;
 import com.jlkf.fsnail.bean.ConsumeBean;
 import com.jlkf.fsnail.bean.EventCenter;
-
-import org.greenrobot.eventbus.EventBus;
+import com.jlkf.fsnail.constants.UrlConstants;
+import com.jlkf.fsnail.net.MyHttpCallback;
+import com.jlkf.fsnail.net.OKHttpUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -28,7 +32,7 @@ import butterknife.ButterKnife;
 
 public class CardConsumeFragment extends BaseFragment implements View.OnClickListener{
 
-    List<ConsumeBean> mDatas =new ArrayList<>();
+    List<ConsumeBean.DataBean> mDatas =new ArrayList<>();
 
     @Bind(R.id.recylerview)
     RecyclerView recylerview;
@@ -45,16 +49,32 @@ public class CardConsumeFragment extends BaseFragment implements View.OnClickLis
         ButterKnife.bind(this,view);
 
         Bundle bundle = getArguments();
-
-        for(int i = 0;i<7;i++){
-            ConsumeBean bean = new ConsumeBean();
-            mDatas.add(bean);
-        }
-
+        String cardid = bundle.getString("cardId");
+        loadData(cardid);
         initView();
-        initRecyclerview();
         return view;
     }
+
+    public void loadData(String cardId){
+        Map<String,String> params = new HashMap<String,String>();
+        params.put("cardId",cardId);
+        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.CARD_CONSUME, this, params, new MyHttpCallback<ConsumeBean>() {
+            @Override
+            public void onSuccess(ConsumeBean response) {
+                Log.i("Sven","response "+response.getCode());
+                if(response.getCode() == 200){
+                    mDatas = response.getData();
+                    initRecyclerview();
+                }
+            }
+
+            @Override
+            public void onFailure(String errorMsg) {
+
+            }
+        });
+    }
+
 
     @Override
     protected boolean isBindEventBusHere() {

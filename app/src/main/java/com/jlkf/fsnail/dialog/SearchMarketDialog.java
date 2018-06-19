@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.jlkf.fsnail.MyApplication;
@@ -73,6 +74,7 @@ public class SearchMarketDialog implements View.OnClickListener{
         window.setBackgroundDrawable(new BitmapDrawable());
         window.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT);
         window.setGravity(Gravity.BOTTOM|Gravity.RIGHT);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
 
          brandBeanList = MyApplication.getInstance().getMenuBean().getData().getBrand();
          typeList = MyApplication.getInstance().getMenuBean().getData().getType();

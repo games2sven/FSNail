@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -69,6 +70,7 @@ public class SearchOrderDialog implements View.OnClickListener{
         window.setBackgroundDrawable(new BitmapDrawable());
         window.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT);
         window.setGravity(Gravity.BOTTOM | Gravity.RIGHT);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
 
         tests = context.getResources().getStringArray(R.array.order_status);
         datas = Arrays.asList(tests);
@@ -126,14 +128,15 @@ public class SearchOrderDialog implements View.OnClickListener{
                 });
                 break;
             case R.id.tv_search:
+                dissmiss();
                 Map<String, String> params = new HashMap<>();
 
                 if(!TextUtils.isEmpty(tv_date_start.getText().toString())){
-                    params.put("startTime", String.valueOf(TimeUtil.stringToLong(tv_date_start.getText().toString(),"yyyy/MM/dd")));
+                    params.put("startTime", tv_date_start.getText().toString().trim());
                 }
 
                 if(!TextUtils.isEmpty(tv_date_end.getText().toString())){
-                    params.put("endTime",String.valueOf(TimeUtil.stringToLong(tv_date_end.getText().toString(),"yyyy/MM/dd")));
+                    params.put("endTime",tv_date_end.getText().toString().trim());
                 }
 
                 if(!TextUtils.isEmpty(et_phone.getText().toString().trim())){
@@ -149,7 +152,6 @@ public class SearchOrderDialog implements View.OnClickListener{
                 }
 
                 EventBus.getDefault().post(new EventCenter(Constants.CODE_SEARCH_ORDERLIST,params));
-
                 break;
         }
     }

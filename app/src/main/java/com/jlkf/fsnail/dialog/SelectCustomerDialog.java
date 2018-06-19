@@ -39,6 +39,7 @@ public class SelectCustomerDialog implements View.OnClickListener{
     private ImageView dialog_cancel;
 
     List<ServiceMenuBean.DataBean.CustomerBean> datas;
+    ServiceMenuBean.DataBean.CustomerBean selectedCustomer;
     MyAdapter adapter;
 
     public SelectCustomerDialog(Context context) {
@@ -59,6 +60,7 @@ public class SelectCustomerDialog implements View.OnClickListener{
         window.setGravity(Gravity.CENTER);
 
         datas = MyApplication.getInstance().getMenuBean().getData().getCustomer();
+        selectedCustomer = datas.get(0);
 
         list_choose = (ListView)mView.findViewById(R.id.list_choose);
         adapter = new MyAdapter();
@@ -67,6 +69,7 @@ public class SelectCustomerDialog implements View.OnClickListener{
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 adapter.selectItem(i);
+                selectedCustomer = datas.get(i);
             }
         });
 
@@ -89,7 +92,7 @@ public class SelectCustomerDialog implements View.OnClickListener{
         switch (view.getId()){
             case R.id.text_ok:
                 dissmiss();
-                EventBus.getDefault().post(new EventCenter(Constants.CODE_SELECT_CUSTOMER_RETURN));
+                EventBus.getDefault().post(new EventCenter(Constants.CODE_SELECT_CUSTOMER_RETURN,selectedCustomer));
                 break;
             case R.id.dialog_cancel:
                 dissmiss();

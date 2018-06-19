@@ -16,9 +16,11 @@ import com.jlkf.fsnail.R;
 import com.jlkf.fsnail.activity.MainActivity;
 import com.jlkf.fsnail.adapter.MarketAdapter;
 import com.jlkf.fsnail.base.BaseFragment;
+import com.jlkf.fsnail.bean.AddShopCarBean;
 import com.jlkf.fsnail.bean.EventCenter;
 import com.jlkf.fsnail.bean.GoodsBean;
 import com.jlkf.fsnail.bean.OrderBean;
+import com.jlkf.fsnail.bean.ServiceMenuBean;
 import com.jlkf.fsnail.constants.Constants;
 import com.jlkf.fsnail.constants.UrlConstants;
 import com.jlkf.fsnail.dialog.ClearShopCarDialog;
@@ -49,6 +51,7 @@ public class MarketFragment extends BaseFragment{
     ImageView iv_service_more;
 
     private  MarketAdapter adapter;
+    GoodsBean.DataBean selectedGood;
 
     //标题:
     @Nullable
@@ -73,12 +76,13 @@ public class MarketFragment extends BaseFragment{
         Object object = eventCenter.getData();
         switch (eventCenter.getEventCode()){
             case Constants.CODE_MARKET_ADD_SHOPCAR:
+                selectedGood = (GoodsBean.DataBean)object;
                 SelectCustomerDialog customerDialog = new SelectCustomerDialog(getActivity());
                 customerDialog.showDiaglog();
                 break;
             case Constants.CODE_SELECT_CUSTOMER_RETURN:
-                ClearShopCarDialog dialog = new ClearShopCarDialog(getActivity());
-                dialog.showDialog();
+                ServiceMenuBean.DataBean.CustomerBean selectedCustomer = (ServiceMenuBean.DataBean.CustomerBean)object;
+                add2ShopCar(selectedCustomer.getId()+"",selectedGood.getId()+"");
                 break;
             case Constants.CODE_CLEAR_ACCOUNT_SHOPCAR://清空购物车
                 break;
@@ -125,6 +129,30 @@ public class MarketFragment extends BaseFragment{
             }
         });
     }
+
+    public void add2ShopCar(String uid,String gid){
+        Map<String,String> params = new HashMap<>();
+        params.put("uid",uid);
+        params.put("gid",gid);
+        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.ADD_SHOPCAR, this, params, new MyHttpCallback<AddShopCarBean>() {
+
+            @Override
+            public void onSuccess(AddShopCarBean response) {
+                if(response.getCode() == 200){
+                    if(response.getData() != null){//不位空，，先清空购物车
+                        ClearShopCarDialog dialog = new ClearShopCarDialog(getActivity(),response.getData());
+                        dialog.showDialog();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(String errorMsg) {
+
+            }
+        });
+    }
+
 
     public void initRecyclerview(){
         recylerview.setLayoutManager(new GridLayoutManager(getActivity(),1));

@@ -47,6 +47,13 @@ public class MarketAdapter extends RecyclerView.Adapter {
                 EventBus.getDefault().post(new EventCenter(Constants.CODE_MARKET_ADD_SHOPCAR,datas.get(position)));
             }
         });
+
+        ((MarketViewHolder)holder).tv_num.setText(datas.get(position).getId()+"");
+        ((MarketViewHolder)holder).tv_product_name.setText(datas.get(position).getGoodName());
+        ((MarketViewHolder)holder).tv_type.setText(datas.get(position).getType());
+        ((MarketViewHolder)holder).tv_brand.setText(datas.get(position).getBrand());
+        ((MarketViewHolder)holder).tv_descripe.setText(datas.get(position).getRemark());
+        ((MarketViewHolder)holder).tv_money.setText(datas.get(position).getGoodPrice()+"€");
     }
 
     @Override

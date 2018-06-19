@@ -130,6 +130,7 @@ public class OrderFragment extends BaseFragment{
 
 
     public void requestOrderList(Map<String, String> params){
+        Log.i("Sven",""+OKHttpUtils.getMapParamStr(params));
         OKHttpUtils.getIntance().oKHttpPost(UrlConstants.ORDER_LIST, this, params, new MyHttpCallback<OrderBean>() {
 
             @Override

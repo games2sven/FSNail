@@ -1,5 +1,7 @@
 package com.jlkf.fsnail.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -8,17 +10,12 @@ import java.util.List;
 
 public class GoodsBean extends BaseHttpBean{
 
+
     /**
-     * data : [{"goodName":"商品1","remark":"product1","type":"护理1","goodPrice":111,"brand":"品牌1"}]
-     * code : 200
-     * msg : goods list success
-     * totalPage : 1
-     * totalRecord : 1
+     * data : [{"goodName":"商品1","remark":"product1","id":1,"type":"护理1","goodPrice":111,"brand":"品牌1"},{"goodName":"商品2","remark":"product2","id":2,"type":"护理1","goodPrice":11,"brand":"品牌2"},{"goodName":"商品3","remark":"product3","id":3,"type":"美甲1","goodPrice":22,"brand":"品牌1"},{"goodName":"商品4","remark":"product4","id":4,"type":"护理2","goodPrice":55,"brand":"品牌1"},{"goodName":"商品5","remark":"product5","id":5,"type":"护理2","goodPrice":77,"brand":"品牌3"}]
      * pageNo : null
      */
-
     private List<DataBean> data;
-
     public List<DataBean> getData() {
         return data;
     }
@@ -31,16 +28,18 @@ public class GoodsBean extends BaseHttpBean{
         /**
          * goodName : 商品1
          * remark : product1
+         * id : 1
          * type : 护理1
-         * goodPrice : 111
+         * goodPrice : 111.0
          * brand : 品牌1
          */
 
         private String goodName;
         private String remark;
+        private int id;
         private String type;
-        private int goodPrice;//金额
-        private String brand;//品牌
+        private double goodPrice;
+        private String brand;
 
         public String getGoodName() {
             return goodName;
@@ -58,6 +57,14 @@ public class GoodsBean extends BaseHttpBean{
             this.remark = remark;
         }
 
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
         public String getType() {
             return type;
         }
@@ -66,11 +73,11 @@ public class GoodsBean extends BaseHttpBean{
             this.type = type;
         }
 
-        public int getGoodPrice() {
+        public double getGoodPrice() {
             return goodPrice;
         }
 
-        public void setGoodPrice(int goodPrice) {
+        public void setGoodPrice(double goodPrice) {
             this.goodPrice = goodPrice;
         }
 

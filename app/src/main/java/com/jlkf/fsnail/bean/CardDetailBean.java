@@ -12,7 +12,7 @@ public class CardDetailBean extends BaseHttpBean{
 
 
     /**
-     * data : [{"band_optime":1528698854000,"use_card_price":20,"payUser":"user1","cardName":"优惠券","isBandUserPhone":"13125632145","discount":0.9,"type":1,"isBandUser":"user1","price":1000,"payUserPhone":"13125632145","name":"类型1","remain_price":0.1,"id":1,"pay_optime":1528612444000,"hava_use_price":0.8}]
+     * data : [{"band_optime":1528777832000,"use_card_price":0,"payUser":"user1","cardName":"折扣券","isBandUserPhone":"13125632145","discount":0.8,"type":1,"isBandUser":"user1","price":2000,"payUserPhone":"13125632145","name":"类型2","remain_price":0.2,"id":2,"pay_optime":1528173029000,"hava_use_price":0.1}]
      * totalPage : null
      * totalRecord : null
      * pageNo : null
@@ -29,38 +29,38 @@ public class CardDetailBean extends BaseHttpBean{
 
     public static class DataBean {
         /**
-         * band_optime : 1528698854000
-         * use_card_price : 20
+         * band_optime : 1528777832000
+         * use_card_price : 0.0
          * payUser : user1
-         * cardName : 优惠券
+         * cardName : 折扣券
          * isBandUserPhone : 13125632145
-         * discount : 0.9
+         * discount : 0.8
          * type : 1
          * isBandUser : user1
-         * price : 1000
+         * price : 2000.0
          * payUserPhone : 13125632145
-         * name : 类型1
-         * remain_price : 0.1
-         * id : 1
-         * pay_optime : 1528612444000
-         * hava_use_price : 0.8
+         * name : 类型2
+         * remain_price : 0.2
+         * id : 2
+         * pay_optime : 1528173029000
+         * hava_use_price : 0.1
          */
 
         private long band_optime;
-        private int use_card_price;
+        private double use_card_price;
         private String payUser;
         private String cardName;
         private String isBandUserPhone;
-        private int discount;
+        private double discount;
         private int type;
         private String isBandUser;
-        private int price;
+        private double price;
         private String payUserPhone;
         private String name;
-        private int remain_price;
+        private double remain_price;
         private int id;
         private long pay_optime;
-        private int hava_use_price;
+        private double hava_use_price;
 
         public long getBand_optime() {
             return band_optime;
@@ -70,11 +70,11 @@ public class CardDetailBean extends BaseHttpBean{
             this.band_optime = band_optime;
         }
 
-        public int getUse_card_price() {
+        public double getUse_card_price() {
             return use_card_price;
         }
 
-        public void setUse_card_price(int use_card_price) {
+        public void setUse_card_price(double use_card_price) {
             this.use_card_price = use_card_price;
         }
 
@@ -102,11 +102,11 @@ public class CardDetailBean extends BaseHttpBean{
             this.isBandUserPhone = isBandUserPhone;
         }
 
-        public int getDiscount() {
+        public double getDiscount() {
             return discount;
         }
 
-        public void setDiscount(int discount) {
+        public void setDiscount(double discount) {
             this.discount = discount;
         }
 
@@ -126,11 +126,11 @@ public class CardDetailBean extends BaseHttpBean{
             this.isBandUser = isBandUser;
         }
 
-        public int getPrice() {
+        public double getPrice() {
             return price;
         }
 
-        public void setPrice(int price) {
+        public void setPrice(double price) {
             this.price = price;
         }
 
@@ -150,11 +150,11 @@ public class CardDetailBean extends BaseHttpBean{
             this.name = name;
         }
 
-        public int getRemain_price() {
+        public double getRemain_price() {
             return remain_price;
         }
 
-        public void setRemain_price(int remain_price) {
+        public void setRemain_price(double remain_price) {
             this.remain_price = remain_price;
         }
 
@@ -174,11 +174,11 @@ public class CardDetailBean extends BaseHttpBean{
             this.pay_optime = pay_optime;
         }
 
-        public int getHava_use_price() {
+        public double getHava_use_price() {
             return hava_use_price;
         }
 
-        public void setHava_use_price(int hava_use_price) {
+        public void setHava_use_price(double hava_use_price) {
             this.hava_use_price = hava_use_price;
         }
     }

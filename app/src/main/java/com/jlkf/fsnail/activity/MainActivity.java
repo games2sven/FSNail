@@ -217,7 +217,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 case Constants.CODE_CRAD_DETAIL_RETURN://卡券详情返回
                     break;
                 case Constants.CODE_CHECK_CARD_CONSUME://卡券消费记录
-                    selectFragmnetWithParams(1, null);
+                    selectFragmnetWithParams(1, data);
                     break;
                 case Constants.CODE_CHECK_CARD_CONSUME_RETURN://查看卡券消费记录返回
                     break;
@@ -528,6 +528,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 } else {
                     transaction.show(cardConsumeFragment);
                 }
+                bundle = new Bundle();
+                bundle.putString("cardId",(String)object);
+                cardConsumeFragment.setArguments(bundle);
 
                 break;
             case 2:

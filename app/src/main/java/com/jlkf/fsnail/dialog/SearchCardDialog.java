@@ -10,13 +10,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.jlkf.fsnail.MyApplication;
 import com.jlkf.fsnail.R;
 import com.jlkf.fsnail.activity.MainActivity;
 import com.jlkf.fsnail.bean.EventCenter;
+import com.jlkf.fsnail.bean.ServiceMenuBean;
 import com.jlkf.fsnail.constants.Constants;
 import com.jlkf.fsnail.widget.myspinner.singletextviewspinner.TextViewSpinner;
 
@@ -35,21 +39,27 @@ import java.util.Map;
 public class SearchCardDialog implements View.OnClickListener {
 
     String[] tests;
-    List<String> lists = new ArrayList<String>();
+    List<String> productTypes = new ArrayList<String>();
+    List<String> cardTypes = new ArrayList<String>();
+    List<ServiceMenuBean.DataBean.TypeBean> typeLists;
+
+    private int productType = -1;
+    private int cardType = -1;
 
     private final Context context;
     private final int width;
     private AlertDialog dialog;
     private View mView;
     public TextViewSpinner product_type,card_type;
-    private LinearLayout ll_date;
-    private TextView tv_date;
     private EditText et_bind_customer;
     private EditText et_card_number;
     private EditText buy_customer;
     private TextView tv_search;
     private EditText et_price_start;
     private EditText et_price_end;
+    private TextView tv_date_end,tv_date_start;
+    private ImageView img_date_end,img_date_start;
+
 
     public SearchCardDialog(Context context, int width) {
         this.context = context;
@@ -69,6 +79,7 @@ public class SearchCardDialog implements View.OnClickListener {
         window.setBackgroundDrawable(new BitmapDrawable());
         window.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT);
         window.setGravity(Gravity.BOTTOM | Gravity.RIGHT);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
 
         product_type = (TextViewSpinner) mView.findViewById(R.id.product_type);
         card_type = (TextViewSpinner) mView.findViewById(R.id.card_type);
@@ -77,39 +88,43 @@ public class SearchCardDialog implements View.OnClickListener {
         buy_customer = (EditText)mView.findViewById(R.id.buy_customer);
         et_price_start = (EditText)mView.findViewById(R.id.et_price_start);
         et_price_end =(EditText)mView.findViewById(R.id.et_price_end);
-
-        ll_date = (LinearLayout) mView.findViewById(R.id.ll_date);
-        tv_date = (TextView)mView.findViewById(R.id.tv_date);
+        tv_date_end = (TextView)mView.findViewById(R.id.tv_date_end);
+        img_date_end = (ImageView)mView.findViewById(R.id.img_date_end);
+        tv_date_start = (TextView)mView.findViewById(R.id.tv_date_start);
+        img_date_start = (ImageView)mView.findViewById(R.id.img_date_start);
         tv_search = (TextView)mView.findViewById(R.id.tv_search);
-        ll_date.setOnClickListener(this);
-        tv_search.setOnClickListener(this);
 
-        tests = context.getResources().getStringArray(R.array.sports);
-        lists = Arrays.asList(tests);
+        img_date_start.setOnClickListener(this);
+        tv_search.setOnClickListener(this);
+        img_date_end.setOnClickListener(this);
+
+        typeLists =  MyApplication.getInstance().getMenuBean().getData().getType();
+        for(ServiceMenuBean.DataBean.TypeBean typeBean:typeLists){
+            productTypes.add(typeBean.getName());
+        }
+
+        tests = context.getResources().getStringArray(R.array.card_type);
+        cardTypes = Arrays.asList(tests);
         initView();
     }
 
     private void initView() {
 
-        product_type.setItems(lists);
-        card_type.setItems(lists);
+        product_type.setItems(productTypes);
+        product_type.setOnItemSelectedListener(new TextViewSpinner.OnItemSelectedListener<String>() {
+            @Override
+            public void onItemSelected(TextViewSpinner view, int position, long id, String item) {
+                productType = typeLists.get(position).getId();
+            }
+        });
 
-
-//        spinner_status.setItems(lists);
-//        spinner_status.setOnItemSelectedListener(new TextViewSpinner.OnItemSelectedListener<String>() {
-//
-//            @Override
-//            public void onItemSelected(TextViewSpinner view, int position, long id, String item) {
-//                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
-//            }
-//        });
-//        spinner_status.setOnNothingSelectedListener(new TextViewSpinner.OnNothingSelectedListener() {
-//
-//            @Override
-//            public void onNothingSelected(TextViewSpinner spinner) {
-//                Snackbar.make(spinner, "Nothing selected", Snackbar.LENGTH_LONG).show();
-//            }
-//        });
+        card_type.setItems(cardTypes);
+        card_type.setOnItemSelectedListener(new TextViewSpinner.OnItemSelectedListener<String>() {
+            @Override
+            public void onItemSelected(TextViewSpinner view, int position, long id, String item) {
+                cardType = position+1;
+            }
+        });
 
     }
 
@@ -122,12 +137,12 @@ public class SearchCardDialog implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.ll_date:
+            case R.id.img_date_start:
 //                EventBus.getDefault().post(new EventCenter(Constants.CODE_CARD_SELECT_DATE));
                 DialogChooseDate dialogChooseDate = new DialogChooseDate(context,((MainActivity) context).getRightWidth(), new DialogChooseDate.Dialogcallback() {
                     @Override
                     public void pickWeightResult(String date) {
-                        tv_date.setText(date);
+                        tv_date_start.setText(date);
                     }
                 });
                 break;
@@ -135,14 +150,38 @@ public class SearchCardDialog implements View.OnClickListener {
                 Map<String,String> params = getParams();
                 EventBus.getDefault().post(new EventCenter(Constants.CODE_SEARCH_CARD,params));
                 break;
+            case R.id.img_date_end:
+                DialogChooseDate dialogChooseDate1 = new DialogChooseDate(context,((MainActivity) context).getRightWidth(), new DialogChooseDate.Dialogcallback() {
+                    @Override
+                    public void pickWeightResult(String date) {
+                        tv_date_end.setText(date);
+                    }
+                });
+                break;
         }
     }
 
     private Map<String,String> getParams(){
         Map<String,String> params = new HashMap<>();
 
+        if(!TextUtils.isEmpty(tv_date_start.getText().toString().trim())){
+            params.put("startTime",tv_date_start.getText().toString().trim());
+        }
+
+        if(!TextUtils.isEmpty(tv_date_end.getText().toString().trim())){
+            params.put("endTime",tv_date_end.getText().toString().trim());
+        }
+
         if(!TextUtils.isEmpty(et_bind_customer.getText().toString().trim())){
             params.put("isBandUser",et_bind_customer.getText().toString().trim());
+        }
+
+        if(productType != -1){
+            params.put("productType",productType+"");
+        }
+
+        if(cardType != -1){
+            params.put("productType",cardType+"");
         }
 
         if(!TextUtils.isEmpty(et_card_number.getText().toString().trim())){

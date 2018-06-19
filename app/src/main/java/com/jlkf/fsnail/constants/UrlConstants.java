@@ -43,8 +43,8 @@ public class UrlConstants {
     public static String CHECK_CUSTOMER= SERVER_API + "sys/infoVerify";//验证客户信息是否完善
     public static String GOODS_TYPE_LIST= SERVER_API + "goods/goodsTypeList";//商品类型下拉列表
     public static String CHECK_BOOK = SERVER_API + "staff/appointment";//预约查看
+    public static String CARD_CONSUME = SERVER_API + "card/cardRecordList";//卡券消费记录列表
 
-
-
+    public static String ADD_SHOPCAR = SERVER_API + "shopCart/addShopCart";//添加购物车
 
 }
