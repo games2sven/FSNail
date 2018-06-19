@@ -9,14 +9,15 @@
         android:orientation="vertical"
         android:gravity="center_horizontal"
         >
-        <ImageView
+        <com.jlkf.fsnail.widget.NetworkImageView
+            android:id="@+id/item_staff_headimg"
             android:scaleType="centerCrop"
-            android:src="@mipmap/staff1"
             android:layout_marginTop="@dimen/DIMEN_20PX"
             android:layout_width="@dimen/DIMEN_375PX"
             android:layout_height="@dimen/DIMEN_375PX"
             />
         <TextView
+            android:id="@+id/item_staff_nike_name"
             android:layout_marginTop="@dimen/DIMEN_5PX"
             android:layout_width="wrap_content"
             android:text="Annamaria Teresa"

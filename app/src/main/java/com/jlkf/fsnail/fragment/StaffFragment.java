@@ -12,14 +12,20 @@ import android.widget.ImageView;
 import com.jlkf.fsnail.R;
 import com.jlkf.fsnail.adapter.StaffAdapter;
 import com.jlkf.fsnail.base.BaseFragment;
+import com.jlkf.fsnail.bean.BaseHttpBean;
 import com.jlkf.fsnail.bean.EventCenter;
 import com.jlkf.fsnail.bean.StaffBean;
 import com.jlkf.fsnail.constants.Constants;
+import com.jlkf.fsnail.constants.UrlConstants;
 import com.jlkf.fsnail.dialog.SingleFunctionPop;
+import com.jlkf.fsnail.net.MyHttpCallback;
+import com.jlkf.fsnail.net.OKHttpUtils;
 import com.jlkf.fsnail.widget.SpaceItemDecoration;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -34,7 +40,7 @@ public class StaffFragment  extends BaseFragment {
     ImageView iv_staff_more;
     @Bind(R.id.recylerview)
     RecyclerView recyclerView;
-    List<StaffBean> mDatas =new ArrayList<>();
+    List<StaffBean.DataBean> mDatas =new ArrayList<>();
     private StaffAdapter mAdapter;
 
     @Override
@@ -57,7 +63,50 @@ public class StaffFragment  extends BaseFragment {
         ButterKnife.bind(this,rootview);
 
         initRecyclerView();
+
+        initNet();
         return rootview;
+
+    }
+
+    private void initNet() {
+    getStaffList();
+
+    }
+
+
+ String      id;// 编号查员工
+    String   name;//姓名查员工（是姓名不是昵称）
+   int  pageNo=1;// 页码
+    int  pageSize= 10;//页面大小
+
+    boolean  isSelectAll=true;
+    private void getStaffList() {
+        Map<String,String> parmas = new HashMap<>();
+        if (!isSelectAll) {
+            addParams(parmas, "today", "1");
+        }
+        addParams(parmas,"id",id);
+        addParams(parmas,"name",name);
+        addParams(parmas,"pageNo", String.valueOf(pageNo));
+        addParams(parmas,"pageSize", String.valueOf(pageSize));
+        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.TODAY_WORK, this, parmas, new MyHttpCallback<StaffBean>() {
+            @Override
+            public void onSuccess(StaffBean response) {
+                  if (response.getCode()==200){
+                      if (pageNo==1){
+                          mDatas.clear();
+                      }
+                      mDatas.addAll(response.getData());
+                      mAdapter.notifyDataSetChanged();
+                  }
+            }
+
+            @Override
+            public void onFailure(String errorMsg) {
+
+            }
+        });
 
     }
 

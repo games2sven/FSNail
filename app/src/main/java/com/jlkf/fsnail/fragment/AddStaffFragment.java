@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,7 @@ import com.jlkf.fsnail.bean.RowTitle;
 import com.jlkf.fsnail.bean.StaffBean;
 import com.jlkf.fsnail.bean.StaffManagerBean;
 import com.jlkf.fsnail.bean.StaffTimeBean;
+import com.jlkf.fsnail.bean.StaffWorklyBean;
 import com.jlkf.fsnail.bean.StaffinfoBean;
 import com.jlkf.fsnail.constants.Constants;
 import com.jlkf.fsnail.constants.UrlConstants;
@@ -177,7 +179,7 @@ public class AddStaffFragment extends BaseFragment {
         int  code =eventCenter.getEventCode();
         switch (code){
             case Constants.CODE_SELETC_STAFF_TIME:
-                List<StaffTimeBean> staffTimeBeans = (List<StaffTimeBean>) eventCenter.getData();
+                List<StaffWorklyBean.DataBean> staffTimeBeans = (List<StaffWorklyBean.DataBean>) eventCenter.getData();
                 timeBeans.clear();
                 timeBeans.addAll(staffTimeBeans);
 
@@ -219,19 +221,25 @@ public class AddStaffFragment extends BaseFragment {
 
 
     private void initNet() {
-        if (staffBean==null) return;
+        getStaffDetail();
+
+        getWorklyDetail();
+    }
+
+    private void getWorklyDetail() {
+        if (staffBean==null)return;
+
         Map<String,String> params = new HashMap<>();
         addParams(params,"id",staffBean.getId()+"");
-        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.STAFF_INFO, this, params, new MyHttpCallback<StaffinfoBean>() {
+        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.STAFF_WEEKLY, this, params, new MyHttpCallback<StaffWorklyBean>() {
             @Override
-            public void onSuccess(StaffinfoBean response) {
-            if (response.getCode()==200){
-                AddStaffFragment.this.staffInfoBean =response;
-                setStaffDetail();
-
-            }else{
-                UiUtil.showToast(response.getMsg());
-            }
+            public void onSuccess(StaffWorklyBean response) {
+                Log.e("response",response.toString());
+                if (response.getCode()==200){
+                 setWorklyDetail(response);
+                }else{
+                    UiUtil.showToast(response.getMsg());
+                }
             }
 
             @Override
@@ -240,6 +248,35 @@ public class AddStaffFragment extends BaseFragment {
             }
         });
 
+    }
+
+    private void setWorklyDetail(StaffWorklyBean worklyDetail) {
+        timeBeans.clear();
+        timeBeans.addAll(worklyDetail.getData());
+    }
+
+    private void getStaffDetail() {
+
+        if (staffBean==null) return;
+        Map<String,String> params = new HashMap<>();
+        addParams(params,"id",staffBean.getId()+"");
+        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.STAFF_INFO, this, params, new MyHttpCallback<StaffinfoBean>() {
+            @Override
+            public void onSuccess(StaffinfoBean response) {
+                if (response.getCode()==200){
+                    AddStaffFragment.this.staffInfoBean =response;
+                    setStaffDetail();
+
+                }else{
+                    UiUtil.showToast(response.getMsg());
+                }
+            }
+
+            @Override
+            public void onFailure(String errorMsg) {
+                UiUtil.showToast(errorMsg);
+            }
+        });
     }
 
     private void setStaffDetail() {
@@ -525,18 +562,9 @@ public class AddStaffFragment extends BaseFragment {
             cells.add(new ArrayList<Cell>());
         }
         loadData(moreStartTime, false);
-
-
-        timeBeans.add(new StaffTimeBean("星期一","9:00","21:00",true));
-        timeBeans.add(new StaffTimeBean("星期二","9:00","21:00",true));
-        timeBeans.add(new StaffTimeBean("星期三","9:00","21:00",true));
-        timeBeans.add(new StaffTimeBean("星期四","9:00","21:00",true));
-        timeBeans.add(new StaffTimeBean("星期五","9:00","21:00",true));
-        timeBeans.add(new StaffTimeBean("星期六","9:00","21:00",true));
-        timeBeans.add(new StaffTimeBean("星期天","9:00","21:00",true));
     }
 
-    List<StaffTimeBean> timeBeans =new ArrayList<>();
+    List<StaffWorklyBean.DataBean> timeBeans =new ArrayList<>();
 
     private void loadData(long startTime, final boolean history) {
         //模拟网络加载
@@ -641,6 +669,7 @@ public class AddStaffFragment extends BaseFragment {
 
     @OnClick({R.id.staff_add_week1,R.id.staff_add_week2,R.id.staff_add_week3,R.id.staff_add_week4})
     public  void showStaffTimeDialog(){
+        if (timeBeans.size()==0) return;
         SelectStaffTimeDialog dialog = new SelectStaffTimeDialog(mainActivity,timeBeans);
         dialog.showDialog();
 

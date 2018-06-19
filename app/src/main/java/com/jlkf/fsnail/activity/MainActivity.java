@@ -748,25 +748,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 }
                 break;
             case 2:
-//                if (userBean!=null) {
-//                    if (userBean.getType() == 1) {//店长
+                if (userBean!=null) {
+                    if (userBean.getType() == 1) {//店长
                         if (staffManagerFragment == null) {
                             staffManagerFragment = new StaffManagerFragment();
                             transaction.add(R.id.container, staffManagerFragment);
                         } else {
                             transaction.show(staffManagerFragment);
                         }
-//
-//                }else{//员工
-//
-//                    if (staffFragment == null) {
-//                        staffFragment = new StaffFragment();
-//                        transaction.add(R.id.container, staffFragment);
-//                    } else {
-//                        transaction.show(staffFragment);
-//                    }
-//                }
-//                }
+                }else{//员工
+                    if (staffFragment == null) {
+                        staffFragment = new StaffFragment();
+                        transaction.add(R.id.container, staffFragment);
+                    } else {
+                        transaction.show(staffFragment);
+                    }
+                }
+                }
                 break;
             case 3:
                 if (bookFragment == null) {

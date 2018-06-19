@@ -2,6 +2,7 @@ package com.jlkf.fsnail.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,9 +23,9 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffViewHolder> {
 
 
     OnStaffClickListener listener;
-    private final List<StaffBean> datas;
+    private final List<StaffBean.DataBean> datas;
 
-    public StaffAdapter(List<StaffBean> mDatas) {
+    public StaffAdapter(List<StaffBean.DataBean> mDatas) {
         this.datas = mDatas;
     }
 
@@ -37,12 +38,14 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull StaffViewHolder holder, int position) {
-
+        if (!TextUtils.isEmpty(datas.get(position).getHeaderImg()))
+        holder.headImg.displayImage(datas.get(position).getHeaderImg());
+        holder.item_staff_nike_name.setText(datas.get(position).getNickName()+"");
     }
 
     @Override
     public int getItemCount() {
-        return 24;
+        return datas==null?0:datas.size();
     }
 
 

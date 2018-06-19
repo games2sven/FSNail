@@ -1,8 +1,13 @@
 package com.jlkf.fsnail.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,6 +81,20 @@ public class AddEditServiceFragment extends BaseFragment {
     @Bind(R.id.tv_service_title)
     TextView tv_service_title;
     private MaterialDialog loginlDialog;
+    @SuppressLint("HandlerLeak")
+    private Handler mHandler =new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what){
+                case 100:
+                    customerName=et_appoint_name.getText().toString().trim();
+                    customerPhone=et_appoint_phone.getText().toString().trim();
+                    queryCustomerInfo(customerName,customerPhone);
+                    break;
+            }
+        }
+    };
 
     @Override
     protected boolean isBindEventBusHere() {
@@ -99,8 +118,14 @@ public class AddEditServiceFragment extends BaseFragment {
         type=getArguments().getInt("type");
         dataBean= (ServiceBean.DataBean) getArguments().getSerializable("data");
         initView();
+        initNet();
                  return  rootView;
     }
+
+    private void initNet() {
+        queryCustomerInfo(customerName,customerPhone);
+    }
+
     ServiceMenuBean serviceBean;
 
     private void initView() {
@@ -173,6 +198,8 @@ public class AddEditServiceFragment extends BaseFragment {
             et_appoint_name.setText(dataBean.getCustomerName());
            et_appoint_phone.setText(dataBean.getCustomerPhone());
             et_date.setText(dataBean.getOptime());
+            customerName =dataBean.getCustomerName();
+            customerPhone=dataBean.getCustomerPhone();
 //            et_time.setText(dataBean.getStartTime());
 
             if (serviceBean==null) return;
@@ -228,6 +255,9 @@ public class AddEditServiceFragment extends BaseFragment {
                 service= String.valueOf(((ServiceMenuBean.DataBean.TypeBean.ServiceListBean)(sp_service.getItems().get(position))).getId());
             }
         });
+
+        et_appoint_name.addTextChangedListener(new MyTextWatch());
+        et_appoint_phone.addTextChangedListener(new MyTextWatch());
     }
 
 
@@ -472,4 +502,58 @@ public class AddEditServiceFragment extends BaseFragment {
             }
         });
     }
+    @Bind(R.id.tv_correct)
+    TextView tv_correct;
+    @Bind(R.id.tv_incorrect)
+    TextView tv_incorrect;
+
+    public void queryCustomerInfo(String name,String phone){
+        if (TextUtils.isEmpty(name)||TextUtils.isEmpty(phone)) return;
+        Map<String,String> params = new HashMap<>();
+        params.put("name",name);
+        params.put("phone",phone);
+
+        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.CHECK_CUSTOMER ,this, params,new MyHttpCallback<BaseHttpBean>() {
+            @Override
+            public void onSuccess(BaseHttpBean response) {
+
+                if (response.getCode()==200){
+                    tv_correct.setVisibility(View.VISIBLE);
+                    tv_incorrect.setVisibility(View.GONE);
+                    Log.i("Sven"," true ");
+                }else{
+                    Log.i("Sven"," false ");
+                    tv_correct.setVisibility(View.GONE);
+                    tv_incorrect.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onFailure(String errorMsg) {
+                UiUtil.showToast(errorMsg);
+            }
+        });
+    }
+
+
+    public  class MyTextWatch implements TextWatcher {
+
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+           mHandler.removeMessages(100);
+           mHandler.sendEmptyMessageDelayed(100,1500);
+        }
+    }
+
 }

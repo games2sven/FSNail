@@ -9,13 +9,14 @@ import android.widget.TextView;
 
 import com.jlkf.fsnail.R;
 import com.jlkf.fsnail.bean.StaffTimeBean;
+import com.jlkf.fsnail.bean.StaffWorklyBean;
 
 import java.util.List;
 
 public class StaffTimeAdapter extends BaseAdapter {
-    private final List<StaffTimeBean> staffTimeBeanList;
+    private final List<StaffWorklyBean.DataBean> staffTimeBeanList;
 
-    public StaffTimeAdapter(List<StaffTimeBean> staffTimeBeanList) {
+    public StaffTimeAdapter(List<StaffWorklyBean.DataBean> staffTimeBeanList) {
         this.staffTimeBeanList=staffTimeBeanList;
     }
 
@@ -49,7 +50,7 @@ public class StaffTimeAdapter extends BaseAdapter {
         }else {
             holder= (ViewHolder) view.getTag();
         }
-        final StaffTimeBean timeBean  =staffTimeBeanList.get(position);
+        final StaffWorklyBean.DataBean timeBean  =staffTimeBeanList.get(position);
         if (timeBean.isOpen){
             holder.staff_time_select_iv.setImageResource(R.mipmap.turn_on);
             holder.staff_time_select_tv.setText("Disponible");
@@ -57,9 +58,9 @@ public class StaffTimeAdapter extends BaseAdapter {
             holder.staff_time_select_iv.setImageResource(R.mipmap.turn_off);
             holder.staff_time_select_tv.setText("Riposo");
         }
-        holder.staff_time_end.setText(timeBean.endTime);
-        holder.staff_time_star.setText(timeBean.startTime);
-        holder.staff_time_week.setText(timeBean.week);
+        holder.staff_time_end.setText(timeBean.getEnd());
+        holder.staff_time_star.setText(timeBean.getStart());
+        holder.staff_time_week.setText(timeBean.getWeek()+"");
         holder.staff_time_select_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -16,6 +16,7 @@ import com.jlkf.fsnail.R;
 import com.jlkf.fsnail.adapter.StaffTimeAdapter;
 import com.jlkf.fsnail.bean.EventCenter;
 import com.jlkf.fsnail.bean.StaffTimeBean;
+import com.jlkf.fsnail.bean.StaffWorklyBean;
 import com.jlkf.fsnail.constants.Constants;
 
 import org.greenrobot.eventbus.EventBus;
@@ -29,12 +30,12 @@ import java.util.List;
 
 public class SelectStaffTimeDialog implements View.OnClickListener{
 
-    private final List<StaffTimeBean> staffTimeBeanList=new ArrayList<>();
+    private final List<StaffWorklyBean.DataBean> staffTimeBeanList=new ArrayList<>();
     private Context mContex;
     View mView;
     private AlertDialog dialog ;
 
-    public SelectStaffTimeDialog(Context context,List<StaffTimeBean> staffTimeBeanList){
+    public SelectStaffTimeDialog(Context context,List<StaffWorklyBean.DataBean> staffTimeBeanList){
         mContex = context;
         this.staffTimeBeanList.addAll(staffTimeBeanList);
     }

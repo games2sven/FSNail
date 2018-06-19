@@ -26,6 +26,8 @@ public class UrlConstants {
     public static final String STAFF_INFO =SERVER_API+ "staff/staffInfo";
     public static final String UPDATE_STAFF =SERVER_API+ "staff/updateStaff";
     public static final String LOCKED_AD =SERVER_API+"sys/lockedAd" ;
+    public static final String STAFF_WEEKLY =SERVER_API+"staff/staffWeekly" ;
+    public static final String TODAY_WORK = SERVER_API+"staff/todayWork";
     public static String ADD_STAFF=SERVER_API+ "staff/newStaff";
     public static String USER_LIST=SERVER_API + "service/userList";
 

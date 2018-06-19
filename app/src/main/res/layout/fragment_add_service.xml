@@ -106,17 +106,32 @@
                     android:textSize="@dimen/DIMEN_24PX"/>
 
                 <TextView
+                    android:id="@+id/tv_incorrect"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@mipmap/delete"
                     android:drawablePadding="@dimen/DIMEN_19PX"
                     android:gravity="center_vertical"
-                    android:text="@string/tips_customer_information_complete"
+                    android:text="@string/tips_customer_information"
                     android:textColor="#DC5562"
+                    android:textSize="@dimen/DIMEN_28PX"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/tv_correct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/content_icon_correct"
+                    android:drawablePadding="@dimen/DIMEN_19PX"
+                    android:gravity="center_vertical"
+                    android:text="@string/tv_customer_authentication"
+                    android:textColor="@color/green_94c42e"
+                    android:visibility="gone"
                     android:textSize="@dimen/DIMEN_28PX" />
 
 
                 <ImageView
+                    android:visibility="invisible"
                     android:layout_marginLeft="@dimen/DIMEN_24PX"
                     android:layout_width="@dimen/DIMEN_80PX"
                     android:layout_height="match_parent"
