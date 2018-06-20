@@ -36,8 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/DIMEN_18PX"
-            android:text="$1500"
-            android:textColor="@color/text_dark1"
+            android:text="€1500"
+            android:textColor="#DD5A67"
             android:textSize="@dimen/DIMEN_30PX" />
 
         <LinearLayout

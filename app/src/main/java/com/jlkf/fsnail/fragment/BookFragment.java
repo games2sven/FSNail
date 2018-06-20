@@ -129,8 +129,6 @@ public class BookFragment extends BaseFragment{
         });
     }
 
-
-
     public void initRecyclerview(){
         page_index_view.setOnPageIndexListener(new PageIndexView.OnPageIndexListener() {
             @Override
