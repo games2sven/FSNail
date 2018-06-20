@@ -33,8 +33,8 @@ public class YbTimeSelectorWheelView extends RelativeLayout implements
     private StrericYbWheelAdapter hoursAdapter;
     private StrericYbWheelAdapter minutesAdapter;
 
-    String mHour = "";
-    String mMinute = "";
+    String mHour = "00";
+    String mMinute = "00";
 
     public YbTimeSelectorWheelView(Context context, AttributeSet attrs,
                                    int defStyleAttr) {

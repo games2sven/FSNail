@@ -346,7 +346,6 @@ public class ServiceFragment extends BaseFragment {
           params.put("pageNo",pageNo+"");
           params.put("pageSize",pageSize+"");
 
-          Log.e("request",startTime+"  "+endTime);
 
         OKHttpUtils.getIntance().oKHttpPost(UrlConstants.SERVICE_LIST, this, params, new MyHttpCallback<ServiceBean>() {
             @Override

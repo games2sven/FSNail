@@ -1,5 +1,6 @@
 package com.jlkf.fsnail.dialog;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.view.Gravity;
@@ -39,11 +40,14 @@ public class ClearShopCarDialog implements View.OnClickListener{
         mDatas = datas;
     }
 
+    @SuppressLint("StringFormatInvalid")
     public void showDialog(){
         dialog = new AlertDialog.Builder(mContex).create();
         mView = LayoutInflater.from(mContex).inflate(R.layout.information_tips_dialog, null);
         TextView tv_tips = (TextView) mView.findViewById(R.id.tv_tips);
-        tv_tips.setText(R.string.clear_shopcar_tips);
+
+        String text = String.format(mContex.getResources().getString(R.string.clear_shopcar_tips), mDatas.get(0).getName()+" "+mDatas.get(0).getPhone());
+        tv_tips.setText(text);
 
         dialog.show();
         dialog.setContentView(mView);
@@ -55,7 +59,6 @@ public class ClearShopCarDialog implements View.OnClickListener{
         window.setGravity(Gravity.CENTER);
 
         initView();
-
     }
 
     private void initView(){
@@ -74,7 +77,7 @@ public class ClearShopCarDialog implements View.OnClickListener{
                 break;
             case R.id.btn_agree:
                 dissmiss();
-                EventBus.getDefault().post(new EventCenter(Constants.CODE_CLEAR_ACCOUNT_SHOPCAR));
+                EventBus.getDefault().post(new EventCenter(Constants.CODE_CLEAR_ACCOUNT_SHOPCAR,mDatas.get(0).getId()+""));
                 break;
         }
     }

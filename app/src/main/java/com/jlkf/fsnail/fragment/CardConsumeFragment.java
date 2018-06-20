@@ -5,10 +5,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jlkf.fsnail.R;
@@ -20,6 +22,7 @@ import com.jlkf.fsnail.bean.EventCenter;
 import com.jlkf.fsnail.constants.UrlConstants;
 import com.jlkf.fsnail.net.MyHttpCallback;
 import com.jlkf.fsnail.net.OKHttpUtils;
+import com.jlkf.fsnail.widget.PageIndexView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,6 +43,15 @@ public class CardConsumeFragment extends BaseFragment implements View.OnClickLis
     TextView text_total_money;
     @Bind(R.id.tv_return)
     TextView tv_return;
+    @Bind(R.id.page_index_view)
+    PageIndexView page_index_view;
+    @Bind(R.id.iv_service_more)
+    ImageView iv_service_more;
+
+    private int  pageNo=1;
+    private int  pageSize=6;
+
+    String cardid;
 
     //标题:
     @Nullable
@@ -48,21 +60,29 @@ public class CardConsumeFragment extends BaseFragment implements View.OnClickLis
         View view = LayoutInflater.from(container.getContext()).inflate(R.layout.card_consume,null);
         ButterKnife.bind(this,view);
 
+        iv_service_more.setVisibility(View.GONE);
+
         Bundle bundle = getArguments();
-        String cardid = bundle.getString("cardId");
-        loadData(cardid);
+        cardid = bundle.getString("cardId");
+        loadData();
         initView();
         return view;
     }
 
-    public void loadData(String cardId){
+    public void loadData(){
         Map<String,String> params = new HashMap<String,String>();
-        params.put("cardId",cardId);
+        if(TextUtils.isEmpty(cardid)){
+            params.put("cardId",cardid);
+        }
+
+        params.put("pageNo",pageNo+"");
+        params.put("pageSize",pageSize+"");
         OKHttpUtils.getIntance().oKHttpPost(UrlConstants.CARD_CONSUME, this, params, new MyHttpCallback<ConsumeBean>() {
             @Override
             public void onSuccess(ConsumeBean response) {
-                Log.i("Sven","response "+response.getCode());
                 if(response.getCode() == 200){
+                    page_index_view.setTotalPage(response.getTotalPage());
+                    page_index_view.setCurrentPage(pageNo);
                     mDatas = response.getData();
                     initRecyclerview();
                 }
@@ -91,6 +111,29 @@ public class CardConsumeFragment extends BaseFragment implements View.OnClickLis
     }
 
     public void initRecyclerview(){
+        page_index_view.setOnPageIndexListener(new PageIndexView.OnPageIndexListener() {
+            @Override
+            public void onLastClick() {
+                pageNo--;
+                if (pageNo>0){
+                    loadData();
+                }
+            }
+
+            @Override
+            public void onNextClick() {
+                pageNo++;
+                loadData();
+            }
+
+            @Override
+            public void onIndexClick(int page) {
+                pageNo=page;
+                page_index_view.setCurrentPage(page);
+                loadData();
+            }
+        });
+
         recylerview.setLayoutManager(new LinearLayoutManager(getActivity()));
         recylerview.setAdapter(new ConsumeAdapter(mDatas));
     }

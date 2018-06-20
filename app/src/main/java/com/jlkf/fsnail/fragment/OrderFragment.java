@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,7 @@ import com.jlkf.fsnail.dialog.SearchOrderDialog;
 import com.jlkf.fsnail.dialog.SingleFunctionPop;
 import com.jlkf.fsnail.net.MyHttpCallback;
 import com.jlkf.fsnail.net.OKHttpUtils;
+import com.jlkf.fsnail.widget.PageIndexView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,8 +44,15 @@ public class OrderFragment extends BaseFragment{
     RecyclerView recylerview;
     @Bind(R.id.iv_service_more)
     ImageView iv_service_more;
+    @Bind(R.id.page_index_view)
+    PageIndexView page_index_view;
+
+    private int  pageNo=1;
+    private int  pageSize=6;
 
     private OrderAdapter mAdapter;
+
+    Map<String, String> mParams;
 
     //标题:
     @Nullable
@@ -67,21 +76,27 @@ public class OrderFragment extends BaseFragment{
         Object object = eventCenter.getData();
         switch (eventCenter.getEventCode()){
             case Constants.CODE_SEARCH_ORDERLIST:
-                Map<String, String> params = (Map<String, String>) object;
-                requestOrderList(params);
+                mParams = (Map<String, String>) object;
+                loadData();
                 break;
         }
     }
 
     public void loadData(){
-        Map<String, String> params = new HashMap<>();
+        if(mParams == null){
+            mParams = new HashMap<>();
+        }
 
-        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.ORDER_LIST, this, params, new MyHttpCallback<OrderBean>() {
+        mParams.put("pageNo",pageNo+"");
+        mParams.put("pageSize",pageSize+"");
+
+        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.ORDER_LIST, this, mParams, new MyHttpCallback<OrderBean>() {
 
             @Override
             public void onSuccess(OrderBean response) {
-                Log.i("Sven","response "+response.getCode());
                 if(response.getCode() == 200){
+                    page_index_view.setTotalPage(response.getTotalPage());
+                    page_index_view.setCurrentPage(pageNo);
                     mDatas = response.getData();
                     initRecyclerview();
                 }
@@ -95,6 +110,29 @@ public class OrderFragment extends BaseFragment{
     }
 
     public void initRecyclerview(){
+        page_index_view.setOnPageIndexListener(new PageIndexView.OnPageIndexListener() {
+            @Override
+            public void onLastClick() {
+                pageNo--;
+                if (pageNo>0){
+                    loadData();
+                }
+            }
+
+            @Override
+            public void onNextClick() {
+                pageNo++;
+                loadData();
+            }
+
+            @Override
+            public void onIndexClick(int page) {
+                pageNo=page;
+                page_index_view.setCurrentPage(page);
+                loadData();
+            }
+        });
+
         recylerview.setLayoutManager(new GridLayoutManager(getActivity(),1));
         mAdapter =  new OrderAdapter(getActivity(),mDatas);
         recylerview.setAdapter(mAdapter);
@@ -128,24 +166,4 @@ public class OrderFragment extends BaseFragment{
         dialog.showDiaglog();
     }
 
-
-    public void requestOrderList(Map<String, String> params){
-        Log.i("Sven",""+OKHttpUtils.getMapParamStr(params));
-        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.ORDER_LIST, this, params, new MyHttpCallback<OrderBean>() {
-
-            @Override
-            public void onSuccess(OrderBean response) {
-                Log.i("Sven","response "+response.getCode());
-                if(response.getCode() == 200){
-                    mDatas = response.getData();
-                    mAdapter.setDatas(mDatas);
-                }
-            }
-
-            @Override
-            public void onFailure(String errorMsg) {
-
-            }
-        });
-    }
 }

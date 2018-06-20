@@ -14,52 +14,52 @@
     <TextView
         android:id="@+id/tv_book_time"
         android:text="11:20"
-        style="@style/item_service_sty"
+        style="@style/item_book_sty"
 
         />
     <TextView
         android:id="@+id/tv_book_date"
         android:text="2018/01/26"
-        style="@style/item_service_sty"
+        style="@style/item_book_sty"
 
         />
     <TextView
         android:id="@+id/tv_employee_nickname"
         android:text="Kiki"
-        style="@style/item_service_sty"
+        style="@style/item_book_sty"
 
         />
     <TextView
         android:id="@+id/tv_customer_name"
         android:text="Veronical"
-        style="@style/item_service_sty"
+        style="@style/item_book_sty"
         />
     <TextView
         android:id="@+id/tv_customer_phone"
         android:text="FS0133"
-        style="@style/item_service_sty"
+        style="@style/item_book_sty"
         />
 
     <TextView
         android:id="@+id/tv_type"
         android:text="FS123"
-        style="@style/item_service_sty"
+        style="@style/item_book_sty"
         />
     <TextView
         android:id="@+id/tv_service"
         android:text="3124569817"
-        style="@style/item_service_sty"
+        style="@style/item_book_sty"
         />
     <TextView
         android:id="@+id/tv_brand"
         android:text="FS1"
-        style="@style/item_service_sty"
+        style="@style/item_book_sty"
         />
 
     <TextView
         android:id="@+id/tv_staus"
         android:text="Prenotato"
-        style="@style/item_service_sty"
+        style="@style/item_book_sty"
         />
 
 

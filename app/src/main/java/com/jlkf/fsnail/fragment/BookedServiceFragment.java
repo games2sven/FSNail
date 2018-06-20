@@ -48,7 +48,7 @@ import butterknife.OnClick;
 
 public class BookedServiceFragment extends BaseFragment {
 
-    List<BookedServiceBean.DataBean> mDatas =new ArrayList<>();
+    List<BookedServiceBean.DataBean> mDatas = new ArrayList<>();
 
     @Bind(R.id.recylerview)
     RecyclerView recyclerView;
@@ -62,9 +62,9 @@ public class BookedServiceFragment extends BaseFragment {
     TextViewSpinner typeSpinner;
     private int totalPage;
     View mView;
-    TextView tv_start_date,tv_end_date;
-    EditText tv_customer_name,tv_customer_phone,tv_staff_name;
-     ServiceMenuBean menuBean;
+    TextView tv_start_date, tv_end_date;
+    EditText tv_customer_name, tv_customer_phone, tv_staff_name;
+    ServiceMenuBean menuBean;
 
     //标题:
     @Nullable
@@ -73,7 +73,7 @@ public class BookedServiceFragment extends BaseFragment {
 
         mView = LayoutInflater.from(container.getContext()).inflate(R.layout.fragment_booked_serive, null);
         mainActivity = (MainActivity) getActivity();
-        menuBean= MyApplication.getInstance().getMenuBean();
+        menuBean = MyApplication.getInstance().getMenuBean();
         initStatus();
         ButterKnife.bind(this, mView);
         initView();
@@ -83,7 +83,8 @@ public class BookedServiceFragment extends BaseFragment {
 
     }
 
-    List<String> statusStr =new ArrayList<>();
+    List<String> statusStr = new ArrayList<>();
+
     private void initStatus() {
         statusStr.add(mainActivity.getString(R.string.status_no_tart));
         statusStr.add(mainActivity.getString(R.string.status_progress));
@@ -91,22 +92,33 @@ public class BookedServiceFragment extends BaseFragment {
         statusStr.add(mainActivity.getString(R.string.status_booked));
         statusStr.add(mainActivity.getString(R.string.status_cancel));
     }
-   String startTime;//DATE类型例10:00 开始时间
-    String          endTime;//例 23:00 结束时间
-    String           startDate;//开始日期
-    String           endDate;//结束日期
-    String        service;//服务项ID
-    String   status;//状态
-    String    brand;//品牌ID
-    int    pageSize=3;//每页条数
-    int        pageNo=1;//
-    String           uName;//员工昵称
-    String  customerName;//客户名
-    String    customerPhone;//客户手机
-    String    type;//类别ID
 
-    private  void  clearSearchCondition(){
-        startTime=null;endTime=null;uName=null;customerName=null;customerPhone=null;type=null;service=null;brand=null;status=null;startDate=null;endDate=null;
+    String startTime;//DATE类型例10:00 开始时间
+    String endTime;//例 23:00 结束时间
+    String startDate;//开始日期
+    String endDate;//结束日期
+    String service;//服务项ID
+    String status;//状态
+    String brand;//品牌ID
+    int pageSize = 3;//每页条数
+    int pageNo = 1;//
+    String uName;//员工昵称
+    String customerName;//客户名
+    String customerPhone;//客户手机
+    String type;//类别ID
+
+    private void clearSearchCondition() {
+        startTime = null;
+        endTime = null;
+        uName = null;
+        customerName = null;
+        customerPhone = null;
+        type = null;
+        service = null;
+        brand = null;
+        status = null;
+        startDate = null;
+        endDate = null;
     }
 
     private void initNet() {
@@ -114,29 +126,29 @@ public class BookedServiceFragment extends BaseFragment {
     }
 
 
-    void  getBookedServiceList(){
-        Map<String,String> params = new HashMap<>();
-        addParams(params,"startTime",startTime);
-        addParams(params,"endTime",endTime);
-        addParams(params,"startDate",startDate);
-        addParams(params,"endDate",endDate);
-        addParams(params,"service",service);
-        addParams(params,"status",status);
-        addParams(params,"brand",brand);
-        addParams(params,"uName",uName);
-        addParams(params,"customerName",customerName);
-        addParams(params,"customerPhone",customerPhone);
-        addParams(params,"type",type);
-        addParams(params,"pageSize", String.valueOf(pageSize));
-        addParams(params,"pageNo", String.valueOf(pageNo));
+    void getBookedServiceList() {
+        Map<String, String> params = new HashMap<>();
+        addParams(params, "startTime", startTime);
+        addParams(params, "endTime", endTime);
+        addParams(params, "startDate", startDate);
+        addParams(params, "endDate", endDate);
+        addParams(params, "service", service);
+        addParams(params, "status", status);
+        addParams(params, "brand", brand);
+        addParams(params, "uName", uName);
+        addParams(params, "customerName", customerName);
+        addParams(params, "customerPhone", customerPhone);
+        addParams(params, "type", type);
+        addParams(params, "pageSize", String.valueOf(pageSize));
+        addParams(params, "pageNo", String.valueOf(pageNo));
 
         OKHttpUtils.getIntance().oKHttpPost(UrlConstants.BOOKED_SERVICE_LIST, this, params, new MyHttpCallback<BookedServiceBean>() {
             @Override
             public void onSuccess(BookedServiceBean response) {
-                if (response.getCode()==200){
+                if (response.getCode() == 200) {
                     mDatas.clear();
                     mDatas.addAll(response.getData());
-                    totalPage=response.getTotalPage();
+                    totalPage = response.getTotalPage();
                     mAdapter.notifyDataSetChanged();
                 }
 
@@ -152,22 +164,22 @@ public class BookedServiceFragment extends BaseFragment {
 
     private void initView() {
 
-        brandSpinner =mView.findViewById(R.id.spinner_brand);
-        serviceSpinner =mView.findViewById(R.id.spinner_service);
-        statusSpinner =mView.findViewById(R.id.spinner_status);
-        typeSpinner =mView.findViewById(R.id.spinner_type);
-        tv_start_date =mView.findViewById(R.id.tv_start_date);
-        tv_end_date =mView.findViewById(R.id.tv_end_date);
-        tv_customer_name =mView.findViewById(R.id.tv_customer_name);
-        tv_customer_phone =mView.findViewById(R.id.tv_customer_phone);
-        tv_staff_name =mView.findViewById(R.id.tv_staff_name);
+        brandSpinner = mView.findViewById(R.id.spinner_brand);
+        serviceSpinner = mView.findViewById(R.id.spinner_service);
+        statusSpinner = mView.findViewById(R.id.spinner_status);
+        typeSpinner = mView.findViewById(R.id.spinner_type);
+        tv_start_date = mView.findViewById(R.id.tv_start_date);
+        tv_end_date = mView.findViewById(R.id.tv_end_date);
+        tv_customer_name = mView.findViewById(R.id.tv_customer_name);
+        tv_customer_phone = mView.findViewById(R.id.tv_customer_phone);
+        tv_staff_name = mView.findViewById(R.id.tv_staff_name);
         mView.findViewById(R.id.ll_start_date).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogChooseDate dialogChooseDate = new DialogChooseDate(mainActivity, mainActivity.getRightWidth(), new DialogChooseDate.Dialogcallback() {
                     @Override
                     public void pickWeightResult(String date) {
-                        startTime=date.replaceAll("-","/");
+                        startTime = date.replaceAll("-", "/");
                         tv_start_date.setText(date);
                     }
                 });
@@ -179,7 +191,7 @@ public class BookedServiceFragment extends BaseFragment {
                 DialogChooseDate dialogChooseDate = new DialogChooseDate(mainActivity, mainActivity.getRightWidth(), new DialogChooseDate.Dialogcallback() {
                     @Override
                     public void pickWeightResult(String date) {
-                        endTime=date.replaceAll("-","/");
+                        endTime = date.replaceAll("-", "/");
                         tv_end_date.setText(date);
                     }
                 });
@@ -187,19 +199,18 @@ public class BookedServiceFragment extends BaseFragment {
         });
 
 
-
-        if (menuBean!=null){
+        if (menuBean != null) {
             brandSpinner.setItems(menuBean.getData().getBrand());
             brandSpinner.setOnItemSelectedListener(new TextViewSpinner.OnItemSelectedListener<String>() {
 
-                @Override public void onItemSelected(TextViewSpinner view, int position, long id, String item) {
-                    brand=menuBean.getData().getBrand().get(position).getId()+"";
+                @Override
+                public void onItemSelected(TextViewSpinner view, int position, long id, String item) {
+                    brand = menuBean.getData().getBrand().get(position).getId() + "";
                 }
             });
 
 
-
-            if (menuBean.getData().getService()!=null) {
+            if (menuBean.getData().getService() != null) {
                 serviceSpinner.setItems(menuBean.getData().getService());
                 serviceSpinner.setOnItemSelectedListener(new TextViewSpinner.OnItemSelectedListener<String>() {
 
@@ -213,8 +224,9 @@ public class BookedServiceFragment extends BaseFragment {
             typeSpinner.setItems(menuBean.getData().getType());
             typeSpinner.setOnItemSelectedListener(new TextViewSpinner.OnItemSelectedListener<String>() {
 
-                @Override public void onItemSelected(TextViewSpinner view, int position, long id, String item) {
-                    type=menuBean.getData().getType().get(position).getId()+"";
+                @Override
+                public void onItemSelected(TextViewSpinner view, int position, long id, String item) {
+                    type = menuBean.getData().getType().get(position).getId() + "";
                 }
             });
         }
@@ -222,36 +234,35 @@ public class BookedServiceFragment extends BaseFragment {
         statusSpinner.setItems(statusStr);
         statusSpinner.setOnItemSelectedListener(new TextViewSpinner.OnItemSelectedListener<String>() {
 
-            @Override public void onItemSelected(TextViewSpinner view, int position, long id, String item) {
-                status=position+1+"";
+            @Override
+            public void onItemSelected(TextViewSpinner view, int position, long id, String item) {
+                status = position + 1 + "";
             }
         });
 
         mView.findViewById(R.id.btn_search).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    if (TextUtils.isEmpty(startTime)&&!TextUtils.isEmpty(endTime)){
+                if (TextUtils.isEmpty(startTime) && !TextUtils.isEmpty(endTime)) {
 
-                        startTime= TimeUtil.parseDate(0);
+                    startTime = TimeUtil.parseDate(0);
+                }
+                if (TextUtils.isEmpty(endTime) && !TextUtils.isEmpty(startTime)) {
+                    endTime = TimeUtil.parseDate(System.currentTimeMillis());
+                }
+
+
+                if (!TextUtils.isEmpty(endTime) && !TextUtils.isEmpty(startTime))
+                    if (endTime.compareTo(startTime) < 1) {
+                        UiUtil.showToast(R.string.please_select_error_time);
+                        return;
                     }
-                    if (TextUtils.isEmpty(endTime)&&!TextUtils.isEmpty(startTime)){
-                        endTime= TimeUtil.parseDate(System.currentTimeMillis());
-                    }
 
 
-
-
-                    if (!TextUtils.isEmpty(endTime)&&!TextUtils.isEmpty(startTime))
-                        if (endTime.compareTo(startTime)<1){
-                            UiUtil.showToast(R.string.please_select_error_time);
-                            return;
-                        }
-
-
-                    customerPhone=tv_customer_phone.getText().toString();
-                    uName=tv_staff_name.getText().toString();
-                    customerName=tv_customer_name.getText().toString();
-                    getBookedServiceList();
+                customerPhone = tv_customer_phone.getText().toString();
+                uName = tv_staff_name.getText().toString();
+                customerName = tv_customer_name.getText().toString();
+                getBookedServiceList();
 
             }
         });
@@ -263,7 +274,6 @@ public class BookedServiceFragment extends BaseFragment {
     public void back() {
         mainActivity.popBackFragment(0);
     }
-
 
 
     @Override
@@ -279,8 +289,8 @@ public class BookedServiceFragment extends BaseFragment {
     BookedServiceAdapter mAdapter;
 
     private void initRecyclerView() {
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),1));
-        mAdapter = new BookedServiceAdapter(mainActivity,mDatas);
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+        mAdapter = new BookedServiceAdapter(mainActivity, mDatas);
 
 
         recyclerView.setAdapter(mAdapter);
@@ -308,7 +318,6 @@ public class BookedServiceFragment extends BaseFragment {
     boolean isShowMore;
 
 
-
     private void showSearchDialog() {
         SearchServiceDialog dialog = new SearchServiceDialog(getActivity(), ((MainActivity) getActivity()).getRightWidth(), MyApplication.getInstance().getMenuBean());
         dialog.showDiaglog();
@@ -316,7 +325,7 @@ public class BookedServiceFragment extends BaseFragment {
 
 
     //跳转到排班
-    public  void  gotoShift(){
+    public void gotoShift() {
         mainActivity.gotoShift();
 
     }
@@ -366,26 +375,27 @@ public class BookedServiceFragment extends BaseFragment {
     }
 
 
-    private void addBooked2Service(int  id){
-    Map<String,String> pamaras = new HashMap<>();
-    addParams(pamaras,"id", String.valueOf(id));
-   OKHttpUtils.getIntance().oKHttpPost(UrlConstants.UPDATE_APPOINT, this, pamaras, new MyHttpCallback<BaseHttpBean>() {
-       @Override
-       public void onSuccess(BaseHttpBean response) {
-if (response.getCode()==200){
-    EventBus.getDefault().post(new EventCenter(Constants.CODE_UPDATE_SERVICE));
-    UiUtil.showToast(R.string.tv_add_success);
-    mainActivity.popBackFragment(0);
-}else{
-    UiUtil.showToast(response.getMsg());
+    private void addBooked2Service(int id) {
+        Map<String, String> pamaras = new HashMap<>();
+        addParams(pamaras, "id", String.valueOf(id));
+        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.ADD_BOOK_TO_SERVICE, this, pamaras, new MyHttpCallback<BaseHttpBean>() {
+            @Override
+            public void onSuccess(BaseHttpBean response) {
+                if (response.getCode() == 200) {
+                    EventBus.getDefault().post(new EventCenter(Constants.CODE_UPDATE_SERVICE));
+                    EventBus.getDefault().post(new EventCenter(Constants.ADD_BOOK_TO_SERVICE));
+                    UiUtil.showToast(R.string.tv_add_success);
+                    mainActivity.popBackFragment(0);
+                } else {
+                    UiUtil.showToast(response.getMsg());
 
-}
-       }
+                }
+            }
 
-       @Override
-       public void onFailure(String errorMsg) {
-           UiUtil.showToast(errorMsg);
-       }
-   });
+            @Override
+            public void onFailure(String errorMsg) {
+                UiUtil.showToast(errorMsg);
+            }
+        });
     }
 }

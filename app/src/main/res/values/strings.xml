@@ -89,7 +89,7 @@
     <string name="title_descripe">描述</string>
     <string name="title_money">金额</string>
     <string name="tips_choose_customer_account">你要使用哪个顾客账号</string>
-    <string name="clear_shopcar_tips">您的购物车中有另外一位顾客:张三123456789的商品，请清空购物车再进行添加。您要现在清空购物车吗？</string>
+    <string name="clear_shopcar_tips">您的购物车中有另外一位顾客:%1$s的商品，请清空购物车再进行添加。您要现在清空购物车吗？</string>
 
     <string name="status_no_tart">未开始</string>
     <string name="status_progress">进行中</string>

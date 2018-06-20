@@ -46,6 +46,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.jlkf.fsnail.R;
+import com.jlkf.fsnail.bean.MenuBean;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -124,7 +125,6 @@ public class MaterialSpinner extends TextView {
 //    }
 
     setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
-//    setGravity(Gravity.CENTER);
     setClickable(true);
     setPadding(left, 0, 0, 0);
     setBackgroundResource(R.drawable.edittext_bg);
@@ -162,7 +162,7 @@ public class MaterialSpinner extends TextView {
         Object item = adapter.get(position);
         adapter.notifyItemSelected(position);
         setTextColor(textColor);
-        setText(item.toString());
+        setText(((MenuBean.DataBean.PriceListBean)item).getName()+" : €"+((MenuBean.DataBean.PriceListBean)item).getPrice());
         collapse();
         if (onItemSelectedListener != null) {
           //noinspection unchecked
@@ -176,12 +176,12 @@ public class MaterialSpinner extends TextView {
     popupWindow.setOutsideTouchable(true);
     popupWindow.setFocusable(true);
 
-//    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       popupWindow.setElevation(16);
       popupWindow.setBackgroundDrawable(MaterialUtils.getDrawable(context, R.drawable.ms__drawable));
-//    } else {
-//      popupWindow.setBackgroundDrawable(MaterialUtils.getDrawable(context, R.drawable.ms__drop_down_shadow));
-//    }
+    } else {
+      popupWindow.setBackgroundDrawable(MaterialUtils.getDrawable(context, R.drawable.ms__drop_down_shadow));
+    }
 
     if (backgroundColor != Color.WHITE) { // default color is white
       setBackgroundColor(backgroundColor);
@@ -299,11 +299,9 @@ public class MaterialSpinner extends TextView {
       if (adapter != null) {
         if (nothingSelected && !TextUtils.isEmpty(hintText)) {
           setHintColor(hintColor);
-          Log.i("Sven","setText111111");
           setText(hintText);
         } else {
           setTextColor(textColor);
-          Log.i("Sven","setText222222");
           setText(adapter.get(selectedIndex).toString());
         }
         adapter.notifyItemSelected(selectedIndex);

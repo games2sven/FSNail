@@ -13,62 +13,62 @@
     <TextView
         android:id="@+id/tv_doder_num"
         android:text="OP0001"
-        style="@style/item_service_sty"
+        style="@style/item_book_sty"
 
         />
     <TextView
         android:id="@+id/tv_product_name"
         android:text="Kiki"
-        style="@style/item_service_sty"
+        style="@style/item_book_sty"
 
         />
     <TextView
         android:id="@+id/tv_type"
         android:text="产品"
-        style="@style/item_service_sty"
+        style="@style/item_book_sty"
 
         />
     <TextView
         android:id="@+id/tv_brand"
         android:text="KIKI"
-        style="@style/item_service_sty"
+        style="@style/item_book_sty"
 
         />
     <TextView
         android:id="@+id/tv_number"
         android:text="2个"
-        style="@style/item_service_sty"
+        style="@style/item_book_sty"
         />
 
     <TextView
         android:id="@+id/tv_store"
         android:text="店1"
-        style="@style/item_service_sty"
+        style="@style/item_book_sty"
         />
     <TextView
         android:id="@+id/tv_channel"
         android:text="APP商店"
-        style="@style/item_service_sty"
+        style="@style/item_book_sty"
         />
     <TextView
         android:id="@+id/tv_first_price"
         android:text="$20"
-        style="@style/item_service_sty"
+        style="@style/item_book_sty"
         />
         <TextView
             android:id="@+id/tv_voucher"
             android:text="$20"
-            style="@style/item_service_sty"
+            style="@style/item_book_sty"
             />
         <TextView
             android:id="@+id/tv_final_price"
             android:text="$240"
-            style="@style/item_service_sty"
+            style="@style/item_book_sty"
             />
         <TextView
             android:id="@+id/tv_order_time"
             android:text="2018/01/26"
-            style="@style/item_service_sty"
+            style="@style/item_book_sty"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="#7d7d7d"
@@ -79,22 +79,22 @@
         <TextView
             android:id="@+id/tv_pay_way"
             android:text="信用卡"
-            style="@style/item_service_sty"
+            style="@style/item_book_sty"
             />
         <TextView
             android:id="@+id/tv_customer"
             android:text="0123001"
-            style="@style/item_service_sty"
+            style="@style/item_book_sty"
             />
         <TextView
             android:id="@+id/tv_customer_phone"
             android:text="0123001"
-            style="@style/item_service_sty"
+            style="@style/item_book_sty"
             />
         <TextView
             android:id="@+id/tv_order_status"
             android:text="已支付"
-            style="@style/item_service_sty"
+            style="@style/item_book_sty"
             />
 
         <LinearLayout

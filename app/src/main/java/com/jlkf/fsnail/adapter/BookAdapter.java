@@ -7,15 +7,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jlkf.fsnail.R;
+import com.jlkf.fsnail.bean.BaseHttpBean;
 import com.jlkf.fsnail.bean.BookBean;
 import com.jlkf.fsnail.bean.Card2Bean;
 import com.jlkf.fsnail.bean.EventCenter;
 import com.jlkf.fsnail.constants.Constants;
+import com.jlkf.fsnail.constants.UrlConstants;
 import com.jlkf.fsnail.holder.BookViewHolder;
+import com.jlkf.fsnail.net.MyHttpCallback;
+import com.jlkf.fsnail.net.OKHttpUtils;
+import com.jlkf.fsnail.utils.UiUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class BookAdapter extends RecyclerView.Adapter {
@@ -41,10 +48,22 @@ public class BookAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
 
+        ((BookViewHolder)holder).img_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addBook2Service(datas.get(position).getId()+"");
+            }
+        });
         ((BookViewHolder)holder).img_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 EventBus.getDefault().post(new EventCenter(Constants.CODE_EDIT_BOOK, datas.get(position)));
+            }
+        });
+        ((BookViewHolder)holder).tv_cancel_book.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cancelBook(datas.get(position).getId()+"");
             }
         });
 
@@ -65,7 +84,49 @@ public class BookAdapter extends RecyclerView.Adapter {
     }
 
 
+    public void cancelBook(String bookId){
+        Map<String,String> params = new HashMap<>();
+        params.put("id",bookId);
+        params.put("status",5+"");
 
+        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.CANCEL_BOOK ,this, params,new MyHttpCallback<BaseHttpBean>() {
+            @Override
+            public void onSuccess(BaseHttpBean response) {
+
+                if (response.getCode()==200){
+                    EventBus.getDefault().post(new EventCenter(Constants.CODE_CANCEL_BOOK));
+                }else{
+                    UiUtil.showToast(response.getMsg());
+                }
+            }
+
+            @Override
+            public void onFailure(String errorMsg) {
+                UiUtil.showToast(errorMsg);
+            }
+        });
+    }
+
+    public void addBook2Service(String id){
+        Map<String,String> params = new HashMap<>();
+        params.put("id",id);
+        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.ADD_BOOK_TO_SERVICE, this, params, new MyHttpCallback<BookBean>() {
+
+            @Override
+            public void onSuccess(BookBean response) {
+                if(response.getCode() == 200){
+                    UiUtil.showToast(R.string.tv_add_success);
+                    EventBus.getDefault().post(new EventCenter(Constants.CODE_UPDATE_SERVICE));
+                    EventBus.getDefault().post(new EventCenter(Constants.ADD_BOOK_TO_SERVICE));
+                }
+            }
+
+            @Override
+            public void onFailure(String errorMsg) {
+                UiUtil.showToast(errorMsg);
+            }
+        });
+    }
 
 }
 

@@ -46,6 +46,6 @@ public class UrlConstants {
     public static String CARD_CONSUME = SERVER_API + "card/cardRecordList";//卡券消费记录列表
 
     public static String ADD_SHOPCAR = SERVER_API + "shopCart/addShopCart";//添加购物车
-
-    public static String UPDATE_APPOINT=SERVER_API +"service/updateAppoint";
+    public static String CLEAR_SHOPCAR = SERVER_API + "shopCart/deleteShopCart";//清空购物车
+    public static String ADD_BOOK_TO_SERVICE=SERVER_API +"service/updateAppoint";//预约加入服务列表
 }

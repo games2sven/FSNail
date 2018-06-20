@@ -102,7 +102,6 @@
                 android:id="@+id/tv_shop_cart_num"
                 android:layout_width="@dimen/DIMEN_20PX"
                 android:layout_height="@dimen/DIMEN_20PX"
-
                 />
 
         </RelativeLayout>

@@ -95,6 +95,7 @@ public class MenuBean extends BaseHttpBean{
             public void setId(int id) {
                 this.id = id;
             }
+
         }
     }
 }

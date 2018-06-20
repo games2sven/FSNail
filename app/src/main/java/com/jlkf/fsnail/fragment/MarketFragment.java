@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jlkf.fsnail.R;
@@ -17,6 +18,7 @@ import com.jlkf.fsnail.activity.MainActivity;
 import com.jlkf.fsnail.adapter.MarketAdapter;
 import com.jlkf.fsnail.base.BaseFragment;
 import com.jlkf.fsnail.bean.AddShopCarBean;
+import com.jlkf.fsnail.bean.BaseHttpBean;
 import com.jlkf.fsnail.bean.EventCenter;
 import com.jlkf.fsnail.bean.GoodsBean;
 import com.jlkf.fsnail.bean.OrderBean;
@@ -30,6 +32,7 @@ import com.jlkf.fsnail.dialog.SingleFunctionPop;
 import com.jlkf.fsnail.net.MyHttpCallback;
 import com.jlkf.fsnail.net.OKHttpUtils;
 import com.jlkf.fsnail.utils.UiUtil;
+import com.jlkf.fsnail.widget.PageIndexView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,9 +52,20 @@ public class MarketFragment extends BaseFragment{
     RecyclerView recylerview;
     @Bind(R.id.iv_service_more)
     ImageView iv_service_more;
+    @Bind(R.id.tv_shop_cart_num)
+    TextView tv_shop_cart_num;
+    @Bind(R.id.page_index_view)
+    PageIndexView page_index_view;
+
+    private int  pageNo=1;
+    private int  pageSize=6;
+
 
     private  MarketAdapter adapter;
     GoodsBean.DataBean selectedGood;
+    private int shopcarNum = 0;
+
+    Map<String,String> mParams;
 
     //标题:
     @Nullable
@@ -61,7 +75,7 @@ public class MarketFragment extends BaseFragment{
         View view  =LayoutInflater.from(container.getContext()).inflate(R.layout.fragment_market,null);
         ButterKnife.bind(this,view);
 
-        initData();
+        loadData();
         return view;
     }
 
@@ -72,35 +86,42 @@ public class MarketFragment extends BaseFragment{
 
     @Override
     protected void onEventComing(EventCenter eventCenter) {
-        Log.i("Sven","onEventComing");
         Object object = eventCenter.getData();
         switch (eventCenter.getEventCode()){
-            case Constants.CODE_MARKET_ADD_SHOPCAR:
+            case Constants.CODE_MARKET_ADD_SHOPCAR://添加到购物车
                 selectedGood = (GoodsBean.DataBean)object;
                 SelectCustomerDialog customerDialog = new SelectCustomerDialog(getActivity());
                 customerDialog.showDiaglog();
                 break;
-            case Constants.CODE_SELECT_CUSTOMER_RETURN:
+            case Constants.CODE_SELECT_CUSTOMER_RETURN://选择顾客返回
                 ServiceMenuBean.DataBean.CustomerBean selectedCustomer = (ServiceMenuBean.DataBean.CustomerBean)object;
                 add2ShopCar(selectedCustomer.getId()+"",selectedGood.getId()+"");
                 break;
             case Constants.CODE_CLEAR_ACCOUNT_SHOPCAR://清空购物车
+                String uid = (String)object;
+                clearShopCar(uid);
                 break;
             case Constants.CODE_SEARCH_GOODS://搜索商品
-                Map<String,String> params = (Map<String,String>)object;
-                loadData(params);
+                mParams = (Map<String,String>)object;
+                loadData();
                 break;
         }
     }
 
-    public void initData(){
+    public void loadData(){
+        if(mParams == null){
+            mParams = new HashMap<>();
+        }
 
-        Map<String, String> params = new HashMap<>();
+        mParams.put("pageNo",pageNo+"");
+        mParams.put("pageSize",pageSize+"");
 
-        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.GOODS_LIST, this, params, new MyHttpCallback<GoodsBean>() {
+        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.GOODS_LIST, this, mParams, new MyHttpCallback<GoodsBean>() {
 
             @Override
             public void onSuccess(GoodsBean response) {
+                page_index_view.setTotalPage(response.getTotalPage());
+                page_index_view.setCurrentPage(pageNo);
                 mDatas = response.getData();
                 initRecyclerview();
             }
@@ -113,23 +134,6 @@ public class MarketFragment extends BaseFragment{
 
     }
 
-    public void loadData( Map<String, String> params){
-        Log.e("Sven",OKHttpUtils.getMapParamStr(params));
-        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.GOODS_LIST, this, params, new MyHttpCallback<GoodsBean>() {
-
-            @Override
-            public void onSuccess(GoodsBean response) {
-                mDatas = response.getData();
-                adapter.setDatas(mDatas);
-            }
-
-            @Override
-            public void onFailure(String errorMsg) {
-
-            }
-        });
-    }
-
     public void add2ShopCar(String uid,String gid){
         Map<String,String> params = new HashMap<>();
         params.put("uid",uid);
@@ -139,10 +143,38 @@ public class MarketFragment extends BaseFragment{
             @Override
             public void onSuccess(AddShopCarBean response) {
                 if(response.getCode() == 200){
-                    if(response.getData() != null){//不位空，，先清空购物车
+                    Log.i("Sven","code == 200");
+                    if(response.getData() != null){//不为空，，先清空购物车
+                        Log.i("Sven","不为空");
                         ClearShopCarDialog dialog = new ClearShopCarDialog(getActivity(),response.getData());
                         dialog.showDialog();
+                    }else{//为空，，直接添加到购物车了
+                        Log.i("Sven","直接添加购物车");
+                        tv_shop_cart_num.setVisibility(View.VISIBLE);
+                        shopcarNum += 1;
+                        tv_shop_cart_num.setText(shopcarNum+"");
                     }
+                }
+            }
+
+            @Override
+            public void onFailure(String errorMsg) {
+
+            }
+        });
+    }
+
+    public void clearShopCar(String uid){
+        Map<String,String> params = new HashMap<>();
+        params.put("uid",uid);
+        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.CLEAR_SHOPCAR, this, params, new MyHttpCallback<BaseHttpBean>() {
+
+            @Override
+            public void onSuccess(BaseHttpBean response) {
+                if(response.getCode() == 200){//清空购物车成功
+                    shopcarNum = 0;
+                    tv_shop_cart_num.setText(shopcarNum+"");
+                    tv_shop_cart_num.setVisibility(View.GONE);
                 }
             }
 
@@ -155,6 +187,29 @@ public class MarketFragment extends BaseFragment{
 
 
     public void initRecyclerview(){
+        page_index_view.setOnPageIndexListener(new PageIndexView.OnPageIndexListener() {
+            @Override
+            public void onLastClick() {
+                pageNo--;
+                if (pageNo>0){
+                    loadData();
+                }
+            }
+
+            @Override
+            public void onNextClick() {
+                pageNo++;
+                loadData();
+            }
+
+            @Override
+            public void onIndexClick(int page) {
+                pageNo=page;
+                page_index_view.setCurrentPage(page);
+                loadData();
+            }
+        });
+
         recylerview.setLayoutManager(new GridLayoutManager(getActivity(),1));
         adapter = new MarketAdapter(mDatas);
         recylerview.setAdapter(adapter);

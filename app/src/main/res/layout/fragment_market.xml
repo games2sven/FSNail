@@ -39,6 +39,19 @@
                 android:layout_height="@dimen/DIMEN_40PX"
                 android:src="@mipmap/content_icon_cart22"/>
 
+
+            <TextView
+                android:text="0"
+                android:gravity="center"
+                android:visibility="visible"
+                android:textSize="@dimen/DIMEN_12PX"
+                android:background="@drawable/shape_shop_cart_num_bg"
+                android:textColor="@color/white"
+                android:id="@+id/tv_shop_cart_num"
+                android:layout_width="@dimen/DIMEN_20PX"
+                android:layout_height="@dimen/DIMEN_20PX"
+                />
+
         </LinearLayout>
 
     </LinearLayout>

@@ -80,14 +80,6 @@ public class MenuFragment extends BaseFragment{
     public void initView(){
         mRecyClerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
         mRecyClerView.setAdapter(new MenuAdapter(datas));
-//
-//        mySpinner.setItems(datas);
-//        mySpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<MenuBean>() {
-//
-//            @Override public void onItemSelected(MaterialSpinner view, int position, long id, MenuBean item) {
-//                Snackbar.make(view, "Clicked " + item.toString(), Snackbar.LENGTH_LONG).show();
-//            }
-//        });
     }
 
 

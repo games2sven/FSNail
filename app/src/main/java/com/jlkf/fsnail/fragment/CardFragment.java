@@ -26,6 +26,7 @@ import com.jlkf.fsnail.dialog.SearchCardDialog;
 import com.jlkf.fsnail.dialog.SingleFunctionPop;
 import com.jlkf.fsnail.net.MyHttpCallback;
 import com.jlkf.fsnail.net.OKHttpUtils;
+import com.jlkf.fsnail.widget.PageIndexView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,7 +46,13 @@ public class CardFragment extends BaseFragment{
     RecyclerView recylerview;
     @Bind(R.id.iv_service_more)
     ImageView iv_service_more;
+    @Bind(R.id.page_index_view)
+    PageIndexView page_index_view;
 
+    private int  pageNo=1;
+    private int  pageSize=6;
+
+    Map<String,String> mParams;
     private CardAdapter adapter;
 
     //标题:
@@ -79,7 +86,8 @@ public class CardFragment extends BaseFragment{
                     });
                     break;
                 case Constants.CODE_SEARCH_CARD:
-                    loadDataWithParams((Map<String,String>)object);
+                    mParams = ((Map<String,String>)object);
+                    loadData();
                     break;
 
             }
@@ -87,14 +95,17 @@ public class CardFragment extends BaseFragment{
     }
 
     public void loadData(){
-        Map<String,String> params = new HashMap<String,String>();
-        params.put("pageNo","1");
-        params.put("pageSize","10");
-        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.CARD_LIST, this, params, new MyHttpCallback<CardBean>() {
+        if(mParams == null){
+            mParams = new HashMap<String,String>();
+        }
+        mParams.put("pageNo",pageNo+"");
+        mParams.put("pageSize",pageSize+"");
+        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.CARD_LIST, this, mParams, new MyHttpCallback<CardBean>() {
             @Override
             public void onSuccess(CardBean response) {
-                Log.i("Sven","response "+response.getCode());
                 if(response.getCode() == 200){
+                    page_index_view.setTotalPage(response.getTotalPage());
+                    page_index_view.setCurrentPage(pageNo);
                     mDatas = response.getData();
                     initRecyclerview();
                 }
@@ -107,25 +118,30 @@ public class CardFragment extends BaseFragment{
         });
     }
 
-    public void loadDataWithParams(Map<String,String> params){
-        OKHttpUtils.getIntance().oKHttpPost(UrlConstants.CARD_LIST, this, params, new MyHttpCallback<CardBean>() {
+    public void initRecyclerview(){
+        page_index_view.setOnPageIndexListener(new PageIndexView.OnPageIndexListener() {
             @Override
-            public void onSuccess(CardBean response) {
-                Log.i("Sven","response "+response.getCode());
-                if(response.getCode() == 200){
-                    mDatas = response.getData();
-                    adapter.setDatas(mDatas);
+            public void onLastClick() {
+                pageNo--;
+                if (pageNo>0){
+                    loadData();
                 }
             }
 
             @Override
-            public void onFailure(String errorMsg) {
+            public void onNextClick() {
+                pageNo++;
+                loadData();
+            }
 
+            @Override
+            public void onIndexClick(int page) {
+                pageNo=page;
+                page_index_view.setCurrentPage(page);
+                loadData();
             }
         });
-    }
 
-    public void initRecyclerview(){
         recylerview.setLayoutManager(new GridLayoutManager(getActivity(),1));
         adapter = new CardAdapter(mDatas);
         recylerview.setAdapter(adapter);

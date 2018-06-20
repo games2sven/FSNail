@@ -93,6 +93,8 @@ public class Constants {
     public static final int CODE_UPDATE_STAFF =35 ;
     public static final int CODE_SEARCH_BOOK =36 ;//查找预约
     public static final int CODE_SEARCH_CARD =37 ;//查找卡券
+    public static final int ADD_BOOK_TO_SERVICE =38 ;//添加已预约项目到服务列表
+
 
 
 
