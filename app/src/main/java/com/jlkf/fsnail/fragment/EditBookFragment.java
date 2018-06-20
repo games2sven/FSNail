@@ -68,7 +68,7 @@ public class EditBookFragment extends BaseFragment implements View.OnClickListen
     @Bind(R.id.customer_spinner)
     TextViewSpinner customer_spinner;
     @Bind(R.id.et_appoint_phone)
-    EditText et_appoint_phone;
+    TextView et_appoint_phone;
     @Bind(R.id.tv_incorrect)
     TextView tv_incorrect;
     @Bind(R.id.tv_correct)

@@ -138,6 +138,7 @@
             style="@style/myspinner"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/DIMEN_17PX"
+            android:hint="2018-6-20"
             android:background="@drawable/edittext_bg"
             android:textSize="@dimen/DIMEN_24PX"
             />

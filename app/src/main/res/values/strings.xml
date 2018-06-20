@@ -30,7 +30,7 @@
     <string name="text_get_time">获赠时间:</string>
     <string name="text_use_price">已抵用金额:</string>
     <string name="text_left_price">剩余金额:</string>
-    <string name="text_check_consumption">查看卡券消费记录:</string>
+    <string name="text_check_consumption">查看卡券消费记录</string>
     <string name="card_num">卡券编号</string>
     <string name="product_name">产品\n名称</string>
     <string name="produce_type">产品\n类别</string>
